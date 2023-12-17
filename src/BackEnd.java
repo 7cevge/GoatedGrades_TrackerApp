@@ -4,6 +4,8 @@ public class backEnd {
 	private static login signIn = new login();
 
 	public static void main(String[] args) {
+		new GUI();
+		
 		try (Connection c = DriverManager.getConnection(signIn.dbID, signIn.userID, signIn.pw);) {
 			ResultSet rs;
 			PreparedStatement ps;
