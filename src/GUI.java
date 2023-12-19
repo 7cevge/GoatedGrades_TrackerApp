@@ -10,43 +10,41 @@ public class GUI {
 		 * if want custom title bar, need frame to be undecorated and make a panel to do
 		 * the same thing the title bar would
 		 */
-		
+
 		// frame.setUndecorated(true);
 
-		frame.setTitle("GradeTrackerApp");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
-		frame.setSize(500, 500);
+		frame.setSize(900, 700);
 		frame.setLayout(null);
-		
-		ImageIcon appIcon = new ImageIcon("./graphics/temporaryIcon.jpg");
-		frame.setIconImage(appIcon.getImage());
 
 		frame.getContentPane().setBackground(new Color(0x336699));
-		
-		JLabel label1 = new JLabel();
-		ImageIcon label1Img = new ImageIcon("./graphics/temporaryIcon.jpg");
-		Border label1Border = BorderFactory.createLineBorder(new Color(0xff00ff));
-		
-		label1.setText("label1 text");
-		label1.setIcon(label1Img);
-		label1.setIconTextGap(15);
-		
-		label1.setHorizontalAlignment(JLabel.CENTER);
-		label1.setVerticalAlignment(JLabel.CENTER);
-		label1.setBackground(new Color(0x000077));
-		label1.setForeground(new Color(0x993300));
-		label1.setOpaque(true);
-		label1.setBorder(label1Border);
-		label1.setBounds(25,25,400,400);
-		
-		label1.setHorizontalTextPosition(JLabel.CENTER);
-		label1.setVerticalTextPosition(JLabel.BOTTOM);
-		label1.setFont(new Font("MV Boli", Font.BOLD, 50));
-		
-		
-		frame.add(label1);
-		//frame.pack();
+
+		JLabel iconTitle = new JLabel();
+		ImageIcon icon = new ImageIcon(new ImageIcon("./graphics/temporaryIcon.jpg").getImage()
+				.getScaledInstance(25, 25, Image.SCALE_DEFAULT));
+
+		iconTitle.setText("Grade Tracker App - Alpha");
+		iconTitle.setIcon(icon);
+		iconTitle.setIconTextGap(15);
+
+		iconTitle.setHorizontalAlignment(JLabel.LEFT);
+		iconTitle.setVerticalAlignment(JLabel.CENTER);
+		iconTitle.setForeground(new Color(0xFFFFFF));
+		iconTitle.setOpaque(false);
+
+		iconTitle.setHorizontalTextPosition(JLabel.RIGHT);
+		iconTitle.setVerticalTextPosition(JLabel.CENTER);
+		iconTitle.setFont(new Font("MV Boli", Font.BOLD, 15));
+
+		JPanel titleBar = new JPanel();
+		titleBar.setBackground(new Color(0x000000));
+		titleBar.setBounds(0, 0, 1500, 30);
+		titleBar.setLayout(new FlowLayout());
+
+		titleBar.add(iconTitle);
+		frame.add(titleBar);
+		// frame.pack();
 		frame.setVisible(true);
 	}
 }
