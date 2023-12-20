@@ -1,6 +1,5 @@
-# Goated Grade 
- *Tracker* 
- 
+# Goated Grade <sub>*Tracker*</sub>
+
  Java application for tracking grades
 
  icon/mascot a goat
