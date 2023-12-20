@@ -1,14 +1,15 @@
-# GradeTracker
+# Goated Grade 
+ *Tracker*
  Java application for tracking grades
+
  icon/mascot a goat
- climb the mountain, higher grades
- goated grades...
+ montro: climb the mountain, reach for higher ~~grass~~ grades
 
 ### To do list:
- - set up sql
+ - set up sql 
    - make uml
    - make the tables
-   - export it so it can be used
+   - ~~export it so it can be used~~ not necessary?
 
  - connect sql and java program
    - review JDBC
@@ -18,4 +19,4 @@
    - the calculation stuff
 
  - work on gui
- - java.swing/frame
+ - ~~java.swing/frame~~ javafx
