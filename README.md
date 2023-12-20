@@ -1,4 +1,4 @@
-# Goated Grade <sub>*Tracker*</sub>
+# Goated Grades <sub>*Tracker*</sub>
 
  Java application for tracking grades
 
