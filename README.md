@@ -1,5 +1,8 @@
 # GradeTracker
  Java application for tracking grades
+ icon/mascot a goat
+ climb the mountain, higher grades
+ goated grades...
 
 ### To do list:
  - set up sql
