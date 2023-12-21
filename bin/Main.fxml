@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <SplitPane dividerPositions="0.5" prefHeight="24.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="200.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" stroke="BLACK" strokeType="INSIDE" width="20.0">
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </Rectangle>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textOrigin="CENTER">
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" text="Button" />
+                  <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0" text="Button" />
+               </children>
+            </HBox>
+         </items>
+      </SplitPane>
+   </top>
+</BorderPane>
