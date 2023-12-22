@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 public class Control {
 	@FXML
 	private Button minimizeB = new Button();
+	
+	@FXML
 	private Button maximizeB = new Button();
-	private Button closeB = new Button();
 
 	public void minimize(ActionEvent e) {
 		Stage stage = (Stage) minimizeB.getScene().getWindow();

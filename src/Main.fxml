@@ -29,7 +29,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="200.0">
                <children>
                   <Button fx:id="minimizeB" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="24.0" text="1" />
-                  <Button mnemonicParsing="false" onAction="#maximize" prefHeight="24.0" prefWidth="24.0" text="2" />
+                  <Button fx:id="maximizeB" mnemonicParsing="false" onAction="#maximize" prefHeight="24.0" prefWidth="24.0" text="2" />
                   <Button mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="24.0" text="3" />
                </children>
             </HBox>
