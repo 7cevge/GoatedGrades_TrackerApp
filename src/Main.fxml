@@ -7,12 +7,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Control">
    <top>
-      <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" prefHeight="24.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" prefHeight="24.0" prefWidth="520.0" BorderPane.alignment="CENTER">
          <children>
             <Text layoutX="22.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goated Grades" textOrigin="CENTER" AnchorPane.leftAnchor="26.0">
                <font>
@@ -27,13 +28,18 @@
                   <Image url="@../graphics/temporaryIcon.jpg" />
                </image>
             </ImageView>
+            <Rectangle fx:id="TLrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Rectangle fx:id="Trs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="592.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0" />
+            <Rectangle fx:id="TRrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" layoutX="314.0" layoutY="-88.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Rectangle fx:id="SLrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+            <Rectangle fx:id="SRrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="4.0" />
          </children>
       </AnchorPane>
    </top>
    <center>
-      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <ScrollPane BorderPane.alignment="CENTER">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="300.0" prefWidth="598.0">
+          <AnchorPane prefHeight="373.0" prefWidth="599.0">
                <children>
                   <PasswordField alignment="CENTER" layoutX="225.0" layoutY="200.0" promptText="Password" />
                   <PasswordField alignment="CENTER" layoutX="225.0" layoutY="175.0" promptText="Username" />
@@ -48,4 +54,27 @@
         </content>
       </ScrollPane>
    </center>
+   <right>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fx:id="Rrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="372.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </right>
+   <left>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fx:id="Lrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="372.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </left>
+   <bottom>
+      <AnchorPane BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fx:id="BLrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+            <Rectangle fx:id="Brs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="592.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
+            <Rectangle fx:id="BRrs" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </bottom>
 </BorderPane>

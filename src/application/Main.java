@@ -14,11 +14,12 @@ public class Main extends Application {
 
 	public void start(Stage stage) {
 		try {
-			//stage.initStyle(StageStyle.UNDECORATED);
+			stage.initStyle(StageStyle.UNDECORATED);
 
 			Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			String css = this.getClass().getResource("application.css").toExternalForm();
+			scene.getStylesheets().add(css);
 
 			stage.setScene(scene);
 			stage.show();
