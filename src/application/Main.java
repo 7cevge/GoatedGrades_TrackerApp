@@ -2,6 +2,7 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.scene.Parent;
@@ -15,11 +16,16 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		try {
 			stage.initStyle(StageStyle.UNDECORATED);
+			stage.setMinWidth(300);
+			stage.setMinHeight(200);
+			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
+			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
+			
 
 			Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
 			Scene scene = new Scene(root);
-			String css = this.getClass().getResource("application.css").toExternalForm();
-			scene.getStylesheets().add(css);
+			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
+			scene.getStylesheets().add(windowStyling);
 
 			stage.setScene(scene);
 			stage.show();
