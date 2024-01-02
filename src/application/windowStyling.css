@@ -1,0 +1,42 @@
+
+/* Set all resize elements transparent */
+#TLrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#Trs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#TRrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#SRrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#Rrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#BRrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#Brs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#BLrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#Lrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}
+#SLrs{
+	-fx-fill: "transparent";
+	-fx-stroke: "transparent";
+}

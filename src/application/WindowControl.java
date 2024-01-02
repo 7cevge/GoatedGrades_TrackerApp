@@ -23,6 +23,7 @@ public class WindowControl {
 
 	private double newX = -1, newY = -1;
 
+	/* The 3 window buttons */
 	public void minimize(ActionEvent e) {
 		Stage stage = (Stage) minimizeB.getScene().getWindow();
 		stage.setIconified(true);
@@ -41,6 +42,7 @@ public class WindowControl {
 		Platform.exit();
 	}
 
+	/* Moving the window around the screen */
 	public void moveWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
 		if (target.contains("Rectangle")) {
@@ -62,6 +64,7 @@ public class WindowControl {
 		}
 	}
 
+	/* Resizing the window */
 	public void resizeWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
 		if (target.contains("id=TLrs") || target.contains("id=Trs") || target.contains("TRrs")

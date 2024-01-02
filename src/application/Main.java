@@ -20,9 +20,8 @@ public class Main extends Application {
 			stage.setMinHeight(200);
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
-			
 
-			Parent root = FXMLLoader.load(getClass().getResource("/Main.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/LoginScene.fxml"));
 			Scene scene = new Scene(root);
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
