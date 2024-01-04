@@ -35,34 +35,81 @@ public class LoginControl {
 	}
 
 	/* Sort of importing controls from the window controller */
-	FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
-	WindowControl windowC = windowLoader.getController();
 
 	public void minimize(MouseEvent e) {
-		windowC.minimize(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.minimize(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void maximize(MouseEvent e) {
-		windowC.maximize(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.maximize(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void close(MouseEvent e) {
-		windowC.close(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.close(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void moveWindow1(MouseEvent e) {
-		windowC.moveWindow1(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.moveWindow1(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void moveWindow2(MouseEvent e) {
-		windowC.moveWindow2(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.moveWindow2(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void resizeWindow1(MouseEvent e) {
-		windowC.resizeWindow1(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.resizeWindow1(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	public void resizeWindow2(MouseEvent e) {
-		windowC.resizeWindow2(e);
+		try {
+			FXMLLoader windowLoader = new FXMLLoader(getClass().getResource("WindowScene.fxml"));
+			root = windowLoader.load();
+			WindowControl windowC = windowLoader.getController();
+			windowC.resizeWindow2(e);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 }
