@@ -31,10 +31,14 @@ public class WindowControl {
 
 	public void maximize(ActionEvent e) {
 		Stage stage = (Stage) maximizeB.getScene().getWindow();
-		if (stage.isMaximized()) {
+		if (stage.isMaximized() && !maximizeB.getStyleClass().contains("maximizeG")) {
 			stage.setMaximized(false);
+			maximizeB.getStyleClass().remove("restoreG");
+			maximizeB.getStyleClass().add("maximizeG");
 		} else {
 			stage.setMaximized(true);
+			maximizeB.getStyleClass().remove("maximizeG");
+			maximizeB.getStyleClass().add("restoreG");
 		}
 	}
 

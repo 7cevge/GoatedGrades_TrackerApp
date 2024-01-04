@@ -15,15 +15,15 @@
    <top>
       <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" prefHeight="24.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="22.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goated Grades" textOrigin="CENTER" AnchorPane.leftAnchor="26.0">
+            <Text fx:id="title" layoutX="22.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goated Grades" textOrigin="CENTER" AnchorPane.leftAnchor="26.0">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
             <Button fx:id="minimizeB" layoutX="528.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="24.0" text="1" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
             <Button fx:id="maximizeB" layoutX="552.0" mnemonicParsing="false" onAction="#maximize" prefHeight="24.0" prefWidth="24.0" text="2" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0" />
-            <Button layoutX="576.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="24.0" text="3" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
+            <Button fx:id="closeB" layoutX="576.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="24.0" text="3" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <ImageView fx:id="titleIcon" fitHeight="20.0" fitWidth="20.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../graphics/temporaryIcon.jpg" />
                </image>
