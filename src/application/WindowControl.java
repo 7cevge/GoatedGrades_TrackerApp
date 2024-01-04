@@ -23,13 +23,16 @@ public class WindowControl {
 
 	private double newX = -1, newY = -1;
 
+	public WindowControl() {
+	}
+
 	/* The 3 window buttons */
-	public void minimize(ActionEvent e) {
+	public void minimize(MouseEvent e) {
 		Stage stage = (Stage) minimizeB.getScene().getWindow();
 		stage.setIconified(true);
 	}
 
-	public void maximize(ActionEvent e) {
+	public void maximize(MouseEvent e) {
 		Stage stage = (Stage) maximizeB.getScene().getWindow();
 		if (stage.isMaximized() && !maximizeB.getStyleClass().contains("maximizeG")) {
 			stage.setMaximized(false);
@@ -42,7 +45,7 @@ public class WindowControl {
 		}
 	}
 
-	public void close(ActionEvent e) {
+	public void close(MouseEvent e) {
 		Platform.exit();
 	}
 

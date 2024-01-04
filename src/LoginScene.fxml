@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="loginWindow" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowControl">
+<BorderPane fx:id="loginWindow" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginControl">
    <top>
       <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" prefHeight="24.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
@@ -22,9 +22,9 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
-            <Button fx:id="minimizeB" layoutX="528.0" mnemonicParsing="false" onAction="#minimize" prefHeight="24.0" prefWidth="24.0" textAlignment="CENTER" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="maximizeB" layoutX="552.0" mnemonicParsing="false" onAction="#maximize" prefHeight="24.0" prefWidth="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="closeB" layoutX="576.0" mnemonicParsing="false" onAction="#close" prefHeight="24.0" prefWidth="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="minimizeB" layoutX="528.0" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="24.0" prefWidth="24.0" textAlignment="CENTER" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="maximizeB" layoutX="552.0" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="24.0" prefWidth="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="closeB" layoutX="576.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="24.0" prefWidth="24.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <ImageView fx:id="titleIcon" fitHeight="20.0" fitWidth="20.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../graphics/temporaryIcon.jpg" />
@@ -43,16 +43,16 @@
         <content>
           <AnchorPane prefHeight="370.0" prefWidth="590.0">
                <children>
-                  <PasswordField alignment="CENTER" layoutX="221.0" layoutY="210.0" promptText="Password" />
-                  <TextField alignment="CENTER" layoutX="221.0" layoutY="185.0" promptText="Username" />
-                  <Button layoutX="345.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
-                  <Button layoutX="270.0" layoutY="243.0" mnemonicParsing="false" text="Log In" />
-                  <ImageView fitHeight="133.0" fitWidth="324.0" layoutX="134.0" layoutY="45.0" pickOnBounds="true">
+                  <PasswordField fx:id="passwordIn" alignment="CENTER" layoutX="221.0" layoutY="210.0" promptText="Password" />
+                  <TextField fx:id="usernameIn" alignment="CENTER" layoutX="221.0" layoutY="185.0" promptText="Username" />
+                  <Button fx:id="passwordEye" layoutX="345.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                  <Button fx:id="loginB" layoutX="270.0" layoutY="243.0" mnemonicParsing="false" text="Log In" />
+                  <ImageView fx:id="titleImage" fitHeight="133.0" fitWidth="324.0" layoutX="134.0" layoutY="45.0" pickOnBounds="true">
                      <image>
                         <Image url="@../graphics/temporaryIcon.jpg" />
                      </image>
                   </ImageView>
-                  <Hyperlink layoutX="335.0" layoutY="235.0" text="Register" textAlignment="CENTER">
+                  <Hyperlink fx:id="regHyperlink" layoutX="335.0" layoutY="235.0" onMouseClicked="#registering" text="Register" textAlignment="CENTER">
                      <font>
                         <Font size="8.0" />
                      </font>

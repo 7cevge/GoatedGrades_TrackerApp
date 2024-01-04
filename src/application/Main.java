@@ -16,8 +16,8 @@ public class Main extends Application {
 	public void start(Stage stage) {
 		try {
 			stage.initStyle(StageStyle.UNDECORATED);
-			stage.setMinWidth(300);
-			stage.setMinHeight(200);
+			stage.setMinWidth(600);
+			stage.setMinHeight(400);
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
