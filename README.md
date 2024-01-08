@@ -9,6 +9,6 @@
 
   ##### ERD:
 
-    ![GGT ERD](/GradeTrackerERD.png "GGT ERD")
+ ![GGT ERD](/GradeTrackerERD.png "GGT ERD")
 
   ##### Features:
