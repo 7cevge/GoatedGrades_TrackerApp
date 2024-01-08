@@ -21,15 +21,20 @@ public class Main extends Application {
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
-			Parent root = FXMLLoader.load(getClass().getResource("/LoginScene.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowScene.fxml"));
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			
+			SubControl subControl = new SubControl();
+			subControl.setSuperControl(loader.getController());
+			
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
 
 			stage.setScene(scene);
 			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception err) {
+			err.printStackTrace();
 		}
 	}
 }

@@ -1,11 +1,13 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -22,9 +24,8 @@ public class WindowControl {
 	private Rectangle Trs, Rrs, Brs, Lrs;
 
 	private double newX = -1, newY = -1;
-
-	public WindowControl() {
-	}
+	
+	
 
 	/* The 3 window buttons */
 	public void minimize(MouseEvent e) {
@@ -168,5 +169,35 @@ public class WindowControl {
 		default:
 			System.err.println("invalid loc");
 		}
+	}
+	
+	
+	
+	
+	
+	/* changing scenes */
+	
+	@FXML
+	public ScrollPane contentScreen;
+	
+	private SubControl sub;
+	
+	
+	
+	public void setSubController(RegisterControl sub) {
+        this.sub = sub;
+    }
+	
+	public void changeScene(String fxml) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+        try {
+            Parent root = loader.load();
+
+            sub = loader.getController();
+
+            contentScreen.setContent(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 }
