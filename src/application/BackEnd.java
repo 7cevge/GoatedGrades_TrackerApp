@@ -9,10 +9,6 @@ import java.sql.SQLException;
 public class BackEnd {
 	LoginKey signIn = new LoginKey();
 
-	public BackEnd() {
-
-	}
-
 	public String loginQ(String userName, String userPassword) {
 		try (Connection c = DriverManager.getConnection(signIn.dbID, signIn.userID, signIn.pw);) {
 			ResultSet rs;
