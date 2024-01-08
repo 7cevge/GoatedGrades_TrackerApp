@@ -11,6 +11,7 @@ create table users (
 create table semester (
 	semesterLabel varchar(20) not null,				# 'Spring-25'
     semesterNote text,								# "My Gpa be dropping bro..."
+    semesterPosition int not null,
 	semesterId int not null,						# '1'
     userId int not null,
     primary key (semesterId),
@@ -23,6 +24,7 @@ create table class (
     classWeight int not null,						# '3'
     classActualGrade char,							# 'B'
     classNote text,									# "This class is taught by professor Bauer"
+    classPosition int not null,
 	classId int not null,							# '1'
     semesterId int not null,
     primary key (classId),
@@ -33,6 +35,7 @@ create table gradePartition (
 	partitionName varchar(20) not null,				# 'Exams'
     partitionPercent numeric(9,5) not null,			# '60.5%'
     partitionNote text,								# "There is three exams, each 20%!"
+    partitionPosition int not null,
 	partitionId int not null,						# '1'
     classId int not null,
     primary key (partitionId),
@@ -43,31 +46,22 @@ create table grade (
 	gradeGot numeric(9,5),							# '45.5'
 	gradeOutOf numeric(9,5) not null,				# '50'
 	gradeNote text,									# "I screwed up on this assignment..."
+    gradePrediction boolean not null,				# 'false'
+    gradePosition int not null,
 	gradeId int not null,							# '1'
     partitionId int not null,
     primary key (gradeId),
     foreign key (partitionId) references gradePartition (partitionId)
 );
 
+create table timeline (
+    yy int,
+    mm int,
+    dd int,
+    gradeId int not null,
+    timeId int not null,
+    primary key (timeId),
+    foreign key (gradeId) references grade (gradeId)
+);
+
 # testing - - - - - - - - - - - - - - - - - - - - -
-
-insert into users
-values ('7hang','','0');
-
-insert into semester
-values ('S24','','1','0');
-
-insert into class
-values ('name','label','3','','','1','1');
-
-insert into gradePartition
-values ('name','25','','1','1');
-
-insert into grade
-values ('6.75','10','fk','1','1');
-
-select * from users;
-select * from semester;
-select * from class;
-select * from gradePartition;
-select * from grade;
