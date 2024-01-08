@@ -1,7 +1,5 @@
 package application;
 
-import java.io.IOException;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -180,37 +178,10 @@ public class WindowControl {
 	@FXML
 	public ScrollPane contentScreen;
 	
-	private SubControl sub;
-	
-	
-	/*
-	public void setSubController(RegisterControl sub) {
-        this.sub = sub;
-    }
-	
-	public void changeScene(String fxml) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
-        try {
-            Parent root = loader.load();
-
-            sub = loader.getController();
-
-            contentScreen.setContent(root);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-	*/
-	
 	public void changeScene (String fxml) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		try {
-			System.out.println(fxml);
-			System.out.println(contentScreen);
-			
 			Parent root = loader.load();
-			System.out.println(loader.getController().toString());
-			
 			contentScreen.setContent(root);
 		} catch (Exception err) {
 			System.err.println("there was an error");
