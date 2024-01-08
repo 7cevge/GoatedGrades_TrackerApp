@@ -183,7 +183,7 @@ public class WindowControl {
 	private SubControl sub;
 	
 	
-	
+	/*
 	public void setSubController(RegisterControl sub) {
         this.sub = sub;
     }
@@ -199,5 +199,21 @@ public class WindowControl {
         } catch (IOException e) {
             e.printStackTrace();
         }
+	}
+	*/
+	
+	public void changeScene (String fxml) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+		try {
+			System.out.println(fxml);
+			System.out.println(contentScreen);
+			
+			Parent root = loader.load();
+			System.out.println(loader.getController().toString());
+			
+			contentScreen.setContent(root);
+		} catch (Exception err) {
+			System.err.println("there was an error");
+		}
 	}
 }

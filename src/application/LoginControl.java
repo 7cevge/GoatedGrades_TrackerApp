@@ -21,6 +21,6 @@ public class LoginControl extends SubControl {
 	}
 
 	public void registering(MouseEvent e) {
-		superControl.changeScene("/RegisterControl.fxml");
+		superControl.changeScene("/RegisterScene.fxml");
 	}
 }
