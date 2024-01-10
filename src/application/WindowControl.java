@@ -22,8 +22,6 @@ public class WindowControl {
 	private Rectangle Trs, Rrs, Brs, Lrs;
 
 	private double newX = -1, newY = -1;
-	
-	
 
 	/* The 3 window buttons */
 	public void minimize(MouseEvent e) {
@@ -168,17 +166,13 @@ public class WindowControl {
 			System.err.println("invalid loc");
 		}
 	}
-	
-	
-	
-	
-	
+
 	/* changing scenes */
-	
+
 	@FXML
 	public ScrollPane contentScreen;
-	
-	public void changeScene (String fxml) {
+
+	public void changeScene(String fxml) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		try {
 			Parent root = loader.load();

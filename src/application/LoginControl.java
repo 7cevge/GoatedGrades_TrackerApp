@@ -5,7 +5,6 @@ import javafx.scene.input.MouseEvent;
 public class LoginControl extends SubControl {
 
 	public void login() {
-		
 		superControl.changeScene("/MainScene.fxml");
 	}
 
