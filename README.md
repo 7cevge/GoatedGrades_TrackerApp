@@ -5,13 +5,11 @@
   Icon/mascot: a goat
   Montro: Climb the mountain, reach for higher ~~grass~~ grades
 
-## Plan:
+## Features:
 
-### Features:
+### Complete:
 
-#### Complete:
-
-#### In Progress:
+### In Progress:
 
   - Custom title bar
     - done:
@@ -22,7 +20,7 @@
       - snapping
       - smooth animations/aesthetics
 
-#### Planned:
+### Planned:
 
   - adding/editing/deleting semesters/classes/partitions/grades
   - user login/registration/deletion
@@ -33,6 +31,6 @@
   - drag and drop componets for easier reorgainization
   - import/export data
   
-### ERD:
+## ERD:
 
  ![GGT ERD](GradeTrackerERD.png "GGT ERD")
