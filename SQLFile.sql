@@ -65,3 +65,28 @@ create table timeline (
 );
 
 # testing - - - - - - - - - - - - - - - - - - - - -
+
+insert into users 
+values ('7hang', 'zxc123', 1);
+
+insert into semester
+values ('Spring25', 'very busy this sem!', 1, 1, 1);
+
+insert into class
+values ('intro to algo', 'CS430', 3, 'B', 'This class is taught by bauer', 1, 1, 1);
+
+insert into gradePartition
+values ('exams', 60.5, '3 exams', 1, 1, 1);
+
+insert into grade
+values (37.75, 50, 'not too bad?', false, 1, 1, 1);
+
+insert into timeline
+values (23, 10, 16, 1, 1); 
+
+select * from users;
+select * from semester;
+select * from class;
+select * from gradePartition;
+select * from grade;
+select * from timeline;
