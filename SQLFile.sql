@@ -66,8 +66,13 @@ create table timeline (
 
 # testing - - - - - - - - - - - - - - - - - - - - -
 
+use gradeTrackerApp;
+
 insert into users 
 values ('7hang', 'zxc123', 1);
+
+insert into users 
+values ('1slr', 'ons', 2);
 
 insert into semester
 values ('Spring25', 'very busy this sem!', 1, 1, 1);
@@ -90,3 +95,5 @@ select * from class;
 select * from gradePartition;
 select * from grade;
 select * from timeline;
+
+select userId from users where users.userName = '7hang' and users.userPassword = 'zxc123';

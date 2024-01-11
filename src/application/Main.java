@@ -28,8 +28,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			
 			/* Set up the controls and scene styling */
-			SubControl subControl = new SubControl();
-			subControl.setSuperControl(loader.getController());
+			SubControl.setSuperControl(loader.getController());
 			
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);

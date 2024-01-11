@@ -9,21 +9,29 @@ import java.sql.SQLException;
 public class BackEnd {
 	LoginKey signIn = new LoginKey();
 
-	public String loginQ(String userName, String userPassword) {
+	public int loginQ(String userName, String userPassword) {
+		int userId = -1;
+		
 		try (Connection c = DriverManager.getConnection(signIn.dbID, signIn.userID, signIn.pw);) {
 			ResultSet rs;
 			PreparedStatement ps;
-			ps = c.prepareStatement("select * from users");
+			
+			
+			ps = c.prepareStatement("select userId from users where users.userName = ? and users.userPassword = ?");
+			ps.setString(1, userName);
+			ps.setString(2, userPassword);
 			rs = ps.executeQuery();
-			String output = "";
+			
 			while (rs.next()) {
-				output = rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3);
+				userId = rs.getInt(userId);
 			}
-			System.out.println(output);
-			return output;
+			
+			System.out.println(userId);
+			return userId;
 		} catch (SQLException sqle) {
 			System.out.println("SQLException : " + sqle);
-			return "";
+			
+			return userId;
 		}
 	}
 }

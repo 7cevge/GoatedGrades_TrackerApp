@@ -20,16 +20,26 @@
       - snapping
       - smooth animations/aesthetics
 
+  - User login
+    - done:
+      - sql query part
+      - scene change part
+    - not done:
+      - getting input from user
+  
+  - User registration
+  
+  - User deletion
+
 ### Planned:
 
-  - adding/editing/deleting semesters/classes/partitions/grades
-  - user login/registration/deletion
+  - Adding/editing/deleting semesters/classes/partitions/grades
 
   - Graph for changes in GPA over each term/semester
   - Graph for tracking changes in a class grade
   - Graph for tracking changes in grades over all classes in a semester
-  - drag and drop componets for easier reorgainization
-  - import/export data
+  - Drag and drop componets for easier reorgainization
+  - Import/export data
   
 ## ERD:
 
