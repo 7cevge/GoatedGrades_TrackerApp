@@ -23,13 +23,13 @@ public class Main extends Application {
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
 			/* Load the window */
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowScene.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
-			
+
 			/* Set up the controls and scene styling */
-			SubControl.setSuperControl(loader.getController());
-			
+			SubController.setSuperController(loader.getController());
+
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
 
@@ -37,7 +37,7 @@ public class Main extends Application {
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception err) {
-			err.printStackTrace();
+			System.err.println(err);
 		}
 	}
 }

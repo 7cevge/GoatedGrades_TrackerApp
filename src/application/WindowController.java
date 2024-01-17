@@ -11,13 +11,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-public class WindowControl {
+public class WindowController {
 	@FXML
-	private Button minimizeB, maximizeB;
+	private Button minimizeButton, maximizeButton;
 
 	@FXML
 	private AnchorPane titleBar;
 
+	/* T = top, R = right, B = bottom, L = left, S = small, rs = resize */
+	/* Named this way to make later functions with switch case easier to use */
 	@FXML
 	private Rectangle Trs, Rrs, Brs, Lrs;
 
@@ -25,20 +27,20 @@ public class WindowControl {
 
 	/* The 3 window buttons */
 	public void minimize(MouseEvent e) {
-		Stage stage = (Stage) minimizeB.getScene().getWindow();
+		Stage stage = (Stage) minimizeButton.getScene().getWindow();
 		stage.setIconified(true);
 	}
 
 	public void maximize(MouseEvent e) {
-		Stage stage = (Stage) maximizeB.getScene().getWindow();
-		if (stage.isMaximized() && !maximizeB.getStyleClass().contains("maximizeG")) {
+		Stage stage = (Stage) maximizeButton.getScene().getWindow();
+		if (stage.isMaximized() && !maximizeButton.getStyleClass().contains("maximizeGraphic")) {
 			stage.setMaximized(false);
-			maximizeB.getStyleClass().remove("restoreG");
-			maximizeB.getStyleClass().add("maximizeG");
+			maximizeButton.getStyleClass().remove("restoreGraphic");
+			maximizeButton.getStyleClass().add("maximizeGraphic");
 		} else {
 			stage.setMaximized(true);
-			maximizeB.getStyleClass().remove("maximizeG");
-			maximizeB.getStyleClass().add("restoreG");
+			maximizeButton.getStyleClass().remove("maximizeGraphic");
+			maximizeButton.getStyleClass().add("restoreGraphic");
 		}
 	}
 
@@ -64,7 +66,7 @@ public class WindowControl {
 			stage.setX(e.getScreenX() - newX);
 			stage.setY(e.getScreenY() - newY);
 		} else {
-			System.err.println("invalid newX and or newY");
+			System.err.println("Invalid newX and or newY");
 		}
 	}
 
@@ -119,15 +121,15 @@ public class WindowControl {
 				resize(stage, e, 'L');
 				break;
 			default:
-				System.err.println("not resize bar");
+				System.err.println("Not resize bar");
 			}
 		} else {
-			System.err.println("invalid newX and or newY");
+			System.err.println("Invalid newX and or newY");
 		}
 	}
 
-	private void resize(Stage stage, MouseEvent e, char loc) {
-		switch (loc) {
+	private void resize(Stage stage, MouseEvent e, char location) {
+		switch (location) {
 		case 'T':
 			if (stage.getHeight() + (stage.getY() - e.getScreenY()) < stage.getMinHeight()) {
 			} else {
@@ -163,22 +165,22 @@ public class WindowControl {
 			}
 			break;
 		default:
-			System.err.println("invalid loc");
+			System.err.println("Invalid location");
 		}
 	}
 
 	/* changing scenes */
 
 	@FXML
-	public ScrollPane contentScreen;
+	public ScrollPane contentScene;
 
 	public void changeScene(String fxml) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		try {
 			Parent root = loader.load();
-			contentScreen.setContent(root);
+			contentScene.setContent(root);
 		} catch (Exception err) {
-			System.err.println("there was an error");
+			System.err.println(err);
 		}
 	}
 }

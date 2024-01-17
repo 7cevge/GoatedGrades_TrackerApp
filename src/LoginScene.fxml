@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginControl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Button fx:id="loginB" layoutX="270.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#login" text="Login" />
-      <Hyperlink fx:id="registerLink" layoutX="337.0" layoutY="219.0" onMouseClicked="#registering" text="Register">
+      <Button fx:id="loginButton" layoutX="270.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#logIn" text="Login" />
+      <Hyperlink fx:id="registerLink" layoutX="337.0" layoutY="219.0" onMouseClicked="#register" text="Register">
          <font>
             <Font size="8.0" />
          </font></Hyperlink>
-      <ImageView fx:id="titleImage" fitHeight="75.0" fitWidth="250.0" layoutX="170.0" layoutY="83.0" pickOnBounds="true">
+      <ImageView fx:id="titleImg" fitHeight="75.0" fitWidth="250.0" layoutX="170.0" layoutY="83.0" pickOnBounds="true">
          <image>
             <Image url="@../graphics/tempImg.jpg" />
          </image></ImageView>
-      <TextField fx:id="usernameIn" alignment="CENTER" layoutX="218.0" layoutY="169.0" promptText="Username" />
-      <PasswordField fx:id="passwordIn" alignment="CENTER" layoutX="218.0" layoutY="193.0" promptText="Password" />
+      <TextField fx:id="userNameInput" alignment="CENTER" layoutX="218.0" layoutY="169.0" promptText="Username" />
+      <PasswordField fx:id="passwordInput" alignment="CENTER" layoutX="218.0" layoutY="193.0" promptText="Password" />
       <Button fx:id="passwordEye" layoutX="342.0" layoutY="193.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
    </children>
 </AnchorPane>

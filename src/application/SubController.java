@@ -1,16 +1,16 @@
 package application;
 
-public class SubControl {
-	protected static WindowControl superControl;
+public class SubController {
+	protected static WindowController superController;
 	protected static int currentUserId;
 	
 	/* Set and Get superController */
-	public static void setSuperControl (WindowControl superControl) {
-		SubControl.superControl = superControl;
+	public static void setSuperController (WindowController superController) {
+		SubController.superController = superController;
 	}
 	
-	public static WindowControl getSuperControl () {
-		return superControl;
+	public static WindowController getSuperController () {
+		return superController;
 	}
 	
 	/* Set and Get current userId */

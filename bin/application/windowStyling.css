@@ -10,33 +10,33 @@
 #titleIcon{
 	-fx-image: url(../../graphics/tempIcon.png); 
 }
-#minimizeB{
+#minimizeButton{
 	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/minimizeb.png);
+	-fx-background-image: url(../../graphics/minimizeButton.png);
 	-fx-background-size: 24;
 	-fx-background-position: center;
 }
-#maximizeB{
+#maximizeButton{
 	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/maximizeb.png);
+	-fx-background-image: url(../../graphics/maximizeButton.png);
 	-fx-background-size: 24;
 	-fx-background-position: center;
 }
-.restoreG#maximizeB{
+.restoreGraphic#maximizeButton{
 	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/restoreb.png);
+	-fx-background-image: url(../../graphics/restoreButton.png);
 	-fx-background-size: 24;
 	-fx-background-position: center;
 }
-.maximizeG#maximizeB{
+.maximizeGraphic#maximizeButton{
 	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/maximizeb.png);
+	-fx-background-image: url(../../graphics/maximizeButton.png);
 	-fx-background-size: 24;
 	-fx-background-position: center;
 }
-#closeB{
+#closeButton{
 	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/closeb.png);
+	-fx-background-image: url(../../graphics/closeButton.png);
 	-fx-background-size: 24;
 	-fx-background-position: center;
 }
