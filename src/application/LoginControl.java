@@ -1,23 +1,30 @@
 package application;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class LoginControl extends SubControl {
-	BackEnd backEnd;
+	@FXML
+	TextField usernameIn;
+	
+	@FXML
+	PasswordField passwordIn;
 
 	public void login() {
-		int userId;
-		userId = backEnd.loginQ(null, null);
+		
+		BackEnd.loginQ(usernameIn.getText(), passwordIn.getText());
 
-		if (userId < 1) {
+		if (SubControl.getCurrentUserId() < 1) {
 			/* Fail to login */
 			SubControl.setCurrentUserId(-1);
+			System.out.println("fail to login");
 		} else {
 			/* Login successful */
-			SubControl.setCurrentUserId(userId);
+			superControl.changeScene("/MainScene.fxml");
+			System.out.println("welcome " + usernameIn.getText() + SubControl.getCurrentUserId());
 		}
-
-		superControl.changeScene("/MainScene.fxml");
 	}
 
 	public void registering(MouseEvent e) {

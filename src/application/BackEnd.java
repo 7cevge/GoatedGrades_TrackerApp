@@ -7,12 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BackEnd {
-	LoginKey signIn = new LoginKey();
 
-	public int loginQ(String userName, String userPassword) {
+	public static void loginQ(String userName, String userPassword) {
 		int userId = -1;
 		
-		try (Connection c = DriverManager.getConnection(signIn.dbID, signIn.userID, signIn.pw);) {
+		try (Connection c = DriverManager.getConnection(LoginKey.dbID, LoginKey.userID, LoginKey.pw);) {
 			ResultSet rs;
 			PreparedStatement ps;
 			
@@ -27,11 +26,11 @@ public class BackEnd {
 			}
 			
 			System.out.println(userId);
-			return userId;
+			SubControl.setCurrentUserId(userId);
 		} catch (SQLException sqle) {
 			System.out.println("SQLException : " + sqle);
 			
-			return userId;
+			SubControl.setCurrentUserId(userId);
 		}
 	}
 }
