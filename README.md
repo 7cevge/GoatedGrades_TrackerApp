@@ -1,9 +1,14 @@
 # Goated Grades <sub>*Tracker*</sub>
 
+### Description:
   Java application for tracking grades
 
   Icon/mascot: a goat
   Montro: Climb the mountain, reach for higher ~~grass~~ grades
+
+### Directions:
+
+  *something about setting up sql*
 
 ## Features:
 

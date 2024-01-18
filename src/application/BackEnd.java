@@ -24,7 +24,7 @@ public class BackEnd {
 			result = query.executeQuery();
 
 			while (result.next()) {
-				userId = result.getInt(userId);
+				userId = result.getInt("userId");
 			}
 
 			System.out.println(userId);
