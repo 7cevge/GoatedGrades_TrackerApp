@@ -10,13 +10,15 @@ public class BackEnd {
 	public static void loginQ(String userName, String userPassword) {
 		int userId = -1;
 
-		try (Connection connection = DriverManager.getConnection(DataBaseKey.dataBaseId, DataBaseKey.userId,
-				DataBaseKey.password);) {
+		try {
+			Connection connection = DriverManager.getConnection(DataBaseKey.dataBaseId, DataBaseKey.userId,
+					DataBaseKey.password);
+
 			ResultSet result;
 			PreparedStatement query;
 
 			query = connection.prepareStatement(
-					"select userId from useresult where useresult.userName = ? and useresult.userPassword = ?");
+					"select userId from users where users.userName = ? and users.userPassword = ?");
 			query.setString(1, userName);
 			query.setString(2, userPassword);
 			result = query.executeQuery();
