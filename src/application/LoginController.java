@@ -19,7 +19,8 @@ public class LoginController extends SubController {
 		if (SubController.getCurrentUserId() < 1) {
 			/* Fail to login */
 			SubController.setCurrentUserId(-1);
-			System.out.println("Fail to login");
+			userNameInput.setText("invalid login");
+			passwordInput.clear();
 		} else {
 			/* Login successful */
 			superController.changeScene("/GradesScene.fxml");
