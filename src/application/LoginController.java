@@ -23,12 +23,12 @@ public class LoginController extends SubController {
 			passwordInput.clear();
 		} else {
 			/* Login successful */
-			superController.changeScene("/GradesScene.fxml");
+			windowController.changeScene("/GradesScene.fxml");
 			System.out.println("Welcome " + userNameInput.getText() + SubController.getCurrentUserId());
 		}
 	}
 
 	public void register(MouseEvent e) {
-		superController.changeScene("/RegisterScene.fxml");
+		windowController.changeScene("/RegisterScene.fxml");
 	}
 }

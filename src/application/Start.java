@@ -8,7 +8,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Main extends Application {
+public class Start extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -28,7 +28,7 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 
 			/* Set up the controls and scene styling */
-			SubController.setSuperController(loader.getController());
+			SubController.setWindowController(loader.getController());
 
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
