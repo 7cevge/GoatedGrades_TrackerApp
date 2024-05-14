@@ -1,84 +1,59 @@
-#titleBar{
-	-fx-background-color: #cccccc;
+/* Title bar */
+#titleBar {
+	-fx-background-color: #777777;
+	background-color: #777777;
 }
-#title{
+
+/* Left side */
+#titleBarTitle {
 	-fx-font-size: 14px;
 	-fx-font-style: italic;
 	-fx-font-weight: bold;
 	-fx-fill: #ffffff;
+	font-size: 14px;
+	font-style: italic;
+	font-weight: bold;
+	fill: #ffffff;
 }
-#titleIcon{
-	-fx-image: url(../../graphics/tempIcon.png); 
-}
-#minimizeButton{
-	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/minimizeButton.png);
-	-fx-background-size: 24;
-	-fx-background-position: center;
-}
-#maximizeButton{
-	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/maximizeButton.png);
-	-fx-background-size: 24;
-	-fx-background-position: center;
-}
-.restoreGraphic#maximizeButton{
-	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/restoreButton.png);
-	-fx-background-size: 24;
-	-fx-background-position: center;
-}
-.maximizeGraphic#maximizeButton{
-	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/maximizeButton.png);
-	-fx-background-size: 24;
-	-fx-background-position: center;
-}
-#closeButton{
-	-fx-background-color: transparent;
-	-fx-background-image: url(../../graphics/closeButton.png);
-	-fx-background-size: 24;
-	-fx-background-position: center;
+#titleBarLogo {
+	-fx-image: url(../../graphics/logo.png);
 }
 
-/* Set all resize elements transparent */
-#TLrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+/* Right side */
+.titleBarBtn {
+	-fx-background-color: transparent;
+	-fx-background-size: 16;
+	-fx-background-position: top center;
+	background-color: transparent;
+	background-size: 16;
+	background-position: top center;
 }
-#Trs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+
+#minBtn {
+	-fx-background-image: url(../../graphics/min.png);
+	background-image: url(../../graphics/min.png);
 }
-#TRrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+#maxBtn {
+	-fx-background-image: url(../../graphics/max.png);
+	background-image: url(../../graphics/max.png);
 }
-#SRrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+.restoreMode#maxBtn {
+	-fx-background-image: url(../../graphics/restore.png);
+	background-image: url(../../graphics/restore.png);
 }
-#Rrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+.maxMode#maxBtn {
+	-fx-background-image: url(../../graphics/max.png);
+	background-image: url(../../graphics/max.png);
 }
-#BRrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+#exitBtn {
+	-fx-background-image: url(../../graphics/exit.png);
+	background-image: url(../../graphics/exit.png);
 }
-#Brs{
+
+/* Set all window handles transparent */
+.windowHandle {
 	-fx-fill: "transparent";
 	-fx-stroke: "transparent";
-}
-#BLrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
-}
-#Lrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
-}
-#SLrs{
-	-fx-fill: "transparent";
-	-fx-stroke: "transparent";
+	fill: "transparent";
+	stroke: "transparent";
 }

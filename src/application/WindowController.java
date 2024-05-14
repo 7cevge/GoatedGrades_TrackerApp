@@ -31,15 +31,15 @@ public class WindowController {
 
 	public void maximize(MouseEvent e) {
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
-		if (stage.isMaximized() && !maxBtn.getStyleClass().contains("maxImg")) {
+		if (stage.isMaximized() && !maxBtn.getStyleClass().contains("maxMode")) {
 			stage.setMaximized(false);
-			maxBtn.getStyleClass().remove("restoreImg");
-			maxBtn.getStyleClass().add("maxImg");
+			maxBtn.getStyleClass().remove("restoreMode");
+			maxBtn.getStyleClass().add("maxMode");
 			disableWindow(false);
 		} else {
 			stage.setMaximized(true);
-			maxBtn.getStyleClass().remove("maxImg");
-			maxBtn.getStyleClass().add("restoreImg");
+			maxBtn.getStyleClass().remove("maxMode");
+			maxBtn.getStyleClass().add("restoreMode");
 			disableWindow(true);
 		}
 	}
