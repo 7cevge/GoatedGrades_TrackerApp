@@ -8,8 +8,6 @@
 
 ### Directions:
 
-  *something about setting up sql*
-
 ## Features:
 
 ### Complete:
@@ -48,4 +46,4 @@
   
 ## ERD:
 
- ![GGT ERD](GradeTrackerERD.png "GGT ERD")
+ ![GGT ERD](graphics/erd.png "GGT ERD")
