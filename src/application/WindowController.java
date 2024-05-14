@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -18,9 +19,9 @@ public class WindowController {
 		T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
 		Named this way to make later functions with switch case easier to use 
 	*/
-	
 	@FXML
-	private Rectangle rhT1, rhR2, rhB1, rhL2;
+	private Rectangle rhT1, rhB1, rhR1, rhR2, rhL1, rhL2, moveHandle,
+						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
 	private double newX = -1, newY = -1;
 
@@ -36,11 +37,31 @@ public class WindowController {
 			stage.setMaximized(false);
 			maxBtn.getStyleClass().remove("restoreImg");
 			maxBtn.getStyleClass().add("maxImg");
+			disableWindow(false);
 		} else {
 			stage.setMaximized(true);
 			maxBtn.getStyleClass().remove("maxImg");
 			maxBtn.getStyleClass().add("restoreImg");
+			disableWindow(true);
 		}
+	}
+
+	private void disableWindow(boolean disable) {
+		moveHandle.setDisable(disable);
+		rhT1.setDisable(disable);
+		rhB1.setDisable(disable);
+		rhL1.setDisable(disable);
+		rhL2.setDisable(disable);
+		rhR1.setDisable(disable);
+		rhR2.setDisable(disable);
+		rhTL1.setDisable(disable);
+		rhTL2.setDisable(disable);
+		rhTR1.setDisable(disable);
+		rhTR2.setDisable(disable);
+		rhBL1.setDisable(disable);
+		rhBL2.setDisable(disable);
+		rhBR1.setDisable(disable);
+		rhBR2.setDisable(disable);
 	}
 
 	public void exit(MouseEvent e) {
@@ -50,7 +71,7 @@ public class WindowController {
 	/* ---------------------------------------------------- Moving the window around the screen */
 	public void moveWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
-		if (target.contains("Rectangle")) {
+		if (!target.contains("id=moveHandle")) {
 		} else {
 			newX = e.getSceneX();
 			newY = e.getSceneY();
@@ -60,7 +81,7 @@ public class WindowController {
 	public void moveWindow2(MouseEvent e) {
 		String target = e.getTarget().toString();
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
-		if (target.contains("Rectangle")) {
+		if (!target.contains("id=moveHandle")) {
 		} else if (newX != -1 && newY != -1) {
 			stage.setX(e.getScreenX() - newX);
 			stage.setY(e.getScreenY() - newY);
@@ -142,6 +163,7 @@ public class WindowController {
 				stage.setWidth(e.getScreenX() - stage.getX());
 				rhT1.setWidth(e.getScreenX() - stage.getX() - 16);
 				rhB1.setWidth(e.getScreenX() - stage.getX() - 16);
+				moveHandle.setWidth(e.getScreenX() - stage.getX());
 			}
 			break;
 		case 'B':
@@ -159,6 +181,7 @@ public class WindowController {
 				stage.setX(e.getScreenX());
 				rhT1.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()) - 16);
 				rhB1.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()) - 16);
+				moveHandle.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()));
 			}
 			break;
 		default:

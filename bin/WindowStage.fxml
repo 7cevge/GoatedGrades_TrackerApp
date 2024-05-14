@@ -12,8 +12,9 @@
 
 <BorderPane fx:id="stage" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
    <top>
-      <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" prefHeight="20.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="titleBar" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
+            <Rectangle fx:id="moveHandle" arcHeight="5.0" arcWidth="5.0" fill="#1fff3d" height="20.0" layoutX="18.0" layoutY="10.0" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Text fx:id="titleText" layoutX="22.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goated Grades" textOrigin="CENTER" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="2.0">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
@@ -65,7 +66,7 @@
          <children>
             <Rectangle fx:id="rhB1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="604.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" />
             <Rectangle fx:id="rhBL2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
-            <Rectangle fx:id="rhBR1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Rectangle fx:id="rhBR2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </bottom>
