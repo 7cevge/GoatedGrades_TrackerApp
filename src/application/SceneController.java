@@ -1,12 +1,12 @@
 package application;
 
-public class SubController {
+public class SceneController {
 	protected static WindowController windowController;
-	protected static int currentUserId;
+	protected static String currentUser;
 	
 	/* Set and Get windowController */
 	public static void setWindowController (WindowController windowController) {
-		SubController.windowController = windowController;
+		SceneController.windowController = windowController;
 	}
 	
 	public static WindowController getWindowController () {
@@ -14,15 +14,15 @@ public class SubController {
 	}
 	
 	/* Set and Get current userId */
-	public static void setCurrentUserId (int id) {
-		if (id < 1) {
-			currentUserId = -1;
+	public static void setCurrentUser (String username) {
+		if (username != null) {
+			currentUser = username;
 		} else {
-			currentUserId = id;
+			currentUser = null;
 		}
 	}
 	
-	public static int getCurrentUserId () {
-		return currentUserId;
+	public static String getCurrentUser () {
+		return currentUser;
 	}
 }

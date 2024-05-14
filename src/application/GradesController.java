@@ -1,6 +1,6 @@
 package application;
 
-public class GradesController extends SubController{
+public class GradesController extends SceneController{
 	
 	/* Return to login screen */
 	public void logOut() {

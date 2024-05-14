@@ -17,8 +17,8 @@ public class Start extends Application {
 		try {
 			/* Set up for personal window styling */
 			stage.initStyle(StageStyle.UNDECORATED);
-			stage.setMinWidth(600);
-			stage.setMinHeight(400);
+			stage.setMinWidth(620);
+			stage.setMinHeight(380);
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
@@ -28,7 +28,7 @@ public class Start extends Application {
 			Scene scene = new Scene(root);
 
 			/* Set up the controls and scene styling */
-			SubController.setWindowController(loader.getController());
+			SceneController.setWindowController(loader.getController());
 
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);

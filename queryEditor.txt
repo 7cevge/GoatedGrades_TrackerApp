@@ -1,0 +1,59 @@
+-- database: d:\Folders\Coding\GoatedGT\database.db
+
+-- Use the ▷ button in the top right corner to run the entire file.
+
+SELECT * FROM "table-name";
+
+DROP TABLE users;
+DROP TABLE sems;
+DROP TABLE classes;
+DROP TABLE parts;
+DROP TABLE grades;
+DROP TABLE timeStamps;
+
+CREATE TABLE users(
+    username TEXT NOT NULL PRIMARY KEY
+);
+CREATE TABLE sems (
+    semLabel TEXT NOT NULL PRIMARY KEY UNIQUE,
+    username TEXT NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username)
+);
+CREATE TABLE classes (
+    classId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    className TEXT NOT NULL,
+    classCode TEXT,
+    classCredit INTEGER NOT NULL,
+    classGradeA INTEGER NOT NULL,
+    classGradeB INTEGER NOT NULL,
+    classGradeC INTEGER NOT NULL,
+    classActualGrade TEXT,
+    classNote TEXT,
+    semLabel TEXT NOT NULL,
+    FOREIGN KEY (semLabel) REFERENCES sems(semLabel)
+);
+CREATE TABLE parts (
+    partId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    partName TEXT NOT NULL,
+    partPercent INTEGER NOT NULL,
+    classId INTEGER NOT NULL,
+    FOREIGN KEY (classId) REFERENCES classes(classId)
+);
+CREATE TABLE grades (
+    gradeId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    gradeMode INTEGER NOT NULL,
+    gradeGot REAL,
+    gradeOutOf REAL,
+    gradeGotEst REAL,
+    gradeOutOfEst REAL,
+    partId INTEGER NOT NULL,
+    FOREIGN KEY (partId) REFERENCES parts(partId)
+);
+CREATE TABLE timeStamps (
+    timeId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    timeDD INTEGER NOT NULL,
+    timeMM INTEGER NOT NULL,
+    timeYY INTEGER NOT NULL,
+    gradeId INTEGER NOT NULL,
+    FOREIGN KEY (gradeId) REFERENCES grades(gradeId)
+);
