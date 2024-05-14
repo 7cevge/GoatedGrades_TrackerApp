@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -15,17 +14,16 @@ public class WindowController {
 	@FXML
 	private Button maxBtn;
 
-	/* 
-		T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
-		Named this way to make later functions with switch case easier to use 
-	*/
+	
+	// T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
+	// Named this way to make later functions with switch case easier to use
 	@FXML
 	private Rectangle rhT1, rhB1, rhR1, rhR2, rhL1, rhL2, moveHandle,
 						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
 	private double newX = -1, newY = -1;
 
-	/* ------------------------------------------------------------------- The 3 window buttons */
+	// ---------------------------------------------------------------------- The 3 window buttons
 	public void minimize(MouseEvent e) {
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
 		stage.setIconified(true);
@@ -68,7 +66,7 @@ public class WindowController {
 		Platform.exit();
 	}
 
-	/* ---------------------------------------------------- Moving the window around the screen */
+	// ------------------------------------------------------- Moving the window around the screen
 	public void moveWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
 		if (!target.contains("id=moveHandle")) {
@@ -90,7 +88,7 @@ public class WindowController {
 		}
 	}
 
-	/* -------------------------------------------------------------------- Resizing the window */
+	// ----------------------------------------------------------------------- Resizing the window
 	public void resizeWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
 		if (target.contains("id=rhT") || target.contains("id=rhR") || 
@@ -189,16 +187,16 @@ public class WindowController {
 		}
 	}
 
-	/* ------------------------------------------------------------------------ Changing scenes */
+	// --------------------------------------------------------------------------- Changing scenes
 
 	@FXML
-	public ScrollPane contentScene;
+	public ScrollPane scene;
 
 	public void changeScene(String fxml) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 		try {
 			Parent root = loader.load();
-			contentScene.setContent(root);
+			scene.setContent(root);
 		} catch (Exception err) {
 			System.err.println(err);
 		}

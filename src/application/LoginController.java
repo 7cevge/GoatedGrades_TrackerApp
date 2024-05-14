@@ -1,34 +1,24 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 public class LoginController extends SceneController {
 	@FXML
-	TextField userNameInput;
-	
-	@FXML
-	PasswordField passwordInput;
+	TextField usernameIn;
 
 	public void logIn() {
 		
-		boolean n = Queries.login(userNameInput.getText());
+		boolean loginOk = Queries.login(usernameIn.getText());
 
-		if (SceneController.getCurrentUser() == null) {
-			/* Fail to login */
-			SceneController.setCurrentUser(null);
-			userNameInput.setText("invalid login");
-			passwordInput.clear();
-		} else {
-			/* Login successful */
+		if (loginOk) {
+			// Login successful
 			windowController.changeScene("/GradesScene.fxml");
-			System.out.println("Welcome " + userNameInput.getText() + SceneController.getCurrentUser());
+			System.out.println("Welcome " + usernameIn.getText() + SceneController.getCurrentUser());
+		} else {
+			// Fail to login
+			SceneController.setCurrentUser(null);
+			usernameIn.setText("invalid login");
 		}
-	}
-
-	public void register(MouseEvent e) {
-		windowController.changeScene("/RegisterScene.fxml");
 	}
 }

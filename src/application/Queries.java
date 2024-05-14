@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class Queries {
 	public static boolean login(String username) {
 		try {
-			Connection connection = DriverManager.getConnection("jdbc:sqlite:../../database.db");
+			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			ResultSet result;
 			PreparedStatement query;
 

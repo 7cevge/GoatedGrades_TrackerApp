@@ -15,25 +15,25 @@ public class Start extends Application {
 
 	public void start(Stage stage) {
 		try {
-			/* Set up for personal window styling */
+			// Set up for personal window styling
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setMinWidth(620);
 			stage.setMinHeight(380);
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
-			/* Load the window */
+			// Load the window
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 
-			/* Set up the controls and scene styling */
+			// Set up the controls and scene styling
 			SceneController.setWindowController(loader.getController());
 
 			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
 
-			/* Display the window */
+			// Display the window
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception err) {
