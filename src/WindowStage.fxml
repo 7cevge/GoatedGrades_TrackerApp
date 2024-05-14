@@ -21,13 +21,13 @@
             </Text>
             <Button fx:id="minBtn" layoutX="528.0" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="20.0" prefWidth="20.0" textAlignment="CENTER" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0" />
             <Button fx:id="maxBtn" layoutX="552.0" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="20.0" prefWidth="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="closeBtn" layoutX="576.0" mnemonicParsing="false" onMouseClicked="#close" prefHeight="20.0" prefWidth="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Button fx:id="closeBtn" layoutX="576.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="20.0" prefWidth="20.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <ImageView fx:id="titleImg" fitHeight="20.0" fitWidth="20.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="2.0">
                <image>
                   <Image url="@../graphics/tempImg.jpg" />
                </image>
             </ImageView>
-            <Rectangle fx:id="rhT" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="604.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0" />
+            <Rectangle fx:id="rhT1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="604.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0" />
             <Rectangle fx:id="rhL1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="8.0" />
             <Rectangle fx:id="rhR1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="12.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
             <Rectangle fx:id="rhTL1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="4.0" layoutX="10.0" layoutY="10.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" width="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
