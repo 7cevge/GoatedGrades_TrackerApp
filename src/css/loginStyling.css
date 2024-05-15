@@ -7,5 +7,5 @@
     background-size: stretch;
 }
 #noticeImg {
-    -fx-image: url(../../graphics/notice.png);
+    -fx-image: url(../../graphics/loginNotice.png);
 }

@@ -23,31 +23,31 @@
 .titleBarBtn {
 	-fx-background-color: transparent;
 	-fx-background-size: 16;
-	-fx-background-position: top center;
+	-fx-background-position: center;
 	background-color: transparent;
 	background-size: 16;
-	background-position: top center;
+	background-position: center;
 }
 
 #minBtn {
-	-fx-background-image: url(../../graphics/min.png);
-	background-image: url(../../graphics/min.png);
+	-fx-background-image: url(../../graphics/minLight.png);
+	background-image: url(../../graphics/minLight.png);
 }
 #maxBtn {
-	-fx-background-image: url(../../graphics/max.png);
-	background-image: url(../../graphics/max.png);
+	-fx-background-image: url(../../graphics/maxLight.png);
+	background-image: url(../../graphics/maxLight.png);
 }
 .restoreMode {
-	-fx-background-image: url(../../graphics/restore.png);
-	background-image: url(../../graphics/restore.png);
+	-fx-background-image: url(../../graphics/restoreLight.png);
+	background-image: url(../../graphics/restoreLight.png);
 }
 .maxMode {
-	-fx-background-image: url(../../graphics/max.png);
-	background-image: url(../../graphics/max.png);
+	-fx-background-image: url(../../graphics/maxLight.png);
+	background-image: url(../../graphics/maxLight.png);
 }
 #exitBtn {
-	-fx-background-image: url(../../graphics/exit.png);
-	background-image: url(../../graphics/exit.png);
+	-fx-background-image: url(../../graphics/exitLight.png);
+	background-image: url(../../graphics/exitLight.png);
 }
 
 /* Set all window handles transparent */

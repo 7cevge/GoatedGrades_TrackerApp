@@ -1,0 +1,52 @@
+
+/* Left buttons */
+.leftBtn {
+	-fx-background-color: transparent;
+	-fx-background-size: 20;
+	-fx-background-position: center;
+	background-color: transparent;
+	background-size: 20;
+	background-position: center;
+}
+
+#exportBtn {
+	-fx-background-image: url(../../graphics/exportLight.png);
+	background-image: url(../../graphics/exportLight.png);
+}
+#importBtn {
+	-fx-background-image: url(../../graphics/importLight.png);
+	background-image: url(../../graphics/importLight.png);
+}
+#deleteBtn {
+	-fx-background-image: url(../../graphics/deleteLight.png);
+	background-image: url(../../graphics/deleteLight.png);
+}
+#logoutBtn {
+	-fx-background-image: url(../../graphics/logoutLight.png);
+	background-image: url(../../graphics/logoutLight.png);
+}
+
+#settingBtn {
+    -fx-background-color: transparent;
+	-fx-background-size: 25;
+	-fx-background-position: center;
+	-fx-background-image: url(../../graphics/settingLight.png);
+    background-color: transparent;
+	background-size: 25;
+	background-position: center;
+	background-image: url(../../graphics/settingLight.png);
+}
+
+/* Stat card */
+#statCard {
+    -fx-image: url(../../graphics/statCard.png);
+}
+#pfp {
+    -fx-image: url(../../graphics/pfp.jpg);
+}
+.cardText {
+    -fx-font-size: 7px;
+	-fx-fill: #000000;
+	font-size: 7px;
+	fill: #000000;
+}
