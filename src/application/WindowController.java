@@ -18,7 +18,7 @@ public class WindowController {
 	// T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
 	// Named this way to make later functions with switch case easier to use
 	@FXML
-	private Rectangle rhT1, rhB1, rhR1, rhR2, rhL1, rhL2, moveHandle,
+	private Rectangle rhT1, rhB1, rhR1, rhL1, moveHandle,
 						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
 	private double newX = -1, newY = -1;
@@ -49,9 +49,7 @@ public class WindowController {
 		rhT1.setDisable(disable);
 		rhB1.setDisable(disable);
 		rhL1.setDisable(disable);
-		rhL2.setDisable(disable);
 		rhR1.setDisable(disable);
-		rhR2.setDisable(disable);
 		rhTL1.setDisable(disable);
 		rhTL2.setDisable(disable);
 		rhTR1.setDisable(disable);
@@ -111,13 +109,7 @@ public class WindowController {
 			case "id=rhL1":
 				resize(stage, e, 'L');
 				break;
-			case "id=rhL2":
-				resize(stage, e, 'L');
-				break;
 			case "id=rhR1":
-				resize(stage, e, 'R');
-				break;
-			case "id=rhR2":
 				resize(stage, e, 'R');
 				break;
 			case "id=rhTL":
@@ -151,8 +143,8 @@ public class WindowController {
 			} else {
 				stage.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()));
 				stage.setY(e.getScreenY());
-				rhR2.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
-				rhL2.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
+				rhR1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
+				rhL1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
 			}
 			break;
 		case 'R':
@@ -168,8 +160,8 @@ public class WindowController {
 			if (e.getScreenY() - stage.getY() < stage.getMinHeight()) {
 			} else {
 				stage.setHeight(e.getScreenY() - stage.getY());
-				rhR2.setHeight(e.getScreenY() - stage.getY() - 28);
-				rhL2.setHeight(e.getScreenY() - stage.getY() - 28);
+				rhR1.setHeight(e.getScreenY() - stage.getY() - 28);
+				rhL1.setHeight(e.getScreenY() - stage.getY() - 28);
 			}
 			break;
 		case 'L':

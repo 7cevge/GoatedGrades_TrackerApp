@@ -1,0 +1,11 @@
+#loginBg {
+    -fx-background-image: url(../../graphics/loginBG.png);
+    -fx-background-position: center;
+    -fx-background-size: stretch;
+	background-image: url(../../graphics/loginBG.png);
+    background-position: center;
+    background-size: stretch;
+}
+#noticeImg {
+    -fx-image: url(../../graphics/notice.png);
+}

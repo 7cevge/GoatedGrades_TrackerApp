@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="bgLoginScene" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
+<AnchorPane id="loginBg" fx:id="bgLoginScene" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="600.0" stylesheets="@css/loginStyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
       <Button fx:id="loginBtn" layoutX="387.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#logIn" prefHeight="25.0" prefWidth="150.0" text="Login" />
       <TextField fx:id="usernameIn" alignment="CENTER" layoutX="387.0" layoutY="99.0" prefHeight="25.0" prefWidth="150.0" promptText="Username">
@@ -20,11 +20,11 @@
               </items>
             </ContextMenu>
          </contextMenu></TextField>
-      <ImageView fx:id="noteBubble" fitHeight="150.0" fitWidth="200.0" layoutX="187.0" layoutY="99.0" pickOnBounds="true">
+      <ImageView id="noticeImg" fx:id="noteBubble" fitHeight="67.0" fitWidth="168.0" layoutX="210.0" layoutY="100.0" pickOnBounds="true">
          <image>
             <Image url="@../graphics/tempImg.jpg" />
          </image>
       </ImageView>
-      <Text fx:id="noteText" layoutX="195.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note:" wrappingWidth="184.13671875" />
+      <Text id="noticeText" fx:id="noteText" layoutX="242.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note:" wrappingWidth="184.13671875" />
    </children>
 </AnchorPane>

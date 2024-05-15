@@ -37,11 +37,11 @@
 	-fx-background-image: url(../../graphics/max.png);
 	background-image: url(../../graphics/max.png);
 }
-.restoreMode#maxBtn {
+.restoreMode {
 	-fx-background-image: url(../../graphics/restore.png);
 	background-image: url(../../graphics/restore.png);
 }
-.maxMode#maxBtn {
+.maxMode {
 	-fx-background-image: url(../../graphics/max.png);
 	background-image: url(../../graphics/max.png);
 }

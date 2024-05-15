@@ -30,7 +30,7 @@ public class Start extends Application {
 			// Set up the controls and scene styling
 			SceneController.setWindowController(loader.getController());
 
-			String windowStyling = this.getClass().getResource("windowStyling.css").toExternalForm();
+			String windowStyling = this.getClass().getResource("../css/windowStyling.css").toExternalForm();
 			scene.getStylesheets().add(windowStyling);
 
 			// Display the window
