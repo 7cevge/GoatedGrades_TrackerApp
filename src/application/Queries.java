@@ -25,10 +25,8 @@ public class Queries {
 
 			// check if it is in the database
 			if (fromDB == null) {
-				System.out.println("null");
 				return false;
 			} else {
-				System.out.println("username: " + fromDB);
 				SceneController.setCurrentUser(username);
 				return true;
 			}
@@ -41,7 +39,6 @@ public class Queries {
 	}
 
 	public static boolean register(String username) {
-		System.out.println(username);
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			PreparedStatement query;
@@ -50,11 +47,8 @@ public class Queries {
 				return false;
 			}
 
-			System.out.println("pre prep");
 			query = connection.prepareStatement("insert into users values (?)");
-			System.out.println("pre setStr");
 			query.setString(1, username);
-			System.out.println("pre exec");
 			query.executeUpdate();
 
 			return true;

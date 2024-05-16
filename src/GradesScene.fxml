@@ -57,9 +57,9 @@
                   <Button id="settingBtn" fx:id="graphSettingsBtn" layoutX="163.0" layoutY="295.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
                </children>
             </AnchorPane>
-            <ScrollPane fx:id="rightBg" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="442.0">
+            <ScrollPane fx:id="rightBg" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="442.0">
               <content>
-                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="340.0" prefWidth="380.0">
                      <children>
                         <Accordion layoutX="6.0" layoutY="7.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="256.0" prefWidth="374.0">
                           <panes>
