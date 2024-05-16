@@ -2,8 +2,9 @@ package application;
 
 public class GradesController extends SceneController{
 	
-	/* Return to login screen */
-	public void logOut() {
-		windowController.changeScene("/LoginScene.fxml");
+	// ------------------------------------------------------------------- The buttons on the left
+	public void logout() {
+		windowController.setCurScene("/LoginScene.fxml");
+		windowController.changeScene();
 	}
 }

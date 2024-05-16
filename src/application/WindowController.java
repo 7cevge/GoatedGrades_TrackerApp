@@ -3,17 +3,15 @@ package application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class WindowController {
 	@FXML
 	private Button maxBtn;
-
 	
 	// T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
 	// Named this way to make later functions with switch case easier to use
@@ -21,7 +19,24 @@ public class WindowController {
 	private Rectangle rhT1, rhB1, rhR1, rhL1, moveHandle,
 						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
+	private static final String LOGINSCENE = "/LoginScene.fxml";
+
 	private double newX = -1, newY = -1;
+	private String currentScene = LOGINSCENE;
+
+	// -------------------------------------------------------------------------- For currentScene
+	public String getCurScene() {
+		return currentScene;
+	}
+
+	public void setCurScene(String newScene) {
+		currentScene = newScene;
+		if (currentScene.equals(LOGINSCENE)) {
+			disableWindow(true);
+		} else {
+			disableWindow(false);
+		}
+	}
 
 	// ---------------------------------------------------------------------- The 3 window buttons
 	public void minimize(MouseEvent e) {
@@ -31,7 +46,9 @@ public class WindowController {
 
 	public void maximize(MouseEvent e) {
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
-		if (stage.isMaximized() && !maxBtn.getStyleClass().contains("maxMode")) {
+		if (currentScene.equals(LOGINSCENE)) {
+
+		} else if (stage.isMaximized() && !maxBtn.getStyleClass().contains("maxMode")) {
 			stage.setMaximized(false);
 			maxBtn.getStyleClass().remove("restoreMode");
 			maxBtn.getStyleClass().add("maxMode");
@@ -180,15 +197,21 @@ public class WindowController {
 	}
 
 	// --------------------------------------------------------------------------- Changing scenes
-
 	@FXML
-	public ScrollPane scene;
+	public AnchorPane scene, content;
 
-	public void changeScene(String fxml) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+	public void changeScene() {
 		try {
-			Parent root = loader.load();
-			scene.setContent(root);
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(currentScene));
+			AnchorPane newScene = loader.load();
+
+			scene.getChildren().clear();
+			scene.getChildren().add(newScene);
+
+			AnchorPane.setTopAnchor(newScene, 0.0);
+            AnchorPane.setBottomAnchor(newScene, 0.0);
+            AnchorPane.setLeftAnchor(newScene, 0.0);
+            AnchorPane.setRightAnchor(newScene, 0.0);
 		} catch (Exception err) {
 			System.err.println(err);
 		}

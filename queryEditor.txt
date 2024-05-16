@@ -57,3 +57,5 @@ CREATE TABLE timeStamps (
     gradeId INTEGER NOT NULL,
     FOREIGN KEY (gradeId) REFERENCES grades(gradeId)
 );
+
+INSERT INTO users VALUES ("wdc");

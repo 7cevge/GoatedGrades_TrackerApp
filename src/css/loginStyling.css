@@ -9,3 +9,12 @@
 #noticeImg {
     -fx-image: url(../../graphics/loginNotice.png);
 }
+
+.noticeOn {
+    -fx-visibility: visible;
+    visibility: visible;
+}
+.noticeOff {
+    -fx-visibility: hidden;
+    visibility: hidden;
+}
