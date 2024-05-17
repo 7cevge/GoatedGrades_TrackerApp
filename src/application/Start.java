@@ -25,16 +25,55 @@ public class Start extends Application {
 			// Load the window
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
 			Parent root = loader.load();
-			Scene scene = new Scene(root);
+			Scene windowScene = new Scene(root);
 
 			// Set up the controls and scene styling
 			SceneController.setWindowController(loader.getController());
 
-			String windowStyling = this.getClass().getResource("../css/windowStyling.css").toExternalForm();
-			scene.getStylesheets().add(windowStyling);
+			// Display the window
+			stage.setScene(windowScene);
+			stage.show();
+		} catch (Exception err) {
+			System.err.println(err);
+		}
+	}
+
+	public void startPopUp(Stage stage, String sceneIn) {
+		try {
+			// Set up for personal window styling
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
+			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
+			int width, height;
+			switch (sceneIn) {
+				case "/DeleteScene.fxml":
+					width = 200;
+					height = 120;
+					break;
+				default:
+					width = 620;
+					height = 380;
+					break;
+			}
+			stage.setMinWidth(width);
+			stage.setMinHeight(height);
+			stage.setWidth(width);
+			stage.setHeight(height);
+
+			// Load the window
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
+			Parent root = loader.load();
+			Scene windowScene = new Scene(root);
+
+			// Set up the controls and scene styling
+			SceneController.setWindowController(loader.getController());
+
+			WindowController popUpController = loader.getController();
+			popUpController.setCurScene(sceneIn);
+			popUpController.changeScene();
 
 			// Display the window
-			stage.setScene(scene);
+			stage.setScene(windowScene);
 			stage.show();
 		} catch (Exception err) {
 			System.err.println(err);

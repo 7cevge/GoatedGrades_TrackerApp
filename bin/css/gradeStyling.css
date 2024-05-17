@@ -13,17 +13,33 @@
 	-fx-background-image: url(../../graphics/exportLight.png);
 	background-image: url(../../graphics/exportLight.png);
 }
+#exportBtn:hover {
+	-fx-background-image: url(../../graphics/exportDark.png);
+	background-image: url(../../graphics/exportDark.png);
+}
 #importBtn {
 	-fx-background-image: url(../../graphics/importLight.png);
 	background-image: url(../../graphics/importLight.png);
+}
+#importBtn:hover {
+	-fx-background-image: url(../../graphics/importDark.png);
+	background-image: url(../../graphics/importDark.png);
 }
 #deleteBtn {
 	-fx-background-image: url(../../graphics/deleteLight.png);
 	background-image: url(../../graphics/deleteLight.png);
 }
+#deleteBtn:hover {
+	-fx-background-image: url(../../graphics/deleteDark.png);
+	background-image: url(../../graphics/deleteDark.png);
+}
 #logoutBtn {
 	-fx-background-image: url(../../graphics/logoutLight.png);
 	background-image: url(../../graphics/logoutLight.png);
+}
+#logoutBtn:hover {
+	-fx-background-image: url(../../graphics/logoutDark.png);
+	background-image: url(../../graphics/logoutDark.png);
 }
 
 #settingBtn {
@@ -35,6 +51,10 @@
 	background-size: 25;
 	background-position: center;
 	background-image: url(../../graphics/settingLight.png);
+}
+#settingBtn:hover {
+	-fx-background-image: url(../../graphics/settingDark.png);
+	background-image: url(../../graphics/settingDark.png);
 }
 
 /* Stat card */

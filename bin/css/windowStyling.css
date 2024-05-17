@@ -33,21 +33,37 @@
 	-fx-background-image: url(../../graphics/minLight.png);
 	background-image: url(../../graphics/minLight.png);
 }
+#minBtn:hover {
+	-fx-background-image: url(../../graphics/minDark.png);
+	background-image: url(../../graphics/minDark.png);
+}
 #maxBtn {
 	-fx-background-image: url(../../graphics/maxLight.png);
 	background-image: url(../../graphics/maxLight.png);
 }
-.restoreMode {
+.restoreMode#maxBtn {
 	-fx-background-image: url(../../graphics/restoreLight.png);
 	background-image: url(../../graphics/restoreLight.png);
 }
-.maxMode {
+.restoreMode#maxBtn:hover {
+	-fx-background-image: url(../../graphics/restoreDark.png);
+	background-image: url(../../graphics/restoreDark.png);
+}
+.maxMode#maxBtn {
 	-fx-background-image: url(../../graphics/maxLight.png);
 	background-image: url(../../graphics/maxLight.png);
+}
+.maxMode#maxBtn:hover {
+	-fx-background-image: url(../../graphics/maxDark.png);
+	background-image: url(../../graphics/maxDark.png);
 }
 #exitBtn {
 	-fx-background-image: url(../../graphics/exitLight.png);
 	background-image: url(../../graphics/exitLight.png);
+}
+#exitBtn:hover {
+	-fx-background-image: url(../../graphics/exitDark.png);
+	background-image: url(../../graphics/exitDark.png);
 }
 
 /* Set all window handles transparent */

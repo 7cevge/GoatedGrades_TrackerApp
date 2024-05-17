@@ -9,21 +9,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="stage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="620.0" stylesheets="@css/windowStyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
+<AnchorPane fx:id="stage" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="380.0" prefWidth="620.0" stylesheets="@css/windowStyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.WindowController">
    <children>
       <AnchorPane fx:id="scene" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
          <children>
-            <fx:include fx:id="content" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="LoginScene.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="LoginScene.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane id="titleBar" fx:id="titleBar" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Rectangle fx:id="moveHandle" arcHeight="5.0" arcWidth="5.0" fill="#1fff3d" height="20.0" layoutX="18.0" layoutY="10.0" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="windowHandle" width="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Text id="titleBarTitle" fx:id="titleText" layoutX="22.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Goated Grades" textOrigin="CENTER" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Text>
+            <ImageView id="titleBarLogo" fx:id="titleImg" fitHeight="18.0" fitWidth="18.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="1.0">
+               <image>
+                  <Image url="@../graphics/tempImg.jpg" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="moveHandle" arcHeight="5.0" arcWidth="5.0" fill="#1fff3d" height="20.0" layoutX="18.0" layoutY="10.0" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="windowHandle" width="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button id="minBtn" fx:id="minBtn" layoutX="528.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="16.0" prefWidth="16.0" styleClass="titleBarBtn" textAlignment="CENTER" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="2.0" />
             <Button id="maxBtn" fx:id="maxBtn" layoutX="552.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="16.0" prefWidth="16.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="2.0">
                <styleClass>
@@ -32,11 +37,6 @@
                </styleClass>
             </Button>
             <Button id="exitBtn" fx:id="closeBtn" layoutX="576.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="16.0" prefWidth="16.0" styleClass="titleBarBtn" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
-            <ImageView id="titleBarLogo" fx:id="titleImg" fitHeight="18.0" fitWidth="18.0" layoutX="-87.0" layoutY="-63.0" pickOnBounds="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="1.0">
-               <image>
-                  <Image url="@../graphics/tempImg.jpg" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
       <Rectangle fx:id="rhT1" arcHeight="5.0" arcWidth="5.0" disable="true" fill="DODGERBLUE" height="4.0" onMouseDragged="#resizeWindow2" onMousePressed="#resizeWindow1" stroke="BLACK" strokeType="INSIDE" styleClass="windowHandle" width="604.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="0.0" />

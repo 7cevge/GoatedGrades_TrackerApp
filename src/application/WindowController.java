@@ -1,6 +1,5 @@
 package application;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -78,7 +77,8 @@ public class WindowController {
 	}
 
 	public void exit(MouseEvent e) {
-		Platform.exit();
+		Stage stage = (Stage) maxBtn.getScene().getWindow();
+		stage.close();
 	}
 
 	// ------------------------------------------------------- Moving the window around the screen

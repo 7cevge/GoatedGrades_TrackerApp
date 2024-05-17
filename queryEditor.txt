@@ -2,14 +2,23 @@
 
 -- Use the ▷ button in the top right corner to run the entire file.
 
-SELECT * FROM "table-name";
-
 DROP TABLE users;
 DROP TABLE sems;
 DROP TABLE classes;
 DROP TABLE parts;
 DROP TABLE grades;
 DROP TABLE timeStamps;
+
+-- ----------------------------------------------
+
+DELETE FROM users;
+DELETE FROM sems;
+DELETE FROM classes;
+DELETE FROM parts;
+DELETE FROM grades;
+DELETE FROM timeStamps;
+
+-- ----------------------------------------------
 
 CREATE TABLE users(
     username TEXT NOT NULL PRIMARY KEY
