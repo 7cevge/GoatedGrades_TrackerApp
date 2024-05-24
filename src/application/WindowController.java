@@ -77,6 +77,12 @@ public class WindowController {
 	}
 
 	public void exit(MouseEvent e) {
+		Start.delFromWindowLst(this);
+
+		if (Start.getWindowLst().size() > 0) {
+			SceneController.setWindowController(Start.getFromWindowLst(0));
+		}
+		
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
 		stage.close();
 	}
@@ -215,5 +221,10 @@ public class WindowController {
 		} catch (Exception err) {
 			System.err.println(err);
 		}
+	}
+
+	public void disable(boolean disable) {
+		AnchorPane scene = (AnchorPane) maxBtn.getScene().getRoot();
+		scene.setDisable(disable);
 	}
 }

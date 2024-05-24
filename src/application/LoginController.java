@@ -28,7 +28,7 @@ public class LoginController extends SceneController {
 			windowController.changeScene();
 		} else {
 			// Fail to login
-			SceneController.setCurrentUser(null);
+			Start.setCurrentUser(null);
 			loginNotice(true, 
 				"Entered username not found, would you like to register this as a new user?");
 			
@@ -49,7 +49,7 @@ public class LoginController extends SceneController {
 
 		} else {
 			// Fail to register
-			SceneController.setCurrentUser(null);
+			Start.setCurrentUser(null);
 			loginNotice(true, "Invalid Username, please keep it between 2 to 16 charactors.");
 		}
 	}

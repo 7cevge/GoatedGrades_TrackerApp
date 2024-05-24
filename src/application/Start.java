@@ -1,5 +1,6 @@
 package application;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,45 @@ public class Start extends Application {
 		launch(args);
 	}
 
+	// ------------------------------------------------------------ Static / application variables
+	private static String currentUser;
+	private static ArrayList<WindowController> windowLst = new ArrayList<>(3);
+
+	// Set and get current userId
+	public static void setCurrentUser(String username) {
+		if (username != null) {
+			currentUser = username;
+		} else {
+			currentUser = null;
+		}
+	}
+	public static String getCurrentUser() {
+		return currentUser;
+	}
+
+	// Functions for windowLst
+	public static void addToWindowLst(WindowController newWindow) {
+		windowLst.add(newWindow);
+	}
+	public static WindowController getFromWindowLst(int negIndex) {
+		// negIndex is position from the end of the lst
+		try {
+			return windowLst.get(windowLst.size() - 1 - negIndex);
+		} catch (Exception err) {
+			return null;
+		}
+	}
+	public static void delFromWindowLst(WindowController delWindow) {
+		try {
+			windowLst.remove(delWindow);
+			getFromWindowLst(0).disable(false);
+		} catch (Exception err) {}
+	}
+	public static ArrayList<WindowController> getWindowLst() {
+		return windowLst;
+	}
+
+	// -------------------------------------------------------------------------------------------
 	public void start(Stage stage) {
 		try {
 			// Set up for personal window styling
@@ -28,7 +68,8 @@ public class Start extends Application {
 			Scene windowScene = new Scene(root);
 
 			// Set up the controls and scene styling
-			SceneController.setWindowController(loader.getController());
+			addToWindowLst(loader.getController());
+			SceneController.setWindowController(getFromWindowLst(0));
 
 			// Display the window
 			stage.setScene(windowScene);
@@ -44,6 +85,7 @@ public class Start extends Application {
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
 			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
+
 			int width, height;
 			switch (sceneIn) {
 				case "/DeleteScene.fxml":
@@ -55,6 +97,7 @@ public class Start extends Application {
 					height = 380;
 					break;
 			}
+
 			stage.setMinWidth(width);
 			stage.setMinHeight(height);
 			stage.setWidth(width);
@@ -66,11 +109,14 @@ public class Start extends Application {
 			Scene windowScene = new Scene(root);
 
 			// Set up the controls and scene styling
-			SceneController.setWindowController(loader.getController());
-
+			addToWindowLst(loader.getController());
+			SceneController.setWindowController(getFromWindowLst(0));
 			WindowController popUpController = loader.getController();
 			popUpController.setCurScene(sceneIn);
 			popUpController.changeScene();
+
+			// Disable previous window
+			getFromWindowLst(1).disable(true);
 
 			// Display the window
 			stage.setScene(windowScene);

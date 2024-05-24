@@ -5,10 +5,10 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DeleteController">
    <children>
       <Text layoutX="40.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Are you sure you want to delete this account?" wrappingWidth="120.0" />
-      <Button layoutX="40.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="Yes!" />
-      <Button layoutX="100.0" layoutY="50.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="60.0" text="No!" />
+      <Button fx:id="yesBtn" layoutX="40.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#yes" prefHeight="25.0" prefWidth="60.0" text="Yes!" />
+      <Button fx:id="noBtn" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#no" prefHeight="25.0" prefWidth="60.0" text="No!" />
    </children>
 </AnchorPane>

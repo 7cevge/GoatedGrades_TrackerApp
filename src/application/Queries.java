@@ -27,13 +27,13 @@ public class Queries {
 			if (fromDB == null) {
 				return false;
 			} else {
-				SceneController.setCurrentUser(username);
+				Start.setCurrentUser(username);
 				return true;
 			}
 
 		} catch (Exception err) {
 			System.err.println(err);
-			SceneController.setCurrentUser(null);
+			Start.setCurrentUser(null);
 			return false;
 		}
 	}
@@ -55,7 +55,26 @@ public class Queries {
 
 		} catch (Exception err) {
 			System.err.println(err);
-			SceneController.setCurrentUser(null);
+			Start.setCurrentUser(null);
+			return false;
+		}
+	}
+
+	public static boolean delete(String username) {
+		try {
+			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+			PreparedStatement query;
+
+			query = connection.prepareStatement("delete from users where username = ?");
+			query.setString(1, username);
+			query.executeUpdate();
+
+			Start.setCurrentUser(null);
+
+			return true;
+
+		} catch (Exception err) {
+			System.err.println(err);
 			return false;
 		}
 	}
