@@ -20,4 +20,17 @@ public class GradesController extends SceneController{
 		Start start = new Start();
 		start.startPopUp(popUp, "/DeleteScene.fxml");
 	}
+
+	public void importData(MouseEvent e) {
+
+	}
+
+	public void exportData(MouseEvent e) {
+
+	}
+
+	// Load in all the data for current user
+	public void load() {
+
+	}
 }

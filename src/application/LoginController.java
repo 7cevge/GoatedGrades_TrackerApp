@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 public class LoginController extends SceneController {
@@ -19,7 +20,7 @@ public class LoginController extends SceneController {
 	@FXML
 	ImageView noticeImg;
 
-	public void login() {
+	public void login(MouseEvent e) {
 		boolean loginOk = Queries.login(usernameIn.getText());
 
 		if (loginOk) {
@@ -36,12 +37,12 @@ public class LoginController extends SceneController {
 		}
 	}
 
-	public void register() {
+	public void register(MouseEvent e) {
 		boolean registerOk = Queries.register(usernameIn.getText());
 
 		if (registerOk) {
 			// Register successful & login
-			login();
+			login(e);
 
 			// Rest login scene
 			loginNotice(false, "");
@@ -54,7 +55,7 @@ public class LoginController extends SceneController {
 		}
 	}
 
-	public void back() {
+	public void back(MouseEvent e) {
 		loginOrReg(true);
 	}
 

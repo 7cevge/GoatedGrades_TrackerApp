@@ -17,6 +17,7 @@ public class Start extends Application {
 	// ------------------------------------------------------------ Static / application variables
 	private static String currentUser;
 	private static ArrayList<WindowController> windowLst = new ArrayList<>(3);
+	private static Stage mainStage;
 
 	// Set and get current userId
 	public static void setCurrentUser(String username) {
@@ -55,6 +56,8 @@ public class Start extends Application {
 	// -------------------------------------------------------------------------------------------
 	public void start(Stage stage) {
 		try {
+			mainStage = stage;
+
 			// Set up for personal window styling
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setMinWidth(620);
@@ -79,12 +82,12 @@ public class Start extends Application {
 		}
 	}
 
-	public void startPopUp(Stage stage, String sceneIn) {
+	public void startPopUp(Stage popUp, String sceneIn) {
 		try {
 			// Set up for personal window styling
-			stage.initStyle(StageStyle.UNDECORATED);
-			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
-			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
+			popUp.initStyle(StageStyle.UNDECORATED);
+			popUp.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
+			popUp.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
 			int width, height;
 			switch (sceneIn) {
@@ -98,10 +101,10 @@ public class Start extends Application {
 					break;
 			}
 
-			stage.setMinWidth(width);
-			stage.setMinHeight(height);
-			stage.setWidth(width);
-			stage.setHeight(height);
+			popUp.setMinWidth(width);
+			popUp.setMinHeight(height);
+			popUp.setWidth(width);
+			popUp.setHeight(height);
 
 			// Load the window
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
@@ -115,12 +118,13 @@ public class Start extends Application {
 			popUpController.setCurScene(sceneIn);
 			popUpController.changeScene();
 
-			// Disable previous window
+			// Disable previous window and lock popUp on top
 			getFromWindowLst(1).disable(true);
+			popUp.initOwner(mainStage);
 
 			// Display the window
-			stage.setScene(windowScene);
-			stage.show();
+			popUp.setScene(windowScene);
+			popUp.show();
 		} catch (Exception err) {
 			System.err.println(err);
 		}
