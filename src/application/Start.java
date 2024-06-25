@@ -31,6 +31,11 @@ public class Start extends Application {
 		return currentUser;
 	}
 
+	// Get mainStage
+	public static Stage getMainStage() {
+		return mainStage;
+	}
+
 	// Functions for windowLst
 	public static void addToWindowLst(WindowController newWindow) {
 		windowLst.add(newWindow);
@@ -59,11 +64,11 @@ public class Start extends Application {
 			mainStage = stage;
 
 			// Set up for personal window styling
-			stage.initStyle(StageStyle.UNDECORATED);
-			stage.setMinWidth(620);
-			stage.setMinHeight(380);
-			stage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
-			stage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
+			mainStage.initStyle(StageStyle.UNDECORATED);
+			mainStage.setMinWidth(620);
+			mainStage.setMinHeight(380);
+			mainStage.setMaxWidth(Screen.getPrimary().getBounds().getWidth());
+			mainStage.setMaxHeight(Screen.getPrimary().getBounds().getHeight());
 
 			// Load the window
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/WindowStage.fxml"));
@@ -75,8 +80,8 @@ public class Start extends Application {
 			SceneController.setWindowController(getFromWindowLst(0));
 
 			// Display the window
-			stage.setScene(windowScene);
-			stage.show();
+			mainStage.setScene(windowScene);
+			mainStage.show();
 		} catch (Exception err) {
 			System.err.println(err);
 		}

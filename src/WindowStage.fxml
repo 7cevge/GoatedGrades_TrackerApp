@@ -28,9 +28,9 @@
                   <Image url="@../graphics/tempImg.jpg" />
                </image>
             </ImageView>
-            <Rectangle fx:id="moveHandle" arcHeight="5.0" arcWidth="5.0" fill="#1fff3d" height="20.0" layoutX="18.0" layoutY="10.0" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="windowHandle" width="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Rectangle fx:id="moveHandleStopper" arcHeight="5.0" arcWidth="5.0" fill="#1fff3d" height="20.0" layoutX="18.0" layoutY="10.0" onMouseDragged="#moveWindow2" onMousePressed="#moveWindow1" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="windowHandle" width="620.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button id="minBtn" fx:id="minBtn" layoutX="528.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#minimize" prefHeight="16.0" prefWidth="16.0" styleClass="titleBarBtn" textAlignment="CENTER" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="2.0" />
-            <Button id="maxBtn" fx:id="maxBtn" layoutX="552.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="16.0" prefWidth="16.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="2.0">
+            <Button id="maxBtn" fx:id="maxBtn" disable="true" layoutX="552.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#maximize" prefHeight="16.0" prefWidth="16.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="2.0">
                <styleClass>
                   <String fx:value="titleBarBtn" />
                   <String fx:value="maxMode" />

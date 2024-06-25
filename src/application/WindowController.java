@@ -6,19 +6,22 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class WindowController {
 	@FXML
-	private Button maxBtn;
+	private Button maxBtn, minBtn;
 	
 	// T = top, R = right, B = bottom, L = left, S = small, rh = resize handle
 	// Named this way to make later functions with switch case easier to use
 	@FXML
-	private Rectangle rhT1, rhB1, rhR1, rhL1, moveHandle,
+	private Rectangle rhT1, rhB1, rhR1, rhL1, moveHandleStopper,
 						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
 	private static final String LOGINSCENE = "/LoginScene.fxml";
+	private static final String DELETESCENE = "/DeleteScene.fxml";
+	private static final String GRADESSCENE = "/GradesScene.fxml";
 
 	private double newX = -1, newY = -1;
 	private String currentScene = LOGINSCENE;
@@ -30,11 +33,37 @@ public class WindowController {
 
 	public void setCurScene(String newScene) {
 		currentScene = newScene;
+		Stage mainStage = Start.getMainStage();
+		int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
+		int screenWidth = (int) Screen.getPrimary().getBounds().getWidth();
+
+		// resize and disable/enable buttons, resize handles, move handle
 		if (currentScene.equals(LOGINSCENE)) {
 			disableWindow(true);
+			maxBtn.setDisable(true);
+			mainStage.setHeight(380);
+			mainStage.setWidth(620);
+			resize(600, 1200);
+		} else if (currentScene.equals(DELETESCENE)) {
+			disableWindow(true);
+			maxBtn.setDisable(true);
+			minBtn.setDisable(true);
+		} else if (currentScene.equals(GRADESSCENE)) {
+			disableWindow(false);
+			maxBtn.setDisable(false);
+			minBtn.setDisable(false);
+			mainStage.setHeight(600);
+			mainStage.setWidth(1200);
+			resize(600, 1200);
 		} else {
 			disableWindow(false);
+			maxBtn.setDisable(false);
+			minBtn.setDisable(false);
 		}
+
+		// Center on screen
+		mainStage.setX((screenWidth - mainStage.getWidth()) / 2);
+		mainStage.setY((screenHeight - mainStage.getHeight()) / 2);
 	}
 
 	// ---------------------------------------------------------------------- The 3 window buttons
@@ -61,7 +90,7 @@ public class WindowController {
 	}
 
 	private void disableWindow(boolean disable) {
-		moveHandle.setDisable(disable);
+		moveHandleStopper.setDisable(disable);
 		rhT1.setDisable(disable);
 		rhB1.setDisable(disable);
 		rhL1.setDisable(disable);
@@ -90,7 +119,7 @@ public class WindowController {
 	// ------------------------------------------------------- Moving the window around the screen
 	public void moveWindow1(MouseEvent e) {
 		String target = e.getTarget().toString();
-		if (!target.contains("id=moveHandle")) {
+		if (!target.contains("id=moveHandleStopper")) {
 		} else {
 			newX = e.getSceneX();
 			newY = e.getSceneY();
@@ -100,7 +129,7 @@ public class WindowController {
 	public void moveWindow2(MouseEvent e) {
 		String target = e.getTarget().toString();
 		Stage stage = (Stage) maxBtn.getScene().getWindow();
-		if (!target.contains("id=moveHandle")) {
+		if (!target.contains("id=moveHandleStopper")) {
 		} else if (newX != -1 && newY != -1) {
 			stage.setX(e.getScreenX() - newX);
 			stage.setY(e.getScreenY() - newY);
@@ -166,8 +195,8 @@ public class WindowController {
 			} else {
 				stage.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()));
 				stage.setY(e.getScreenY());
-				rhR1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
-				rhL1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 28);
+				rhR1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 16);
+				rhL1.setHeight(stage.getHeight() + (stage.getY() - e.getScreenY()) - 16);
 			}
 			break;
 		case 'R':
@@ -176,15 +205,15 @@ public class WindowController {
 				stage.setWidth(e.getScreenX() - stage.getX());
 				rhT1.setWidth(e.getScreenX() - stage.getX() - 16);
 				rhB1.setWidth(e.getScreenX() - stage.getX() - 16);
-				moveHandle.setWidth(e.getScreenX() - stage.getX());
+				moveHandleStopper.setWidth(e.getScreenX() - stage.getX());
 			}
 			break;
 		case 'B':
 			if (e.getScreenY() - stage.getY() < stage.getMinHeight()) {
 			} else {
 				stage.setHeight(e.getScreenY() - stage.getY());
-				rhR1.setHeight(e.getScreenY() - stage.getY() - 28);
-				rhL1.setHeight(e.getScreenY() - stage.getY() - 28);
+				rhR1.setHeight(e.getScreenY() - stage.getY() - 16);
+				rhL1.setHeight(e.getScreenY() - stage.getY() - 16);
 			}
 			break;
 		case 'L':
@@ -194,12 +223,20 @@ public class WindowController {
 				stage.setX(e.getScreenX());
 				rhT1.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()) - 16);
 				rhB1.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()) - 16);
-				moveHandle.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()));
+				moveHandleStopper.setWidth(stage.getWidth() + (stage.getX() - e.getScreenX()));
 			}
 			break;
 		default:
 			System.err.println("Invalid location");
 		}
+	}
+
+	private void resize(int newHeight, int newWidth) {
+		rhR1.setHeight(newHeight - 16);
+		rhL1.setHeight(newHeight - 16);
+		rhT1.setWidth(newWidth - 16);
+		rhB1.setWidth(newWidth - 16);
+		moveHandleStopper.setWidth(newWidth);
 	}
 
 	// --------------------------------------------------------------------------- Changing scenes
@@ -218,6 +255,7 @@ public class WindowController {
             AnchorPane.setBottomAnchor(newScene, 0.0);
             AnchorPane.setLeftAnchor(newScene, 0.0);
             AnchorPane.setRightAnchor(newScene, 0.0);
+
 		} catch (Exception err) {
 			System.err.println(err);
 		}
