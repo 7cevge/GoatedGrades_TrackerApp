@@ -10,66 +10,80 @@
   factors into calculating the total grades. I wanted to make this application based on what I had
   found lacking in the official gradebooks.
 
-  Icon/mascot: a graduate goat
+  Theme: Nordic? -> glowy runes and stone / mountain vibe, goats
   
-  Montro: Climb to higher hights, up the mountain, reach for higher, better <sub>~~grass~~</sub>***grades***
+  Mascot/Montro: a graduate goat, Climb and reach for the peak
 
 ## Directions:
-  By completion, should have an out of the box jar or exe application...
+  By completion *[work in progress]*, should have an out of the box jar or exe application 
 
 ## Features:
-  - Custom window
-    - Done:
-      - The 3 window buttons
-      - Moveable window
-      - Resizing
-    - Not done:
-      - Snapping
-      - Smooth animations/aesthetics
 
-  - User
-    - Done:
-      - Login
-        - SQL part
-        - Buttons and scene change
-      - Registration
-        - SQL part
-        - Buttons and scene change
-      - Deletion
-        - SQL part
-        - Confirmation window and buttons
+### MVP:
+- [ ] User
+  - [x] login
+    - [x] SQL - validation
+    - [x] Buttons and scene change
+    - [x] Error notice
+  - [x] registration
+    - [x] SQL - add to db
+    - [x] Buttons and scene change
+    - [x] Error notice
+  - [ ] deletion
+    - [x] SQL - remove username from db
+    - [ ] SQL - remove all other data linked to username
+    - [ ] Confirmation window and buttons
+      - [ ] Change text to say all data linked to username will also be removed from db
+        
+- [ ] Main functions
+  - [ ] Semester
+    - [ ] Add/edit/delete
+  - [ ] Class
+    - [ ] Add/edit/delete
+  - [ ] Partition
+    - [ ] Add/edit/delete
+  - [ ] Grade
+    - [ ] Add/edit/delete
+      
+- [ ] Data
+  - [ ] Import
+    - [ ] Conflicts / duplicate handling
+  - [ ] Export (in a format that can be imported)
+    - [ ] Selection of what to export, which semester/class/everything
+        
+### Ideal:
+- [ ] Custom window
+  - [x] The 3 window buttons
+  - [x] Moveable window
+  - [x] Resizing
+  - [ ] Snapping to set sizes
+  - [ ] Smooth animations
+  - [ ] Nice graphics
 
-  - Stats
-    - Done:
-    - Not Done:
+- [ ] User
+  - [ ] Adding a password
+  - [ ] Extra other info for the stats
+  - [ ] Profile picture
 
-  - Grades
-    - Done:
-    - Not Done:
-      - Semester
-        - add
-        - edit
-        - delete
-      - Class
-      - Partition
-      - Grade 
-      - Drag and drop components for easier reorganization?
-    
-  - Data
-    - Done:
-    - Not Done:
-      - Import
-      - Export
-     
-  - Graph
-    - Done:
-    - Not Done:
-      - Settings
-      - Line
-      - Bar
-      - Pie
-      - Auto?
+- [ ] Stats
+    - [ ] Username, cummulative GPA, total credits, number of As, Bs, Cs, Classes, semesters
+    - [ ] Customizablility
+
+- [ ] Data
+  - [ ] Export format that is readily useable in a spreadsheet
+
+- [ ] Main functions:
+  - [ ] Drag and drop function on Main functions for easier reorganization
+  - [ ] More notes users can add
+
+- [ ] Graphs
+  - [ ] Settings
+  - [ ] Line
+  - [ ] Bar
+  - [ ] Pie
+  - [ ] Auto default when hover over semester/class
   
-### ERD:
+### ERD: 
+  Needs some fixing, especially the timeline entity!
 
  ![GGT ERD](graphics/erd.png "GGT ERD")

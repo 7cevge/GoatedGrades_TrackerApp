@@ -1,5 +1,6 @@
 package application;
 
+import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -78,4 +79,47 @@ public class Queries {
 			return false;
 		}
 	}
+
+	// ---------------------------------------------------------------------------------- Get Info
+	public static void getAllInfo() { // for now just get all info to a txt
+		try {
+			System.out.println("try start write");
+			FileWriter writer = new FileWriter("allInfo.txt");
+			writer.write("???");
+			writer.close();
+			System.out.println("done write");
+			/* 
+			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+			ResultSet result;
+			PreparedStatement query;
+
+			query = connection.prepareStatement(
+				"select username from users where users.username = ?");
+			query.setString(1, username);
+			result = query.executeQuery();
+
+			while (result.next()) {
+				fromDB = result.getString("username");
+			}*/
+
+		} catch (Exception err) {
+			System.err.println(err.getMessage());
+		}
+	}
+
+	// ------------------------------------------------------------------------- Set / Modify Info
+	public static void modifyInfo() {/* 
+		try {
+			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+			PreparedStatement query;
+
+			query = connection.prepareStatement("insert into users values (?)");
+			query.setString(1, username);
+			query.executeUpdate();
+
+		} catch (Exception err) {
+			System.err.println(err);
+		}
+	*/}
+
 }
