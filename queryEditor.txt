@@ -2,6 +2,7 @@
 
 -- Use the ▷ button in the top right corner to run the entire file.
 
+-- ------------------------------------------- delete table
 DROP TABLE users;
 DROP TABLE sems;
 DROP TABLE classes;
@@ -9,8 +10,7 @@ DROP TABLE parts;
 DROP TABLE grades;
 DROP TABLE timeStamps;
 
--- ----------------------------------------------
-
+-- ------------------------------------ clear data of table
 DELETE FROM users;
 DELETE FROM sems;
 DELETE FROM classes;
@@ -18,13 +18,16 @@ DELETE FROM parts;
 DELETE FROM grades;
 DELETE FROM timeStamps;
 
--- ----------------------------------------------
-
+-- ------------------------------------------- create table
 CREATE TABLE users(
-    username TEXT NOT NULL PRIMARY KEY
+    userId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    username TEXT NOT NULL UNIQUE,
+    userpw TEXT
 );
 CREATE TABLE sems (
-    semLabel TEXT NOT NULL PRIMARY KEY UNIQUE,
+    semId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    semName TEXT NOT NULL,
+    semNote TEXT,
     username TEXT NOT NULL,
     FOREIGN KEY (username) REFERENCES users(username)
 );
@@ -32,10 +35,10 @@ CREATE TABLE classes (
     classId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     className TEXT NOT NULL,
     classCode TEXT,
-    classCredit INTEGER NOT NULL,
-    classGradeA INTEGER NOT NULL,
-    classGradeB INTEGER NOT NULL,
-    classGradeC INTEGER NOT NULL,
+    classCredit INTEGER,
+    classGradeA INTEGER,
+    classGradeB INTEGER,
+    classGradeC INTEGER,
     classActualGrade TEXT,
     classNote TEXT,
     semLabel TEXT NOT NULL,
@@ -45,16 +48,17 @@ CREATE TABLE parts (
     partId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     partName TEXT NOT NULL,
     partPercent INTEGER NOT NULL,
+    partNote TEXT,
     classId INTEGER NOT NULL,
     FOREIGN KEY (classId) REFERENCES classes(classId)
 );
 CREATE TABLE grades (
     gradeId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-    gradeMode INTEGER NOT NULL,
     gradeGot REAL,
     gradeOutOf REAL,
     gradeGotEst REAL,
     gradeOutOfEst REAL,
+    gradeNote TEXT,
     partId INTEGER NOT NULL,
     FOREIGN KEY (partId) REFERENCES parts(partId)
 );
@@ -63,8 +67,11 @@ CREATE TABLE timeStamps (
     timeDD INTEGER NOT NULL,
     timeMM INTEGER NOT NULL,
     timeYY INTEGER NOT NULL,
+    gradeGot REAL,
+    gradeOutOf REAL,
     gradeId INTEGER NOT NULL,
     FOREIGN KEY (gradeId) REFERENCES grades(gradeId)
 );
 
+-- ------------------------------------------------ testing
 INSERT INTO users VALUES ("wdc");

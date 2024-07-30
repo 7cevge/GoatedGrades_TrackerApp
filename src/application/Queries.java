@@ -7,70 +7,91 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Queries {
-	public static boolean login(String username) {
+	public static int login(String username, String password) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			ResultSet result;
 			PreparedStatement query;
 
-			String fromDB = null;
+			int userId = 0;
 
 			query = connection.prepareStatement(
-				"select username from users where users.username = ?");
+				"select userId from users where users.username = ? and users.userpw = ?");
 			query.setString(1, username);
+			query.setString(2, password);
 			result = query.executeQuery();
 
 			while (result.next()) {
-				fromDB = result.getString("username");
+				userId = result.getInt("userId");
 			}
 
-			// check if it is in the database
-			if (fromDB == null) {
-				return false;
+			// Check if exact match found
+			if (userId == 0) {
+				// Exact match not found
+				userId = 0;
+
+				query = connection.prepareStatement(
+					"select userId from users where users.username = ?");
+				query.setString(1, username);
+				result = query.executeQuery();
+
+				while (result.next()) {
+					userId = result.getInt("userId");
+				}
+
+				if (userId == 0) {
+					// Username not found
+					return 2;
+				} else {
+					// Username found but not password
+					return 1;
+				}
+
 			} else {
-				Start.setCurrentUser(username);
-				return true;
+				// Found exact match
+				Start.setCurrentUser(userId);
+				return 0;
 			}
 
 		} catch (Exception err) {
 			System.err.println(err);
-			Start.setCurrentUser(null);
-			return false;
+			Start.setCurrentUser(0);
+			return 3;
 		}
 	}
 
-	public static boolean register(String username) {
+	public static int register(String username, String password) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			PreparedStatement query;
 
 			if (username.length() < 2 || username.length() > 16) {
-				return false;
+				return 2;
 			}
 
 			query = connection.prepareStatement("insert into users values (?)");
 			query.setString(1, username);
 			query.executeUpdate();
 
-			return true;
+			return 0;
 
 		} catch (Exception err) {
 			System.err.println(err);
-			Start.setCurrentUser(null);
-			return false;
+			Start.setCurrentUser(0);
+			return 3;
 		}
 	}
 
-	public static boolean delete(String username) {
+	public static boolean delete(int userId) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			PreparedStatement query;
 
-			query = connection.prepareStatement("delete from users where username = ?");
-			query.setString(1, username);
+			query = connection.prepareStatement("delete from users where userId = ?");
+			query.setInt(1, userId);
 			query.executeUpdate();
 
-			Start.setCurrentUser(null);
+			Start.setCurrentUser(0);
 
 			return true;
 

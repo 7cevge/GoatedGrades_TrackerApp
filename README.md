@@ -73,7 +73,7 @@
   - [ ] Export format that is readily useable in a spreadsheet
 
 - [ ] Main functions:
-  - [ ] Drag and drop function on Main functions for easier reorganization
+  - [ ] Some kind of drag and drop / sort function on Main functions for easier reorganization
   - [ ] More notes users can add
 
 - [ ] Graphs
@@ -82,6 +82,10 @@
   - [ ] Bar
   - [ ] Pie
   - [ ] Auto default when hover over semester/class
+
+- [ ] Other
+  - [ ] Shortcut keys
+  - [ ] Hover windows
   
 ### ERD: 
   Needs some fixing, especially the timeline entity!

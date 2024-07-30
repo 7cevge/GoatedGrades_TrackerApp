@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,9 +12,9 @@
 
 <AnchorPane id="loginBg" fx:id="bgLoginScene" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="340.0" prefWidth="600.0" stylesheets="@css/loginStyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginController">
    <children>
-      <Button fx:id="loginBtn" layoutX="387.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="25.0" prefWidth="150.0" text="Login" />
-      <Button fx:id="registerBtn" disable="true" layoutX="387.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="25.0" prefWidth="125.0" text="Register" visible="false" />
-      <Button fx:id="backBtn" disable="true" layoutX="512.0" layoutY="125.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="25.0" prefWidth="25.0" text="X" visible="false" />
+      <Button fx:id="loginBtn" layoutX="387.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#login" prefHeight="25.0" prefWidth="150.0" text="Login" />
+      <Button fx:id="registerBtn" disable="true" layoutX="387.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#register" prefHeight="25.0" prefWidth="125.0" text="Register" visible="false" />
+      <Button fx:id="backBtn" disable="true" layoutX="512.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#back" prefHeight="25.0" prefWidth="25.0" text="X" visible="false" />
       <TextField fx:id="usernameIn" alignment="CENTER" layoutX="387.0" layoutY="99.0" prefHeight="25.0" prefWidth="150.0" promptText="Username">
          <contextMenu>
             <ContextMenu fx:id="usernameLst" x="20.0" y="20.0">
@@ -28,5 +29,6 @@
          </image>
       </ImageView>
       <Text id="noticeText" fx:id="noticeText" layoutX="256.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="noticeOff" text="Note:" wrappingWidth="113.13671875" />
+      <PasswordField fx:id="userpwIn" alignment="CENTER" layoutX="387.0" layoutY="125.0" prefHeight="25.0" prefWidth="150.0" promptText="Password" />
    </children>
 </AnchorPane>

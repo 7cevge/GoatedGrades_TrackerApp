@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TitledPane;
@@ -13,6 +15,13 @@ public class GradesController extends SceneController{
 
 	@FXML
 	private AnchorPane rightContent;
+
+	// -------------------------------------------------------------------------------- Cache data
+	private static ArrayList<String> Notes = new ArrayList();
+
+	public static ArrayList<String> getNotes() {
+		return null;
+	}
 
 	// ------------------------------------------------------------------- The buttons on the left
 	public void logout(MouseEvent e) {
@@ -59,12 +68,21 @@ public class GradesController extends SceneController{
 
 	// New nodes
 	private TitledPane newSem() {
-		System.out.println("called");
 		TitledPane newSem = new TitledPane();
 		AnchorPane.setTopAnchor(newSem, 50.0);
 		AnchorPane.setLeftAnchor(newSem, 50.0);
 		newSem.setPrefSize(200, 150);
 		newSem.setAnimated(false);
 		return newSem;
+	}
+
+	private TitledPane newClass() {
+		TitledPane newClass = new TitledPane();
+		return newClass;
+	}
+
+	private TitledPane newPart() { // maybe not titledpane from this on
+		TitledPane newClass = new TitledPane();
+		return null;
 	}
 }
