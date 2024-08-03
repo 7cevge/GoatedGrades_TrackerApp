@@ -66,11 +66,12 @@ public class Queries {
 			PreparedStatement query;
 
 			if (username.length() < 2 || username.length() > 16) {
-				return 2;
+				return 1;
 			}
 
-			query = connection.prepareStatement("insert into users values (?)");
+			query = connection.prepareStatement("insert into users(username, userpw) values (?, ?)");
 			query.setString(1, username);
+			query.setString(2, password);
 			query.executeUpdate();
 
 			return 0;
@@ -78,7 +79,7 @@ public class Queries {
 		} catch (Exception err) {
 			System.err.println(err);
 			Start.setCurrentUser(0);
-			return 3;
+			return 2;
 		}
 	}
 

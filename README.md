@@ -61,7 +61,7 @@
   - [ ] Nice graphics
 
 - [ ] User
-  - [ ] Adding a password
+  - [x] Adding a password
   - [ ] Extra other info for the stats
   - [ ] Profile picture
 

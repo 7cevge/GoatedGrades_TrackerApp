@@ -22,14 +22,16 @@ DELETE FROM timeStamps;
 CREATE TABLE users(
     userId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     username TEXT NOT NULL UNIQUE,
-    userpw TEXT
+    userpw TEXT,
+    userNote TEXT,
+    userPfp TEXT
 );
 CREATE TABLE sems (
     semId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     semName TEXT NOT NULL,
     semNote TEXT,
-    username TEXT NOT NULL,
-    FOREIGN KEY (username) REFERENCES users(username)
+    userId INTEGER NOT NULL,
+    FOREIGN KEY (userId) REFERENCES users(userId)
 );
 CREATE TABLE classes (
     classId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
@@ -41,8 +43,8 @@ CREATE TABLE classes (
     classGradeC INTEGER,
     classActualGrade TEXT,
     classNote TEXT,
-    semLabel TEXT NOT NULL,
-    FOREIGN KEY (semLabel) REFERENCES sems(semLabel)
+    semId INTEGER NOT NULL,
+    FOREIGN KEY (semId) REFERENCES sems(semId)
 );
 CREATE TABLE parts (
     partId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,

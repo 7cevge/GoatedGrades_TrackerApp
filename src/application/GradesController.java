@@ -3,10 +3,13 @@ package application;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GradesController extends SceneController{
@@ -14,7 +17,10 @@ public class GradesController extends SceneController{
 	private Button logoutBtn;
 
 	@FXML
-	private AnchorPane rightContent;
+	private VBox semLst;
+
+	@FXML
+    private ScrollPane rightBg;
 
 	// -------------------------------------------------------------------------------- Cache data
 	private static ArrayList<String> Notes = new ArrayList();
@@ -54,35 +60,46 @@ public class GradesController extends SceneController{
 
 	// Add functions
 	public void addSem(MouseEvent e) {
-		System.out.println("clicked on +");
-		System.out.println(rightContent.getChildren());
-		rightContent.getChildren().add(newSem());
-		System.out.println(rightContent.getChildren());
+		semLst.getChildren().add(semLst.getChildren().size() -1, newSem());
 	}
 
-	public void addClass(MouseEvent e) {}
+	public void addClass(MouseEvent e) {
+		//classLst.getChildren().add(semLst.getChildren().size() -1, newSem());
+	}
 
 	public void addPart(MouseEvent e) {}
 
 	public void addGrade(MouseEvent e) {}
 
-	// New nodes
+	// ----------------------------------------------------------------------------- New components
+
 	private TitledPane newSem() {
-		TitledPane newSem = new TitledPane();
-		AnchorPane.setTopAnchor(newSem, 50.0);
-		AnchorPane.setLeftAnchor(newSem, 50.0);
-		newSem.setPrefSize(200, 150);
+		Button addClassBtn = new Button("+");
+		addClassBtn.setOnMouseClicked(e -> addClass(e));
+
+		VBox classLst = new VBox();
+		classLst.setPadding(new Insets(2, 2, 2, 2));
+		classLst.getChildren().add(addClassBtn);
+
+		TitledPane newSem = new TitledPane("sem", classLst);
+		newSem.prefWidthProperty().bind(rightBg.widthProperty().subtract(30));
+		newSem.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		newSem.setAnimated(false);
 		return newSem;
 	}
 
 	private TitledPane newClass() {
-		TitledPane newClass = new TitledPane();
-		return newClass;
-	}
+		Button addPartBtn = new Button("+");
+		addPartBtn.setOnMouseClicked(e -> addClass(e));
 
-	private TitledPane newPart() { // maybe not titledpane from this on
-		TitledPane newClass = new TitledPane();
-		return null;
+		VBox partLst = new VBox();
+		partLst.setPadding(new Insets(2, 2, 2, 2));
+		partLst.getChildren().add(addPartBtn);
+
+		TitledPane newClass = new TitledPane("class", partLst);
+		newClass.prefWidthProperty().bind(rightBg.widthProperty().subtract(30));
+		newClass.setPrefHeight(Region.USE_COMPUTED_SIZE);
+		newClass.setAnimated(false);
+		return newClass;
 	}
 }

@@ -67,16 +67,12 @@ public class LoginController extends SceneController {
 				// Register successful & login
 				login(e);
 
-				// Rest login scene
+				// Reset login scene
 				loginNotice(false, "");
 				loginOrReg(true);
 				break;
-			
-			case 1:
-				// New username already taken
-				break;
 		
-			case 2:
+			case 1:
 				// Invalid new username
 				Start.setCurrentUser(0);
 				loginNotice(true, "Invalid Username, please keep it between 2 to 16 charactors.");
