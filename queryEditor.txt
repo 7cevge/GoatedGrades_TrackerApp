@@ -77,3 +77,5 @@ CREATE TABLE timeStamps (
 
 -- ------------------------------------------------ testing
 INSERT INTO users VALUES ("wdc");
+
+SELECT * FROM users WHERE users.userId = 1;

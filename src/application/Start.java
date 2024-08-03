@@ -15,19 +15,20 @@ public class Start extends Application {
 	}
 
 	// ------------------------------------------------------------ Static / application variables
-	private static int currentUser;
+	private static UserObj currentUser;
 	private static ArrayList<WindowController> windowLst = new ArrayList<>(3);
 	private static Stage mainStage;
 
 	// Set and get current userId
 	public static void setCurrentUser(int userId) {
 		if (userId != 0) {
-			currentUser = userId;
+			String[] userInfo = Queries.getUserInfo(userId);
+			currentUser = new UserObj(Integer.parseInt(userInfo[0]), userInfo[1], userInfo[2], userInfo[3], userInfo[4]);
 		} else {
-			currentUser = 0;
+			currentUser = new UserObj();
 		}
 	}
-	public static int getCurrentUser() {
+	public static UserObj getCurrentUser() {
 		return currentUser;
 	}
 

@@ -4,7 +4,7 @@ import javafx.scene.input.MouseEvent;
 
 public class DeleteController {
     public void yes(MouseEvent e) {
-        Queries.delete(Start.getCurrentUser());
+        Queries.delete(Start.getCurrentUser().getUserId());
         Start.getFromWindowLst(0).exit(e);
         
         SceneController.getWindowController().setCurScene("/LoginScene.fxml");

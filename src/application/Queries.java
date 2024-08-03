@@ -102,6 +102,34 @@ public class Queries {
 		}
 	}
 
+	public static String[] getUserInfo(int userId) {
+		try {
+			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+			ResultSet result;
+			PreparedStatement query;
+
+			String[] userInfo = new String[5];
+			int i = 0;
+
+			query = connection.prepareStatement(
+				"select * from users where users.userId = ?");
+			query.setInt(1, userId);
+			result = query.executeQuery();
+
+			while (result.next()) {
+				userInfo[i] = result.getString(i +1);
+				i++;
+			}
+
+			return userInfo;
+
+		} catch (Exception err) {
+			System.err.println(err);
+			Start.setCurrentUser(0);
+			return null;
+		}
+	}
+
 	// ---------------------------------------------------------------------------------- Get Info
 	public static void getAllInfo() { // for now just get all info to a txt
 		try {

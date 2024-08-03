@@ -23,11 +23,12 @@ public class GradesController extends SceneController{
     private ScrollPane rightBg;
 
 	// -------------------------------------------------------------------------------- Cache data
-	private static ArrayList<String> Notes = new ArrayList();
+	//private static UserObj curUser = new UserObj();
 
-	public static ArrayList<String> getNotes() {
-		return null;
-	}
+	private static ArrayList<SemObj> casheSemLst = new ArrayList<SemObj>(8);
+	private static ArrayList<ClassObj> casheClassLst = new ArrayList<ClassObj>(32);
+	private static ArrayList<PartObj> cashePartLst = new ArrayList<PartObj>(32);
+	private static ArrayList<GradeObj> casheGradeLst = new ArrayList<GradeObj>(32);
 
 	// ------------------------------------------------------------------- The buttons on the left
 	public void logout(MouseEvent e) {
@@ -50,10 +51,8 @@ public class GradesController extends SceneController{
 	}
 
 	// --------------------------------------------------------------------------- Right side stuff
-
-	// Load in all the data for current user
-	public void load(MouseEvent e) { 
-		// need to change to not a mouseEvent but something called when scene change
+	public void load() { 
+		// Load in all the data for current user
 		System.out.println("hello lol");
 		Queries.getAllInfo();
 	}
@@ -72,7 +71,6 @@ public class GradesController extends SceneController{
 	public void addGrade(MouseEvent e) {}
 
 	// ----------------------------------------------------------------------------- New components
-
 	private TitledPane newSem() {
 		Button addClassBtn = new Button("+");
 		addClassBtn.setOnMouseClicked(e -> addClass(e));
