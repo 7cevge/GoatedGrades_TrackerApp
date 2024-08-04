@@ -21,7 +21,7 @@ public class Start extends Application {
 
 	// Set and get current userId
 	public static void setCurrentUser(int userId) {
-		if (userId != 0) {
+		if (userId != -1) {
 			String[] userInfo = Queries.getUserInfo(userId);
 			currentUser = new UserObj(Integer.parseInt(userInfo[0]), userInfo[1], userInfo[2], userInfo[3], userInfo[4]);
 		} else {

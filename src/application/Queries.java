@@ -13,7 +13,7 @@ public class Queries {
 			ResultSet result;
 			PreparedStatement query;
 
-			int userId = 0;
+			int userId = -1;
 
 			query = connection.prepareStatement(
 				"select userId from users where users.username = ? and users.userpw = ?");
@@ -25,10 +25,9 @@ public class Queries {
 				userId = result.getInt("userId");
 			}
 
-			// Check if exact match found
-			if (userId == 0) {
+			if (userId == -1) {
 				// Exact match not found
-				userId = 0;
+				userId = -1;
 
 				query = connection.prepareStatement(
 					"select userId from users where users.username = ?");
@@ -39,7 +38,7 @@ public class Queries {
 					userId = result.getInt("userId");
 				}
 
-				if (userId == 0) {
+				if (userId == -1) {
 					// Username not found
 					return 2;
 				} else {
@@ -55,7 +54,7 @@ public class Queries {
 
 		} catch (Exception err) {
 			System.err.println(err);
-			Start.setCurrentUser(0);
+			Start.setCurrentUser(-1);
 			return 3;
 		}
 	}
@@ -78,7 +77,7 @@ public class Queries {
 
 		} catch (Exception err) {
 			System.err.println(err);
-			Start.setCurrentUser(0);
+			Start.setCurrentUser(-1);
 			return 2;
 		}
 	}
@@ -92,7 +91,7 @@ public class Queries {
 			query.setInt(1, userId);
 			query.executeUpdate();
 
-			Start.setCurrentUser(0);
+			Start.setCurrentUser(-1);
 
 			return true;
 
@@ -125,7 +124,7 @@ public class Queries {
 
 		} catch (Exception err) {
 			System.err.println(err);
-			Start.setCurrentUser(0);
+			Start.setCurrentUser(-1);
 			return null;
 		}
 	}

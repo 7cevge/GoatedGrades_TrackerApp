@@ -29,7 +29,7 @@ public class UserObj {
     }
 
     // ------------------------------------------------------------- Set, get, and update functions
-    // Userid
+    // Userid - no update
     private void setUserId(int userIdIn) {
         userId = userIdIn;
     }
@@ -40,7 +40,7 @@ public class UserObj {
         username = usernameIn;
     }
     public void updateUsername(String usernameIn) {
-        username = usernameIn;
+        setUsername(usernameIn);
         isDirty = true;
     }
     public String getUsername() {return username;}
@@ -50,7 +50,7 @@ public class UserObj {
         userpw = userpwIn;
     }
     public void updateUserpw(String userpwIn) {
-        userpw = userpwIn;
+        setUserpw(userpwIn);
         isDirty = true;
     }
     public String getUserpw() {return userpw;}
@@ -59,6 +59,10 @@ public class UserObj {
     private void setUserNote(String userNoteIn) {
         userNote = userNoteIn;
     }
+    public void updateUserNote(String userNoteIn) {
+        setUserNote(userNoteIn);
+        isDirty = true;
+    }
     public String getUserNote() {return userNote;}
 
     // UserPfp
@@ -66,7 +70,7 @@ public class UserObj {
         userPfp = userPfpIn;
     }
     public void updateUserPfp(String userPfpIn) {
-        userPfp = userPfpIn;
+        setUserPfp(userPfpIn);
         isDirty = true;
     }
     public String getUserPfp() {return userPfp;}

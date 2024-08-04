@@ -36,14 +36,14 @@ public class LoginController extends SceneController {
 
 			case 1:
 				// Username found, but userpw mismatch
-				Start.setCurrentUser(0);
+				Start.setCurrentUser(-1);
 
 				loginNotice(true, "Entered username found, but password did not match.");
 				break;
 
 			case 2:
 				// Username not found
-				Start.setCurrentUser(0);
+				Start.setCurrentUser(-1);
 				
 				loginNotice(true, 
 				"Entered username not found, would you like to register this as a new user?");
@@ -52,7 +52,7 @@ public class LoginController extends SceneController {
 
 			default:
 				// Unknown Error
-				Start.setCurrentUser(0);
+				Start.setCurrentUser(-1);
 
 				loginNotice(true, "Unknown error had occurred.");
 				break;
@@ -74,12 +74,12 @@ public class LoginController extends SceneController {
 		
 			case 1:
 				// Invalid new username
-				Start.setCurrentUser(0);
+				Start.setCurrentUser(-1);
 				loginNotice(true, "Invalid Username, please keep it between 2 to 16 charactors.");
 				break;
 
 			default:
-				Start.setCurrentUser(0);
+				Start.setCurrentUser(-1);
 				loginNotice(true, "Unknown error has occurred.");
 				break;
 		}

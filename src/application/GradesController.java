@@ -23,12 +23,8 @@ public class GradesController extends SceneController{
     private ScrollPane rightBg;
 
 	// -------------------------------------------------------------------------------- Cache data
-	//private static UserObj curUser = new UserObj();
 
 	private static ArrayList<SemObj> casheSemLst = new ArrayList<SemObj>(8);
-	private static ArrayList<ClassObj> casheClassLst = new ArrayList<ClassObj>(32);
-	private static ArrayList<PartObj> cashePartLst = new ArrayList<PartObj>(32);
-	private static ArrayList<GradeObj> casheGradeLst = new ArrayList<GradeObj>(32);
 
 	// ------------------------------------------------------------------- The buttons on the left
 	public void logout(MouseEvent e) {
