@@ -3,37 +3,62 @@ package application;
 import java.util.ArrayList;
 
 public class ClassObj {
-    private static int ClassCount = 0;
+    private static int classCount = 0;
 
-    private int classId;
-    private String className;
+    private int classId; // not null
+    private String className; // not null
     private String classCode;
-    private int classCredit;
-    private int classGradeA;
-    private int classGradeB;
-    private int classGradeC;
+    private double classCredit;
+    private double classGradeA;
+    private double classGradeB;
+    private double classGradeC;
     private String classActualGrade;
     private String classNote;
-    private int semId;
+    private int semId; // not null
 
-    private int cacheClassId;
-    private int cacheSemId;
+    private int cacheClassId; // not null
+    private int cacheSemId; // not null
     private ArrayList<PartObj> partLst = new ArrayList<PartObj>(8); // List of cachePartIds
-    private boolean isDirty;
+    private boolean isDirty; // not null
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public ClassObj() {
-        setClassId(0); // irrelavent
+    public ClassObj(int cacheSemIdIn) {
+        setClassId(-1); // irrelavent
         setClassName("CLASS");
-        ClassCount++;
+        setClassCode(null);
+        setClassCredit(-1);
+        setClassGrade(-1, 'a');
+        setClassGrade(-1, 'b');
+        setClassGrade(-1, 'c');
+        setClassActualGrade(null);
+        setClassNote(null);
+        setSemId(-1); // irrelavent
+
+        setCacheClassId(classCount);
+        setCacheSemId(cacheSemIdIn);
+        classCount++;
         isDirty = true;
     }
 
     // Constructor for existing data
-    public ClassObj(int semIdIn, String semNameIn, String semNoteIn) {
-        
-        ClassCount++;
+    public ClassObj(int classIdIn, String classNameIn, String classCodeIn, int classCreditIn, 
+        int classGradeAIn, int classGradeBIn, int classGradeCIn, String classActualGradeIn, 
+        String classNoteIn, int semIdIn, int cacheSemIdIn) {
+        setClassId(classIdIn);
+        setClassName(classNameIn);
+        setClassCode(classCodeIn);
+        setClassCredit(classCreditIn);
+        setClassGrade(classGradeAIn, 'a');
+        setClassGrade(classGradeBIn, 'b');
+        setClassGrade(classGradeCIn, 'c');
+        setClassActualGrade(classActualGradeIn);
+        setClassNote(classNoteIn);
+        setSemId(semIdIn);
+
+        setCacheClassId(classCount);
+        setCacheSemId(cacheSemIdIn);
+        classCount++;
         isDirty = false;
     }
 
@@ -65,17 +90,17 @@ public class ClassObj {
     public String getClassCode() {return classCode;}
 
     // ClassCredit
-    private void setClassCredit(int classCreditIn) {
+    private void setClassCredit(double classCreditIn) {
         classCredit = classCreditIn;
     }
-    public void updateClassCredit(int classCreditIn) {
+    public void updateClassCredit(double classCreditIn) {
         setClassCredit(classCreditIn);
         isDirty = true;
     }
-    public int getClassCredit() {return classCredit;}
+    public double getClassCredit() {return classCredit;}
 
     // ClassGradeLetter
-    private void setClassGrade(int classGradeIn, char letter) {
+    private void setClassGrade(double classGradeIn, char letter) {
         switch (letter) {
             case 'a':
                 classGradeA = classGradeIn;
@@ -94,11 +119,11 @@ public class ClassObj {
                 break;
         }
     }
-    public void updateClassGrade(int classGradeIn, char letter) {
+    public void updateClassGrade(double classGradeIn, char letter) {
         setClassGrade(classGradeIn, letter);
         isDirty = true;
     }
-    public int getClassGrade(char letter) {
+    public double getClassGrade(char letter) {
         switch (letter) {
             case 'a':
                 return classGradeA;
@@ -116,13 +141,45 @@ public class ClassObj {
     }
 
     // ClassActualGrade
-    // ClassNote
-    // SemId
-    // CacheClassId
-    // CacheSemId
+    private void setClassActualGrade(String classActualGradeIn) {
+        classActualGrade = classActualGradeIn;
+    }
+    public void updateClassActualGrade(String classActualGradeIn) {
+        setClassActualGrade(classActualGradeIn);
+        isDirty = true;
+    }
+    public String getClassActualGrade() {return classActualGrade;}
 
-    // PartLst
-    public void modPartLst(PartObj partIn, boolean add) {
+    // ClassNote
+    private void setClassNote(String classNoteIn) {
+        classNote = classNoteIn;
+    }
+    public void updateClassNote(String classNoteIn) {
+        setClassNote(classNoteIn);
+        isDirty = true;
+    }
+    public String getClassNote() {return classNote;}
+
+    // SemId - no update
+    private void setSemId(int SemIdIn) {
+        semId = SemIdIn;
+    }
+    public int getSemId() {return semId;}
+
+    // CacheClassId - no update
+    private void setCacheClassId(int cacheClassIdIn) {
+        cacheClassId = cacheClassIdIn;
+    }
+    public int getCacheClassId() {return cacheClassId;}
+
+    // CacheSemId - no update
+    private void setCacheSemId(int cacheSemIdIn) {
+        cacheSemId = cacheSemIdIn;
+    }
+    public int getCacheSemId() {return cacheSemId;}
+
+    // PartLst - no set
+    public void updatePartLst(PartObj partIn, boolean add) {
         if (add) {
             partLst.add(partIn);
         } else {

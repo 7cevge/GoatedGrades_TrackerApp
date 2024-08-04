@@ -8,7 +8,6 @@ DROP TABLE sems;
 DROP TABLE classes;
 DROP TABLE parts;
 DROP TABLE grades;
-DROP TABLE timeStamps;
 
 -- ------------------------------------ clear data of table
 DELETE FROM users;
@@ -16,7 +15,6 @@ DELETE FROM sems;
 DELETE FROM classes;
 DELETE FROM parts;
 DELETE FROM grades;
-DELETE FROM timeStamps;
 
 -- ------------------------------------------- create table
 CREATE TABLE users(
@@ -37,10 +35,10 @@ CREATE TABLE classes (
     classId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     className TEXT NOT NULL,
     classCode TEXT,
-    classCredit INTEGER,
-    classGradeA INTEGER,
-    classGradeB INTEGER,
-    classGradeC INTEGER,
+    classCredit REAL,
+    classGradeA REAL,
+    classGradeB REAL,
+    classGradeC REAL,
     classActualGrade TEXT,
     classNote TEXT,
     semId INTEGER NOT NULL,
@@ -49,7 +47,7 @@ CREATE TABLE classes (
 CREATE TABLE parts (
     partId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     partName TEXT NOT NULL,
-    partPercent INTEGER NOT NULL,
+    partPercent REAL NOT NULL,
     partNote TEXT,
     classId INTEGER NOT NULL,
     FOREIGN KEY (classId) REFERENCES classes(classId)
@@ -61,18 +59,11 @@ CREATE TABLE grades (
     gradeGotEst REAL,
     gradeOutOfEst REAL,
     gradeNote TEXT,
+    gradeDD INTEGER,
+    gradeMM INTEGER,
+    gradeYY INTEGER,
     partId INTEGER NOT NULL,
     FOREIGN KEY (partId) REFERENCES parts(partId)
-);
-CREATE TABLE timeStamps (
-    timeId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-    timeDD INTEGER NOT NULL,
-    timeMM INTEGER NOT NULL,
-    timeYY INTEGER NOT NULL,
-    gradeGot REAL,
-    gradeOutOf REAL,
-    gradeId INTEGER NOT NULL,
-    FOREIGN KEY (gradeId) REFERENCES grades(gradeId)
 );
 
 -- ------------------------------------------------ testing

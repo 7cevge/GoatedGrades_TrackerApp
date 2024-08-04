@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -21,10 +19,6 @@ public class GradesController extends SceneController{
 
 	@FXML
     private ScrollPane rightBg;
-
-	// -------------------------------------------------------------------------------- Cache data
-
-	private static ArrayList<SemObj> casheSemLst = new ArrayList<SemObj>(8);
 
 	// ------------------------------------------------------------------- The buttons on the left
 	public void logout(MouseEvent e) {
@@ -82,6 +76,7 @@ public class GradesController extends SceneController{
 		return newSem;
 	}
 
+	/* 
 	private TitledPane newClass() {
 		Button addPartBtn = new Button("+");
 		addPartBtn.setOnMouseClicked(e -> addClass(e));
@@ -95,5 +90,5 @@ public class GradesController extends SceneController{
 		newClass.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		newClass.setAnimated(false);
 		return newClass;
-	}
+	}*/
 }

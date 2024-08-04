@@ -3,24 +3,25 @@ package application;
 import java.util.ArrayList;
 
 public class SemObj {
-    private static int SemCount = 0;
+    private static int semCount = 0;
 
-    private int semId;
-    private String semName;
+    private int semId; // not null
+    private String semName; // not null
     private String semNote;
 
-    private int cacheSemId;
+    private int cacheSemId; // not null
     private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8); // list of cacheClassIds
-    private boolean isDirty;
+    private boolean isDirty; // not null
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public SemObj() {
-        setSemId(0); // irrelavent
+        setSemId(-1); // irrelavent
         setSemName("SEM");
         setSemNote(null);
-        setCasheSemId(SemCount);
-        SemCount++;
+
+        setCacheSemId(semCount);
+        semCount++;
         isDirty = true;
     }
 
@@ -29,8 +30,9 @@ public class SemObj {
         setSemId(semIdIn);
         setSemName(semNameIn);
         setSemNote(semNoteIn);
-        setCasheSemId(SemCount);
-        SemCount++;
+
+        setCacheSemId(semCount);
+        semCount++;
         isDirty = false;
     }
 
@@ -61,11 +63,11 @@ public class SemObj {
     }
     public String getSemNote() {return semNote;}
 
-    // CasheSemId - no update
-    private void setCasheSemId(int casheSemIdIn) {
-        cacheSemId = casheSemIdIn;
+    // CacheSemId - no update
+    private void setCacheSemId(int cacheSemIdIn) {
+        cacheSemId = cacheSemIdIn;
     }
-    public int getCasheSemId() {return cacheSemId;}
+    public int getCacheSemId() {return cacheSemId;}
 
     // ClassLst - no set
     public void updateClassLst(ClassObj classIn, boolean add, boolean init) {

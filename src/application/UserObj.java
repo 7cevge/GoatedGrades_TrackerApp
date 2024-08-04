@@ -1,21 +1,25 @@
 package application;
 
+import java.util.ArrayList;
+
 public class UserObj {
-    private int userId;
-    private String username;
+    private int userId; // not null
+    private String username; // not null
     private String userpw;
     private String userNote;
     private String userPfp;
 
-    private boolean isDirty;
+    private ArrayList<SemObj> semLst = new ArrayList<SemObj>(8);
+    private boolean isDirty; // not null
 
     // -------------------------------------------------------------------------------- Constructor
     public UserObj() {
-        setUserId(0);
-        setUsername(null);
+        setUserId(-1);
+        setUsername("default");
         setUserpw(null);
         setUserNote(null);
         setUserPfp(null);
+
         isDirty = false;
     }
 
@@ -25,6 +29,7 @@ public class UserObj {
         setUserpw(userpwIn);
         setUserNote(userNoteIn);
         setUserPfp(userPfpIn);
+        
         isDirty = false;
     }
 
@@ -74,6 +79,20 @@ public class UserObj {
         isDirty = true;
     }
     public String getUserPfp() {return userPfp;}
+
+    // ClassLst - no set
+    public void updateSemLst(SemObj semIn, boolean add, boolean init) {
+        if (add) {
+            semLst.add(semIn);
+        } else {
+            semLst.remove(semIn);
+        }
+
+        if (!init) {
+            isDirty = true;
+        }
+    }
+    public ArrayList<SemObj> getSemLst() {return semLst;}
 
     // isDirty
     public boolean getIsDirty() {return isDirty;}
