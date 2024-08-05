@@ -1,8 +1,8 @@
 package application;
 
-public class GradeObj {
-    private static int gradeCount = 0;
+import javafx.scene.layout.AnchorPane;
 
+public class GradeObj extends Obj {
     private int gradeId; // not null
     private double gradeGot;
     private double gradeOutOf;
@@ -14,13 +14,14 @@ public class GradeObj {
     private int gradeYY;
     private int partId; // not null
 
-    private int cacheGradeId; // not null
-    private int cachePartId; // not null
+    private PartObj parent; // not null
     private boolean isDirty; // not null
+
+    private AnchorPane component;
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public GradeObj(int cachePartIdIn) {
+    public GradeObj(PartObj parentIn, AnchorPane componentIn) {
         setGradeId(-1); // irrelavent
         setGradeGot(-1);
         setGradeOutOf(-1);
@@ -30,15 +31,15 @@ public class GradeObj {
         setGradeDate(-1,-1,-1);
         setPartId(-1); // irrelavent
 
-        setCacheGradeId(gradeCount);
-        setCachePartId(cachePartIdIn);
-        gradeCount++;
+        setParent(parentIn);
         isDirty = true;
+
+        setComponent(componentIn);
     }
 
     // Constructor for existing data
     public GradeObj(int gradeIdIn, double gradeGotIn, double gradeOutOfIn, double gradeGotEstIn, double gradeOutOfEstIn,
-        String gradeNoteIn, int gradeDDIn, int gradeMMIn, int gradeYYIn, int partIdIn, int cachePartIdIn) {
+        String gradeNoteIn, int gradeDDIn, int gradeMMIn, int gradeYYIn, int partIdIn, PartObj parentIn, AnchorPane componentIn) {
         setGradeId(gradeIdIn); // irrelavent
         setGradeGot(gradeGotIn);
         setGradeOutOf(gradeOutOfIn);
@@ -48,10 +49,10 @@ public class GradeObj {
         setGradeDate(gradeDDIn, gradeMMIn, gradeYYIn);
         setPartId(partIdIn); // irrelavent
 
-        setCacheGradeId(gradeCount);
-        setCachePartId(cachePartIdIn);
-        gradeCount++;
+        setParent(parentIn);
         isDirty = false;
+
+        setComponent(componentIn);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions
@@ -132,18 +133,18 @@ public class GradeObj {
     }
     public int getPartId() {return partId;}
 
-    // CacheGradeId - no update
-    private void setCacheGradeId(int cacheGradeIdIn) {
-        cacheGradeId = cacheGradeIdIn;
+    // Parent - no update
+    private void setParent(PartObj parentIn) {
+        parent = parentIn;
     }
-    public int getCacheGradeId() {return cacheGradeId;}
-
-    // CachePartId - no update
-    private void setCachePartId(int cachePartIdIn) {
-        cachePartId = cachePartIdIn;
-    }
-    public int getCachePartId() {return cachePartId;}
+    public PartObj getParent() {return parent;}
 
     // IsDirty
     public boolean getIsDirty() {return isDirty;}
+
+    // Component
+    public void setComponent(AnchorPane componentIn) {
+        component = componentIn;
+    }
+    public AnchorPane getComponent() {return component;}
 }

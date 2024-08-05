@@ -2,38 +2,41 @@ package application;
 
 import java.util.ArrayList;
 
-public class SemObj {
-    private static int semCount = 0;
+import javafx.scene.control.TitledPane;
 
+public class SemObj extends Obj {
     private int semId; // not null
     private String semName; // not null
     private String semNote;
 
-    private int cacheSemId; // not null
     private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8); // list of cacheClassIds
     private boolean isDirty; // not null
 
+    private TitledPane component;
+
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public SemObj() {
+    public SemObj(TitledPane componentIn) {
         setSemId(-1); // irrelavent
         setSemName("SEM");
         setSemNote(null);
 
-        setCacheSemId(semCount);
-        semCount++;
         isDirty = true;
+
+        setComponent(componentIn);
+        Start.getCurrentUser().updateSemLst(this, true, false);
     }
 
     // Constructor for existing data
-    public SemObj(int semIdIn, String semNameIn, String semNoteIn) {
+    public SemObj(int semIdIn, String semNameIn, String semNoteIn, TitledPane componentIn) {
         setSemId(semIdIn);
         setSemName(semNameIn);
         setSemNote(semNoteIn);
 
-        setCacheSemId(semCount);
-        semCount++;
         isDirty = false;
+
+        setComponent(componentIn);
+        Start.getCurrentUser().updateSemLst(this, true, true);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions
@@ -63,12 +66,6 @@ public class SemObj {
     }
     public String getSemNote() {return semNote;}
 
-    // CacheSemId - no update
-    private void setCacheSemId(int cacheSemIdIn) {
-        cacheSemId = cacheSemIdIn;
-    }
-    public int getCacheSemId() {return cacheSemId;}
-
     // ClassLst - no set
     public void updateClassLst(ClassObj classIn, boolean add, boolean init) {
         if (add) {
@@ -85,4 +82,10 @@ public class SemObj {
 
     // IsDirty
     public boolean getIsDirty() {return isDirty;}
+
+    // Component
+    public void setComponent(TitledPane componentIn) {
+        component = componentIn;
+    }
+    public TitledPane getComponent() {return component;}
 }

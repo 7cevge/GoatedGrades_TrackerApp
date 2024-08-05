@@ -2,9 +2,9 @@ package application;
 
 import java.util.ArrayList;
 
-public class ClassObj {
-    private static int classCount = 0;
+import javafx.scene.control.TitledPane;
 
+public class ClassObj extends Obj {
     private int classId; // not null
     private String className; // not null
     private String classCode;
@@ -16,14 +16,15 @@ public class ClassObj {
     private String classNote;
     private int semId; // not null
 
-    private int cacheClassId; // not null
-    private int cacheSemId; // not null
+    private SemObj parent; // not null
     private ArrayList<PartObj> partLst = new ArrayList<PartObj>(8); // List of cachePartIds
     private boolean isDirty; // not null
 
+    private TitledPane component;
+
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public ClassObj(int cacheSemIdIn) {
+    public ClassObj(SemObj parentIn, TitledPane componentIn) {
         setClassId(-1); // irrelavent
         setClassName("CLASS");
         setClassCode(null);
@@ -35,16 +36,16 @@ public class ClassObj {
         setClassNote(null);
         setSemId(-1); // irrelavent
 
-        setCacheClassId(classCount);
-        setCacheSemId(cacheSemIdIn);
-        classCount++;
+        setParent(parentIn);
         isDirty = true;
+
+        setComponent(componentIn);
     }
 
     // Constructor for existing data
     public ClassObj(int classIdIn, String classNameIn, String classCodeIn, int classCreditIn, 
         int classGradeAIn, int classGradeBIn, int classGradeCIn, String classActualGradeIn, 
-        String classNoteIn, int semIdIn, int cacheSemIdIn) {
+        String classNoteIn, int semIdIn, SemObj parentIn, TitledPane componentIn) {
         setClassId(classIdIn);
         setClassName(classNameIn);
         setClassCode(classCodeIn);
@@ -56,10 +57,10 @@ public class ClassObj {
         setClassNote(classNoteIn);
         setSemId(semIdIn);
 
-        setCacheClassId(classCount);
-        setCacheSemId(cacheSemIdIn);
-        classCount++;
+        setParent(parentIn);
         isDirty = false;
+
+        setComponent(componentIn);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions
@@ -166,17 +167,11 @@ public class ClassObj {
     }
     public int getSemId() {return semId;}
 
-    // CacheClassId - no update
-    private void setCacheClassId(int cacheClassIdIn) {
-        cacheClassId = cacheClassIdIn;
+    // Parent - no update
+    private void setParent(SemObj parentIn) {
+        parent = parentIn;
     }
-    public int getCacheClassId() {return cacheClassId;}
-
-    // CacheSemId - no update
-    private void setCacheSemId(int cacheSemIdIn) {
-        cacheSemId = cacheSemIdIn;
-    }
-    public int getCacheSemId() {return cacheSemId;}
+    public SemObj getParent() {return parent;}
 
     // PartLst - no set
     public void updatePartLst(PartObj partIn, boolean add) {
@@ -190,4 +185,10 @@ public class ClassObj {
 
     // IsDirty
     public boolean getIsDirty() {return isDirty;}
+
+    // Component
+    public void setComponent(TitledPane componentIn) {
+        component = componentIn;
+    }
+    public TitledPane getComponent() {return component;}
 }

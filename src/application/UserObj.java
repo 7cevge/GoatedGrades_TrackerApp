@@ -2,7 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
-public class UserObj {
+public class UserObj extends Obj {
     private int userId; // not null
     private String username; // not null
     private String userpw;
