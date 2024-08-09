@@ -65,8 +65,33 @@
     -fx-image: url(../../graphics/pfp.jpg);
 }
 .cardText {
-    -fx-font-size: 7px;
+    -fx-font-size: 12px;
 	-fx-fill: #000000;
-	font-size: 7px;
+	font-size: 12px;
 	fill: #000000;
+}
+
+/*  */
+.inClass {
+	-fx-font-size: 10px;
+	-fx-letter-spacing: 2px;
+	-fx-fill: #000000;
+	font-size: 10px;
+	letter-spacing: 2px;
+	fill: #000000;
+}
+
+.inClass .text-field {
+	-fx-background-color: rgba(224, 224, 224, 0.5);
+	background-color: rgba(224, 224, 224, 0.5);
+}
+.inClass .choice-box {
+	-fx-background-color: rgba(224, 224, 224, 0.5);
+	background-color: rgba(224, 224, 224, 0.5);
+}
+
+.gradePercent {
+	-fx-background-color: rgba(224, 224, 224, 0.5);
+	-fx-alignment: center-right;
+	background-color: rgba(224, 224, 224, 0.5);
 }

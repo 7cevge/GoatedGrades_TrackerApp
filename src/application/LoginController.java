@@ -25,45 +25,38 @@ public class LoginController extends SceneController {
 	ImageView noticeImg;
 
 	public void login(MouseEvent e) {
-		int loginStatus = Queries.login(usernameIn.getText(), userpwIn.getText());
+		Estat loginStatus = Queries.login(usernameIn.getText(), userpwIn.getText());
 
 		switch (loginStatus) {
-			case 0:
-				// Login successful
+			case Successful:
 				windowController.setCurScene("/GradesScene.fxml");
 				windowController.changeScene();
 				break;
 
-			case 1:
-				// Username found, but userpw mismatch
+			case UserpwMismatch:
 				Start.setCurrentUser(-1);
-
 				loginNotice(true, "Entered username found, but password did not match.");
 				break;
 
-			case 2:
-				// Username not found
+			case UserNotFound:
 				Start.setCurrentUser(-1);
-				
 				loginNotice(true, 
 				"Entered username not found, would you like to register this as a new user?");
 				loginOrReg(false);
 				break;
 
 			default:
-				// Unknown Error
 				Start.setCurrentUser(-1);
-
 				loginNotice(true, "Unknown error had occurred.");
 				break;
 		}
 	}
 
 	public void register(MouseEvent e) {
-		int registerStatus = Queries.register(usernameIn.getText(), userpwIn.getText());
+		Estat registerStatus = Queries.register(usernameIn.getText(), userpwIn.getText());
 
 		switch (registerStatus) {
-			case 0:
+			case Successful:
 				// Register successful & login
 				login(e);
 
@@ -72,8 +65,7 @@ public class LoginController extends SceneController {
 				loginOrReg(true);
 				break;
 		
-			case 1:
-				// Invalid new username
+			case Invalid:
 				Start.setCurrentUser(-1);
 				loginNotice(true, "Invalid Username, please keep it between 2 to 16 charactors.");
 				break;

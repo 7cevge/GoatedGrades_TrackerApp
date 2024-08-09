@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class Queries {
-	public static int login(String username, String password) {
+	public static Estat login(String username, String password) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			ResultSet result;
@@ -39,33 +39,30 @@ public class Queries {
 				}
 
 				if (userId == -1) {
-					// Username not found
-					return 2;
+					return Estat.UserNotFound;
 				} else {
-					// Username found but not password
-					return 1;
+					return Estat.UserpwMismatch;
 				}
 
 			} else {
-				// Found exact match
 				Start.setCurrentUser(userId);
-				return 0;
+				return Estat.Successful;
 			}
 
 		} catch (Exception err) {
 			System.err.println(err);
 			Start.setCurrentUser(-1);
-			return 3;
+			return Estat.Error;
 		}
 	}
 
-	public static int register(String username, String password) {
+	public static Estat register(String username, String password) {
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			PreparedStatement query;
 
 			if (username.length() < 2 || username.length() > 16) {
-				return 1;
+				return Estat.Invalid;
 			}
 
 			query = connection.prepareStatement("insert into users(username, userpw) values (?, ?)");
@@ -73,12 +70,12 @@ public class Queries {
 			query.setString(2, password);
 			query.executeUpdate();
 
-			return 0;
+			return Estat.Successful;
 
 		} catch (Exception err) {
 			System.err.println(err);
 			Start.setCurrentUser(-1);
-			return 2;
+			return Estat.Error;
 		}
 	}
 

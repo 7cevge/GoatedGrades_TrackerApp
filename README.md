@@ -87,7 +87,7 @@
   - [ ] Shortcut keys
   - [ ] Hover windows
   
-### ERD: 
-  Needs some fixing, especially the timeline entity!
-
+### ERD:
  ![GGT ERD](graphics/erd.png "GGT ERD")
+
+## Showcase:

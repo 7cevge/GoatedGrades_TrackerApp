@@ -2,7 +2,7 @@ package application;
 
 import java.util.ArrayList;
 
-import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 
 public class PartObj extends Obj {
     private int partId; // not null
@@ -15,11 +15,11 @@ public class PartObj extends Obj {
     private ArrayList<GradeObj> gradeLst = new ArrayList<GradeObj>(8); // List of cachePartIds
     private boolean isDirty; // not null
 
-    private ScrollPane component;
+    private HBox component;
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public PartObj(ClassObj parentIn, ScrollPane componentIn) {
+    public PartObj(ClassObj parentIn, HBox componentIn) {
         setPartId(-1); // irrelavent
         setPartName("PART");
         setPartPercent(-1);
@@ -34,7 +34,7 @@ public class PartObj extends Obj {
 
     // Constructor for existing data
     public PartObj(int partIdIn, String partNameIn, double partPercentIn, String partNoteIn, 
-        int classIdIn, ClassObj parentIn, ScrollPane componentIn) {
+        int classIdIn, ClassObj parentIn, HBox componentIn) {
         setPartId(partIdIn); // irrelavent
         setPartName(partNameIn);
         setPartPercent(partPercentIn);
@@ -110,8 +110,8 @@ public class PartObj extends Obj {
     public boolean getIsDirty() {return isDirty;}
 
     // Component
-    public void setComponent(ScrollPane componentIn) {
+    public void setComponent(HBox componentIn) {
         component = componentIn;
     }
-    public ScrollPane getComponent() {return component;}
+    public HBox getComponent() {return component;}
 }
