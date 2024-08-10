@@ -12,6 +12,8 @@ public class GradeObj extends Obj {
     private int gradeDD;
     private int gradeMM;
     private int gradeYY;
+    private boolean isEst;
+    private int gradeOrder;
     private int partId; // not null
 
     private PartObj parent; // not null
@@ -21,7 +23,7 @@ public class GradeObj extends Obj {
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public GradeObj(PartObj parentIn, AnchorPane componentIn) {
+    public GradeObj(int gradeOrderin, PartObj parentIn, AnchorPane componentIn) {
         setGradeId(-1); // irrelavent
         setGradeGot(-1);
         setGradeOutOf(-1);
@@ -29,6 +31,8 @@ public class GradeObj extends Obj {
         setGradeOutOfEst(-1);
         setGradeNote(null);
         setGradeDate(-1,-1,-1);
+        setIsEst(0);
+        setGradeOrder(gradeOrderin);
         setPartId(-1); // irrelavent
 
         setParent(parentIn);
@@ -39,7 +43,8 @@ public class GradeObj extends Obj {
 
     // Constructor for existing data
     public GradeObj(int gradeIdIn, double gradeGotIn, double gradeOutOfIn, double gradeGotEstIn, double gradeOutOfEstIn,
-        String gradeNoteIn, int gradeDDIn, int gradeMMIn, int gradeYYIn, int partIdIn, PartObj parentIn, AnchorPane componentIn) {
+        String gradeNoteIn, int gradeDDIn, int gradeMMIn, int gradeYYIn, int isEstIn, int gradeOrderIn, 
+        int partIdIn, PartObj parentIn, AnchorPane componentIn) {
         setGradeId(gradeIdIn); // irrelavent
         setGradeGot(gradeGotIn);
         setGradeOutOf(gradeOutOfIn);
@@ -47,6 +52,8 @@ public class GradeObj extends Obj {
         setGradeOutOfEst(gradeOutOfEstIn);
         setGradeNote(gradeNoteIn);
         setGradeDate(gradeDDIn, gradeMMIn, gradeYYIn);
+        setIsEst(isEstIn);
+        setGradeOrder(gradeOrderIn);
         setPartId(partIdIn); // irrelavent
 
         setParent(parentIn);
@@ -126,6 +133,33 @@ public class GradeObj extends Obj {
         int[] gradeDate = {gradeDD, gradeMM, gradeYY};
         return gradeDate;
     }
+
+    // IsEst
+    private void setIsEst(int isEstIn) {
+        if (isEstIn == 0) {
+            isEst = false;
+        } else if (isEstIn == 1) {
+            isEst = true;
+        } else {
+            isEst = false;
+            System.err.println("Invalid arg on setIsEst!");
+        }
+    }
+    public void updateIsEst(int isEstIn) {
+        setIsEst(isEstIn);
+        isDirty = true;
+    }
+    public boolean getIsEst() {return isEst;}
+
+    // GradeOrder
+    private void setGradeOrder(int gradeOrderIn) {
+        gradeOrder = gradeOrderIn;
+    }
+    public void updateGradeOrder(int gradeOrderIn) {
+        setGradeOrder(gradeOrderIn);
+        isDirty = true;
+    }
+    public int getGradeOrder() {return gradeOrder;}
 
     // PartId - no update
     private void setPartId(int partIdIn) {

@@ -28,6 +28,7 @@ CREATE TABLE sems (
     semId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
     semName TEXT NOT NULL,
     semNote TEXT,
+    semOrder INTEGER NOT NULL,
     userId INTEGER NOT NULL,
     FOREIGN KEY (userId) REFERENCES users(userId)
 );
@@ -41,6 +42,7 @@ CREATE TABLE classes (
     classGradeC REAL,
     classActualGrade TEXT,
     classNote TEXT,
+    classOrder INTEGER NOT NULL,
     semId INTEGER NOT NULL,
     FOREIGN KEY (semId) REFERENCES sems(semId)
 );
@@ -49,6 +51,7 @@ CREATE TABLE parts (
     partName TEXT NOT NULL,
     partPercent REAL NOT NULL,
     partNote TEXT,
+    partOrder INTEGER NOT NULL,
     classId INTEGER NOT NULL,
     FOREIGN KEY (classId) REFERENCES classes(classId)
 );
@@ -62,6 +65,8 @@ CREATE TABLE grades (
     gradeDD INTEGER,
     gradeMM INTEGER,
     gradeYY INTEGER,
+    isEst INTEGER NOT NULL,
+    gradeOrder INTEGER NOT NULL,
     partId INTEGER NOT NULL,
     FOREIGN KEY (partId) REFERENCES parts(partId)
 );

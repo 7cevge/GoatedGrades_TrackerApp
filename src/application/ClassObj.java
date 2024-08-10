@@ -14,6 +14,7 @@ public class ClassObj extends Obj {
     private double classGradeC;
     private String classActualGrade;
     private String classNote;
+    private int classOrder;
     private int semId; // not null
 
     private SemObj parent; // not null
@@ -24,7 +25,7 @@ public class ClassObj extends Obj {
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public ClassObj(SemObj parentIn, TitledPane componentIn) {
+    public ClassObj(int classOrderIn, SemObj parentIn, TitledPane componentIn) {
         setClassId(-1); // irrelavent
         setClassName("CLASS");
         setClassCode(null);
@@ -34,6 +35,7 @@ public class ClassObj extends Obj {
         setClassGrade(-1, 'c');
         setClassActualGrade(null);
         setClassNote(null);
+        setClassOrder(classOrderIn);
         setSemId(-1); // irrelavent
 
         setParent(parentIn);
@@ -45,7 +47,7 @@ public class ClassObj extends Obj {
     // Constructor for existing data
     public ClassObj(int classIdIn, String classNameIn, String classCodeIn, int classCreditIn, 
         int classGradeAIn, int classGradeBIn, int classGradeCIn, String classActualGradeIn, 
-        String classNoteIn, int semIdIn, SemObj parentIn, TitledPane componentIn) {
+        String classNoteIn, int classOrderIn, int semIdIn, SemObj parentIn, TitledPane componentIn) {
         setClassId(classIdIn);
         setClassName(classNameIn);
         setClassCode(classCodeIn);
@@ -55,6 +57,7 @@ public class ClassObj extends Obj {
         setClassGrade(classGradeCIn, 'c');
         setClassActualGrade(classActualGradeIn);
         setClassNote(classNoteIn);
+        setClassOrder(classOrderIn);
         setSemId(semIdIn);
 
         setParent(parentIn);
@@ -160,6 +163,16 @@ public class ClassObj extends Obj {
         isDirty = true;
     }
     public String getClassNote() {return classNote;}
+
+    // ClassOrder
+    private void setClassOrder(int classOrderIn) {
+        classOrder = classOrderIn;
+    }
+    public void updateClassOrder(int classOrderIn) {
+        setClassOrder(classOrderIn);
+        isDirty = true;
+    }
+    public int getClassOrder() {return classOrder;}
 
     // SemId - no update
     private void setSemId(int SemIdIn) {

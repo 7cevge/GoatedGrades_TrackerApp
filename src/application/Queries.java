@@ -1,10 +1,11 @@
 package application;
 
-import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Queries {
 	public static Estat login(String username, String password) {
@@ -126,34 +127,45 @@ public class Queries {
 		}
 	}
 
-	// ---------------------------------------------------------------------------------- Get Info
-	public static void getAllInfo() { // for now just get all info to a txt
+	// ---------------------------------------------------------------------------------- Get Data
+	public static List<ArrayList<String[]>> getLoadData() {
 		try {
-			System.out.println("try start write");
-			FileWriter writer = new FileWriter("allInfo.txt");
-			writer.write("???");
-			writer.close();
-			System.out.println("done write");
-			/* 
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");
 			ResultSet result;
 			PreparedStatement query;
 
-			query = connection.prepareStatement(
-				"select username from users where users.username = ?");
-			query.setString(1, username);
-			result = query.executeQuery();
+			List<ArrayList<String[]>> allData = new ArrayList<>();
+			String[] tables = {"sems", "classes", "parts", "grades"};
+			int[] numOfColumns = {5, 11, 6, 12};
 
-			while (result.next()) {
-				fromDB = result.getString("username");
-			}*/
+			for (int i = 0; i < tables.length; i++) {
+				ArrayList<String[]> tableData = new ArrayList<String[]>();
+
+				query = connection.prepareStatement("select * from " + tables[i]);
+				result = query.executeQuery();
+
+				while (result.next()) {
+					String[] rowData = new String[numOfColumns[i]];
+
+					for (int j = 0; j < numOfColumns[i]; j++) {
+						rowData[j] = result.getString(j +1);
+					}
+
+					tableData.add(rowData);
+				}
+
+				allData.add(tableData);
+			}
+			
+			return allData;
 
 		} catch (Exception err) {
-			System.err.println(err.getMessage());
+			System.err.println(err);
+			return null;
 		}
 	}
 
-	// ------------------------------------------------------------------------- Set / Modify Info
+	// ------------------------------------------------------------------------- Save Modifications
 	public static void modifyInfo() {/* 
 		try {
 			Connection connection = DriverManager.getConnection("jdbc:sqlite:database.db");

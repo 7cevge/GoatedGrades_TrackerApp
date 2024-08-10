@@ -9,6 +9,7 @@ public class PartObj extends Obj {
     private String partName; // not null
     private double partPercent; // not null
     private String partNote;
+    private int partOrder;
     private int classId; // not null
 
     private ClassObj parent; // not null
@@ -19,11 +20,12 @@ public class PartObj extends Obj {
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public PartObj(ClassObj parentIn, HBox componentIn) {
+    public PartObj(int partOrderIn, ClassObj parentIn, HBox componentIn) {
         setPartId(-1); // irrelavent
         setPartName("PART");
         setPartPercent(-1);
         setPartNote(null);
+        setPartOrder(partOrderIn);
         setClassId(-1); // irrelavent
 
         setParent(parentIn);
@@ -34,11 +36,12 @@ public class PartObj extends Obj {
 
     // Constructor for existing data
     public PartObj(int partIdIn, String partNameIn, double partPercentIn, String partNoteIn, 
-        int classIdIn, ClassObj parentIn, HBox componentIn) {
+        int partOrderIn, int classIdIn, ClassObj parentIn, HBox componentIn) {
         setPartId(partIdIn); // irrelavent
         setPartName(partNameIn);
         setPartPercent(partPercentIn);
         setPartNote(partNoteIn);
+        setPartOrder(partOrderIn);
         setClassId(classIdIn); // irrelavent
 
         setParent(parentIn);
@@ -83,6 +86,16 @@ public class PartObj extends Obj {
         isDirty = true;
     }
     public String getPartNote() {return partNote;}
+
+    // PartOrder
+    private void setPartOrder(int partOrderIn) {
+        partOrder = partOrderIn;
+    }
+    public void updatePartOrder(int partOrderIn) {
+        setPartOrder(partOrderIn);
+        isDirty = true;
+    }
+    public int getPartOrder() {return partOrder;}
 
     // ClassId - no update
     private void setClassId(int classIdIn) {

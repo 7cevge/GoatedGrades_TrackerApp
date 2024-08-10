@@ -8,6 +8,7 @@ public class SemObj extends Obj {
     private int semId; // not null
     private String semName; // not null
     private String semNote;
+    private int semOrder; // not null
 
     private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8); // list of cacheClassIds
     private boolean isDirty; // not null
@@ -16,10 +17,11 @@ public class SemObj extends Obj {
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
-    public SemObj(TitledPane componentIn) {
+    public SemObj(int semOrderIn, TitledPane componentIn) {
         setSemId(-1); // irrelavent
         setSemName("SEM");
         setSemNote(null);
+        setSemOrder(semOrderIn);
 
         isDirty = true;
 
@@ -28,10 +30,11 @@ public class SemObj extends Obj {
     }
 
     // Constructor for existing data
-    public SemObj(int semIdIn, String semNameIn, String semNoteIn, TitledPane componentIn) {
+    public SemObj(int semIdIn, String semNameIn, String semNoteIn, int semOrderIn, TitledPane componentIn) {
         setSemId(semIdIn);
         setSemName(semNameIn);
         setSemNote(semNoteIn);
+        setSemOrder(semOrderIn);
 
         isDirty = false;
 
@@ -61,10 +64,20 @@ public class SemObj extends Obj {
         semNote = semNoteIn;
     }
     public void updateSemNote(String semNoteIn) {
-        setSemName(semNoteIn);
+        setSemNote(semNoteIn);
         isDirty = true;
     }
     public String getSemNote() {return semNote;}
+
+    // SemOrder
+    private void setSemOrder(int semOrderIn) {
+        semOrder = semOrderIn;
+    }
+    public void updateSemOrder(int semOrderIn) {
+        setSemOrder(semOrderIn);
+        isDirty = true;
+    }
+    public int getSemOrder() {return semOrder;}
 
     // ClassLst - no set
     public void updateClassLst(ClassObj classIn, boolean add, boolean init) {
