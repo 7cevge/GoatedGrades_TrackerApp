@@ -256,6 +256,10 @@ public class WindowController {
             AnchorPane.setLeftAnchor(newScene, 0.0);
             AnchorPane.setRightAnchor(newScene, 0.0);
 
+			if (currentScene.equals("/GradesScene.fxml")) {
+				GradesController gradeCtrl = loader.getController();
+				gradeCtrl.load();
+			}
 		} catch (Exception err) {
 			System.err.println(err);
 		}

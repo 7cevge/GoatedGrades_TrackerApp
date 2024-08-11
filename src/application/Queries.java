@@ -17,7 +17,7 @@ public class Queries {
 			int userId = -1;
 
 			query = connection.prepareStatement(
-				"select userId from users where users.username = ? and users.userpw = ?");
+						"select userId from users where users.username = ? and users.userpw = ?");
 			query.setString(1, username);
 			query.setString(2, password);
 			result = query.executeQuery();
@@ -31,7 +31,7 @@ public class Queries {
 				userId = -1;
 
 				query = connection.prepareStatement(
-					"select userId from users where users.username = ?");
+							"select userId from users where users.username = ?");
 				query.setString(1, username);
 				result = query.executeQuery();
 
@@ -66,7 +66,8 @@ public class Queries {
 				return Estat.Invalid;
 			}
 
-			query = connection.prepareStatement("insert into users(username, userpw) values (?, ?)");
+			query = connection.prepareStatement(
+						"insert into users(username, userpw) values (?, ?)");
 			query.setString(1, username);
 			query.setString(2, password);
 			query.executeUpdate();
@@ -108,8 +109,7 @@ public class Queries {
 			String[] userInfo = new String[5];
 			int i = 0;
 
-			query = connection.prepareStatement(
-				"select * from users where users.userId = ?");
+			query = connection.prepareStatement("select * from users where users.userId = ?");
 			query.setInt(1, userId);
 			result = query.executeQuery();
 

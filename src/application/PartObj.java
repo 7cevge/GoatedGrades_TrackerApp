@@ -9,11 +9,11 @@ public class PartObj extends Obj {
     private String partName; // not null
     private double partPercent; // not null
     private String partNote;
-    private int partOrder;
+    private int partOrder; // not null
     private int classId; // not null
 
     private ClassObj parent; // not null
-    private ArrayList<GradeObj> gradeLst = new ArrayList<GradeObj>(8); // List of cachePartIds
+    private ArrayList<GradeObj> gradeLst = new ArrayList<GradeObj>(8);
     private boolean isDirty; // not null
 
     private HBox component;
@@ -21,33 +21,35 @@ public class PartObj extends Obj {
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public PartObj(int partOrderIn, ClassObj parentIn, HBox componentIn) {
+        setComponent(componentIn);
+
         setPartId(-1); // irrelavent
-        setPartName("PART");
+        setPartName("Part" + partOrderIn);
         setPartPercent(-1);
         setPartNote(null);
         setPartOrder(partOrderIn);
         setClassId(-1); // irrelavent
 
         setParent(parentIn);
+        parent.updatePartLst(this, true);
         isDirty = true;
-
-        setComponent(componentIn);
     }
 
     // Constructor for existing data
     public PartObj(int partIdIn, String partNameIn, double partPercentIn, String partNoteIn, 
-        int partOrderIn, int classIdIn, ClassObj parentIn, HBox componentIn) {
-        setPartId(partIdIn); // irrelavent
+                int partOrderIn, int classIdIn, ClassObj parentIn, HBox componentIn) {
+        setComponent(componentIn);
+
+        setPartId(partIdIn);
         setPartName(partNameIn);
         setPartPercent(partPercentIn);
         setPartNote(partNoteIn);
         setPartOrder(partOrderIn);
-        setClassId(classIdIn); // irrelavent
+        setClassId(classIdIn);
 
         setParent(parentIn);
+        parent.updatePartLst(this, true);
         isDirty = false;
-
-        setComponent(componentIn);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions

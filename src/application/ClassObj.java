@@ -14,11 +14,11 @@ public class ClassObj extends Obj {
     private double classGradeC;
     private String classActualGrade;
     private String classNote;
-    private int classOrder;
+    private int classOrder; // not null
     private int semId; // not null
 
     private SemObj parent; // not null
-    private ArrayList<PartObj> partLst = new ArrayList<PartObj>(8); // List of cachePartIds
+    private ArrayList<PartObj> partLst = new ArrayList<PartObj>(8);
     private boolean isDirty; // not null
 
     private TitledPane component;
@@ -26,8 +26,10 @@ public class ClassObj extends Obj {
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public ClassObj(int classOrderIn, SemObj parentIn, TitledPane componentIn) {
+        setComponent(componentIn);
+
         setClassId(-1); // irrelavent
-        setClassName("CLASS");
+        setClassName("Class" + classOrderIn);
         setClassCode(null);
         setClassCredit(-1);
         setClassGrade(-1, 'a');
@@ -39,15 +41,17 @@ public class ClassObj extends Obj {
         setSemId(-1); // irrelavent
 
         setParent(parentIn);
+        parent.updateClassLst(this, true);
         isDirty = true;
-
-        setComponent(componentIn);
     }
 
     // Constructor for existing data
-    public ClassObj(int classIdIn, String classNameIn, String classCodeIn, int classCreditIn, 
-        int classGradeAIn, int classGradeBIn, int classGradeCIn, String classActualGradeIn, 
-        String classNoteIn, int classOrderIn, int semIdIn, SemObj parentIn, TitledPane componentIn) {
+    public ClassObj(int classIdIn, String classNameIn, String classCodeIn, double classCreditIn, 
+                double classGradeAIn, double classGradeBIn, double classGradeCIn, 
+                String classActualGradeIn, String classNoteIn, int classOrderIn, int semIdIn, 
+                SemObj parentIn, TitledPane componentIn) {
+        setComponent(componentIn);
+
         setClassId(classIdIn);
         setClassName(classNameIn);
         setClassCode(classCodeIn);
@@ -61,9 +65,8 @@ public class ClassObj extends Obj {
         setSemId(semIdIn);
 
         setParent(parentIn);
+        parent.updateClassLst(this, true);
         isDirty = false;
-
-        setComponent(componentIn);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions

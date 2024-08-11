@@ -13,7 +13,7 @@ public class GradeObj extends Obj {
     private int gradeMM;
     private int gradeYY;
     private boolean isEst;
-    private int gradeOrder;
+    private int gradeOrder; // not null
     private int partId; // not null
 
     private PartObj parent; // not null
@@ -24,6 +24,8 @@ public class GradeObj extends Obj {
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public GradeObj(int gradeOrderin, PartObj parentIn, AnchorPane componentIn) {
+        setComponent(componentIn);
+
         setGradeId(-1); // irrelavent
         setGradeGot(-1);
         setGradeOutOf(-1);
@@ -36,16 +38,18 @@ public class GradeObj extends Obj {
         setPartId(-1); // irrelavent
 
         setParent(parentIn);
+        parent.updateGradeLst(this, true);
         isDirty = true;
-
-        setComponent(componentIn);
     }
 
     // Constructor for existing data
-    public GradeObj(int gradeIdIn, double gradeGotIn, double gradeOutOfIn, double gradeGotEstIn, double gradeOutOfEstIn,
-        String gradeNoteIn, int gradeDDIn, int gradeMMIn, int gradeYYIn, int isEstIn, int gradeOrderIn, 
-        int partIdIn, PartObj parentIn, AnchorPane componentIn) {
-        setGradeId(gradeIdIn); // irrelavent
+    public GradeObj(int gradeIdIn, double gradeGotIn, double gradeOutOfIn, double gradeGotEstIn, 
+                double gradeOutOfEstIn, String gradeNoteIn, int gradeDDIn, int gradeMMIn, 
+                int gradeYYIn, int isEstIn, int gradeOrderIn, int partIdIn, PartObj parentIn, 
+                AnchorPane componentIn) {
+        setComponent(componentIn);
+
+        setGradeId(gradeIdIn);
         setGradeGot(gradeGotIn);
         setGradeOutOf(gradeOutOfIn);
         setGradeGotEst(gradeGotEstIn);
@@ -54,12 +58,11 @@ public class GradeObj extends Obj {
         setGradeDate(gradeDDIn, gradeMMIn, gradeYYIn);
         setIsEst(isEstIn);
         setGradeOrder(gradeOrderIn);
-        setPartId(partIdIn); // irrelavent
+        setPartId(partIdIn);
 
         setParent(parentIn);
+        parent.updateGradeLst(this, true);
         isDirty = false;
-
-        setComponent(componentIn);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions

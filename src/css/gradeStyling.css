@@ -82,7 +82,7 @@
 }
 
 .inClass .text-field {
-	-fx-background-color: rgba(224, 224, 224, 0.5);
+	-fx-background-color: rgba(0, 224, 224, 0.5);
 	background-color: rgba(224, 224, 224, 0.5);
 }
 .inClass .choice-box {

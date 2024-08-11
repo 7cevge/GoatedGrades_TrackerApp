@@ -36,6 +36,7 @@ public class GradesController extends SceneController {
     private ScrollPane rightBg;
 
 	public static Map<Node, Obj> compObjMap = new HashMap<Node, Obj>(32);
+	public static Map<String, Obj> fkObjMap = new HashMap<String, Obj>(32);
 
 	// -------------------------------------------------------------------- The buttons on the left
 	public void logout(MouseEvent e) {
@@ -59,34 +60,61 @@ public class GradesController extends SceneController {
 
 	// --------------------------------------------------------------------------- Right side stuff
 	// Load and save functions
-	public static void load() { 
-		System.out.println("load");
+	public void load() {
 		List<ArrayList<String[]>> allData = Queries.getLoadData();
 
-		// test
 		for (int i = 0; i < 4; i++) {
-			switch (i) {
-				case 0:
-					System.out.println("Sems:");
-					break;
-				case 1:
-					System.out.println("Classes:");
-					break;
-				case 2:
-					System.out.println("Parts:");
-					break;
-				case 3:
-					System.out.println("Sems:");
-					break;
-				default:
-					break;
-			}
 			ArrayList<String[]> tableData = allData.get(i);
 			for (String[] rowData : tableData) {
-				for (String data : rowData) {
-					System.out.print(data + " ");
+				switch (i) {
+					case 0:
+						loadSem(rowData);
+						break;
+					case 1:
+						SemObj parentSem = (SemObj)getFromFkObj("sem" + rowData[rowData.length -1]);
+						loadClass(rowData, parentSem);
+						break;
+					case 2:
+						ClassObj parentClass = (ClassObj)getFromFkObj("class" + rowData[rowData.length -1]);
+						loadPart(rowData, parentClass);
+						break;
+					case 3:
+						PartObj parentPart = (PartObj)getFromFkObj("part" + rowData[rowData.length -1]);
+						loadGrade(rowData, parentPart);
+						break;
+					default:
+						break;
 				}
-				System.out.println("");
+			}
+		}
+
+		// test
+		boolean test = false;
+		if (test) {
+			for (int i = 0; i < 4; i++) {
+				switch (i) {
+					case 0:
+						System.out.println("Sems:");
+						break;
+					case 1:
+						System.out.println("Classes:");
+						break;
+					case 2:
+						System.out.println("Parts:");
+						break;
+					case 3:
+						System.out.println("Sems:");
+						break;
+					default:
+						break;
+				}
+				ArrayList<String[]> tableData = allData.get(i);
+				for (String[] rowData : tableData) {
+					for (String data : rowData) {
+						System.out.print(data + " ");
+					}
+					System.out.println("");
+				}
 			}
 		}
 	}
@@ -96,11 +124,18 @@ public class GradesController extends SceneController {
 	}
 
 	// Mapping functions
-	public void addToMap(Node componentIn, Obj objIn) {
+	public void addToCompObj(Node componentIn, Obj objIn) {
 		compObjMap.put(componentIn, objIn);
 	}
-	public Obj getObj(Node componentIn) {
+	public Obj getFromCompObj(Node componentIn) {
 		return compObjMap.get(componentIn);
+	}
+
+	public void addToFkObj(String fkIn, Obj objIn) {
+		fkObjMap.put(fkIn, objIn);
+	}
+	public Obj getFromFkObj(String fkIn) {
+		return fkObjMap.get(fkIn);
 	}
 
 	// Add functions
@@ -113,7 +148,7 @@ public class GradesController extends SceneController {
 
 	public void addClass(MouseEvent e) {
 		Node parentSubComp = ((Node)e.getSource()).getParent();
-		Node parentComp = parentSubComp.getParent();
+		Node parentComp = parentSubComp.getParent().getParent();
 		SemObj parent = (SemObj)compObjMap.get(parentComp);
 
 		VBox classLst = (VBox) parentSubComp;
@@ -125,7 +160,7 @@ public class GradesController extends SceneController {
 
 	public void addPart(MouseEvent e) {
 		Node parentSubComp = ((Node)e.getSource()).getParent();
-		Node parentComp = parentSubComp.getParent();
+		Node parentComp = parentSubComp.getParent().getParent();
 		ClassObj parent = (ClassObj)compObjMap.get(parentComp);
 
 		VBox partLst = (VBox) parentSubComp;
@@ -137,9 +172,9 @@ public class GradesController extends SceneController {
 
 	public void addGrade(MouseEvent e) {
 		Node parentSubComp = ((Node)e.getSource()).getParent();
-		Node parentComp = parentSubComp.getParent();
+		Node parentComp = parentSubComp.getParent().getParent().getParent().getParent();
 		PartObj parent = (PartObj)compObjMap.get(parentComp);
-		
+
 		HBox gradeLst = (HBox) parentSubComp;
 		int newOrder = gradeLst.getChildren().size();
 		GradeObj newGradeObj = newGrade(newOrder, parent);
@@ -148,8 +183,29 @@ public class GradesController extends SceneController {
 	}
 
 	// ----------------------------------------------------------------------------- New components
+	// Sem component
 	private SemObj newSem(int semOrderIn) {
-		// Comp
+		TitledPane newSemComp = newSemComp();
+
+		Obj newSemObj = new SemObj(semOrderIn, newSemComp);
+		addToCompObj((Node)newSemComp, newSemObj);
+
+		return (SemObj)newSemObj;
+	}
+	private void loadSem(String[] rowDataIn) {
+		TitledPane newSemComp = newSemComp();
+
+		boolean[] isStringLst = {false, true, true, false, false};
+		replaceAllNull(rowDataIn, isStringLst);
+
+		SemObj newSemObj = new SemObj(Integer.parseInt(rowDataIn[0]), rowDataIn[1], rowDataIn[2], 
+					Integer.parseInt(rowDataIn[3]), newSemComp);
+		addToCompObj((Node)newSemComp, newSemObj);
+		addToFkObj("sem" + rowDataIn[0], newSemObj);
+
+		semLst.getChildren().add(semLst.getChildren().size() -1, newSemObj.getComponent());
+	}
+	private TitledPane newSemComp() {
 		Button addClassBtn = new Button("+");
 		addClassBtn.setOnMouseClicked(e -> addClass(e));
 
@@ -157,20 +213,41 @@ public class GradesController extends SceneController {
 		classLst.setPadding(new Insets(2, 2, 2, 2));
 		classLst.getChildren().add(addClassBtn);
 
-		TitledPane newSemComp = new TitledPane("sem", classLst);
-		newSemComp.prefWidthProperty().bind(rightBg.widthProperty().subtract(30));
+		TitledPane newSemComp = new TitledPane("", classLst);
+		newSemComp.prefWidthProperty().bind(rightBg.widthProperty().subtract(30)); // ? load err
 		newSemComp.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		newSemComp.setAnimated(false);
 
-		// Obj
-		Obj newSemObj = new SemObj(semOrderIn, newSemComp);
-		addToMap((Node)newSemComp, newSemObj);
-
-		return (SemObj)newSemObj;
+		return newSemComp;
 	}
 
+	// Class component
 	private ClassObj newClass(int classOrderIn, SemObj parentIn) {
-		// Comp
+		TitledPane newClassComp = newClassComp();
+
+		Obj newClassObj = new ClassObj(classOrderIn, parentIn, newClassComp);
+		addToCompObj((Node)newClassComp, newClassObj);
+
+		return (ClassObj)newClassObj;
+	}
+	private ClassObj loadClass(String[] rowDataIn, SemObj parentIn) {
+		TitledPane newClassComp = newClassComp();
+
+		boolean[] isStringLst = {false, true, true, false, false, false, false, true, true, false, 
+					false};
+		replaceAllNull(rowDataIn, isStringLst);
+
+		Obj newClassObj = new ClassObj(Integer.parseInt(rowDataIn[0]), rowDataIn[1], rowDataIn[2], 
+					Double.parseDouble(rowDataIn[3]), Double.parseDouble(rowDataIn[4]), 
+					Double.parseDouble(rowDataIn[5]), Double.parseDouble(rowDataIn[6]), 
+					rowDataIn[7], rowDataIn[8], Integer.parseInt(rowDataIn[9]), 
+					Integer.parseInt(rowDataIn[10]), parentIn, newClassComp);
+		addToCompObj((Node)newClassComp, newClassObj);
+		addToFkObj("class" + rowDataIn[0], newClassObj);
+
+		return (ClassObj)newClassObj;
+	}
+	private TitledPane newClassComp() {
 		Button addPartBtn = new Button("+");
 		addPartBtn.setOnMouseClicked(e -> addPart(e));
 
@@ -181,20 +258,39 @@ public class GradesController extends SceneController {
 		partLst.getChildren().addAll(addPartBtn, classStat);
 		partLst.getStyleClass().add("inClass");
 
-		TitledPane newClassComp = new TitledPane("class", partLst);
+		TitledPane newClassComp = new TitledPane("", partLst);
 		newClassComp.prefWidthProperty().bind(rightBg.widthProperty().subtract(30));
 		newClassComp.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		newClassComp.setAnimated(false);
 
-		// Obj
-		Obj newClassObj = new ClassObj(classOrderIn, parentIn, newClassComp);
-		addToMap((Node)newClassComp, newClassObj);
-
-		return (ClassObj)newClassObj;
+		return newClassComp;
 	}
 
+	// Part component
 	private PartObj newPart(int partOrderIn, ClassObj parentIn) {
-		// Comp
+		HBox newPartComp = newPartComp();
+		
+		Obj newPartObj = new PartObj(partOrderIn, parentIn, newPartComp);
+		addToCompObj((Node)newPartComp, newPartObj);
+
+		return (PartObj)newPartObj;
+	}
+	private PartObj loadPart(String[] rowDataIn, ClassObj parentIn) {
+		HBox newPartComp = newPartComp();
+
+		boolean[] isStringLst = {false, true, false, true, false, false};
+		replaceAllNull(rowDataIn, isStringLst);
+		
+		Obj newPartObj = new PartObj(Integer.parseInt(rowDataIn[0]), rowDataIn[1], 
+					Double.parseDouble(rowDataIn[2]), rowDataIn[3], 
+					Integer.parseInt(rowDataIn[4]), Integer.parseInt(rowDataIn[5]), parentIn, 
+					newPartComp);
+		addToCompObj((Node)newPartComp, newPartObj);
+		addToFkObj("part" + rowDataIn[0], newPartObj);
+
+		return (PartObj)newPartObj;
+	}
+	private HBox newPartComp() {
 		AnchorPane partStat = newPartStat();
 		ScrollPane gradeSect = newGradeSect();
 
@@ -203,16 +299,39 @@ public class GradesController extends SceneController {
 		newPartComp.getChildren().addAll(partStat, gradeSect);
 
 		gradeSect.prefWidthProperty().bind(newPartComp.widthProperty());
-		
-		// Obj
-		Obj newPartObj = new PartObj(partOrderIn, parentIn, newPartComp);
-		addToMap((Node)newPartComp, newPartObj);
 
-		return (PartObj)newPartObj;
+		return newPartComp;
 	}
 
+	// Grade component
 	private GradeObj newGrade(int gradeOrderIn, PartObj parentIn) {
-		// Comp
+		AnchorPane newGradeComp = newGradeComp();
+
+		Obj newGradeObj = new GradeObj(gradeOrderIn, parentIn, newGradeComp);
+		addToCompObj((Node)newGradeComp, newGradeObj);
+
+		return (GradeObj)newGradeObj;
+	}
+	private GradeObj loadGrade(String[] rowDataIn, PartObj parentIn) {
+		AnchorPane newGradeComp = newGradeComp();
+
+		boolean[] isStringLst = {false, false, false, false, false, true, false, false, false, 
+					false, false, false};
+		replaceAllNull(rowDataIn, isStringLst);
+
+		Obj newGradeObj = new GradeObj(Integer.parseInt(rowDataIn[0]), 
+					Double.parseDouble(rowDataIn[1]), Double.parseDouble(rowDataIn[2]), 
+					Double.parseDouble(rowDataIn[3]), Double.parseDouble(rowDataIn[4]), 
+					rowDataIn[5], Integer.parseInt(rowDataIn[6]), Integer.parseInt(rowDataIn[7]), 
+					Integer.parseInt(rowDataIn[8]), Integer.parseInt(rowDataIn[9]), 
+					Integer.parseInt(rowDataIn[10]), Integer.parseInt(rowDataIn[11]), parentIn, 
+					newGradeComp);
+		addToCompObj((Node)newGradeComp, newGradeObj);
+		addToFkObj("grade" + rowDataIn[0], newGradeObj);
+
+		return (GradeObj)newGradeObj;
+	}
+	private AnchorPane newGradeComp() {
 		TextField got = newMiniTextField(35, 15, Pos.CENTER_RIGHT);
 		got.setPromptText("100");
 		TextField outOf = newMiniTextField(35, 15, Pos.CENTER_RIGHT);
@@ -223,25 +342,40 @@ public class GradesController extends SceneController {
 		gradePercent.setPrefWidth(40);
 		gradePercent.setTextAlignment(TextAlignment.RIGHT);
 
-		Button toggleEst = new Button(); // <----------------------------------------------------------------- NOT DONE YET!
+		Button toggleEst = new Button(); // <---------------------------------------- NOT DONE YET!
 		toggleEst.setPrefHeight(15);
 		toggleEst.setMinHeight(15);
 		toggleEst.setPrefWidth(15);
 
 		AnchorPane newGradeComp = new AnchorPane();
 		newGradeComp.setPrefSize(40, 30);
-		newGradeComp.getChildren().addAll(toggleEst, got, outOf, gradePercent);
+		newGradeComp.getChildren().addAll(got, outOf, gradePercent, toggleEst);
 
 		got.setLayoutX(5);
 		outOf.setLayoutX(5);
 		outOf.setLayoutY(15);
 		gradePercent.setLayoutY(30);
 
-		// Obj
-		Obj newGradeObj = new GradeObj(gradeOrderIn, parentIn, newGradeComp);
-		addToMap((Node)newGradeComp, newGradeObj);
+		return newGradeComp;
+	}
 
-		return (GradeObj)newGradeObj;
+	// ------------------------------------------------------------------------------ Null replacer
+	private void replaceAllNull(String[] rowDataIn, boolean[] isStringLst) {
+		for (int i = 0; i < rowDataIn.length; i++) {
+			rowDataIn[i] = replaceNull(rowDataIn[i], isStringLst[i]);
+		}
+	}
+
+	private String replaceNull(String dataIn, boolean isString) {
+		if (dataIn == null) {
+			if (isString) {
+				return "";
+			} else {
+				return "-1";
+			}
+		} else {
+			return dataIn;
+		}
 	}
 
 	// ----------------------------------------------------------------- Component helper functions
@@ -320,7 +454,9 @@ public class GradesController extends SceneController {
 		partPercent.setPrefWidth(32);
 		partPercent.setAlignment(Pos.CENTER_RIGHT);
 
-		Label partCalc = new Label("					    %\nPoint:     000.0% | 000.0%\nPercent: 000.0% | 000.0%");
+		Label partCalc = new Label(
+			"					    %\nPoint:     000.0% | 000.0%\nPercent: 000.0% | 000.0%"
+		);
 
 		AnchorPane partStat = new AnchorPane();
 		partStat.setPrefWidth(100);

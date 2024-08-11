@@ -31,7 +31,6 @@ public class LoginController extends SceneController {
 			case Successful:
 				windowController.setCurScene("/GradesScene.fxml");
 				windowController.changeScene();
-				GradesController.load();
 				break;
 
 			case UserpwMismatch:

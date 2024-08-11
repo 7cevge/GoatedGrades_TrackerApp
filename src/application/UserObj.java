@@ -81,15 +81,11 @@ public class UserObj extends Obj {
     public String getUserPfp() {return userPfp;}
 
     // ClassLst - no set
-    public void updateSemLst(SemObj semIn, boolean add, boolean init) {
+    public void updateSemLst(SemObj semIn, boolean add) {
         if (add) {
             semLst.add(semIn);
         } else {
             semLst.remove(semIn);
-        }
-
-        if (!init) {
-            isDirty = true;
         }
     }
     public ArrayList<SemObj> getSemLst() {return semLst;}

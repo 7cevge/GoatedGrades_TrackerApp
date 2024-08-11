@@ -10,7 +10,7 @@ public class SemObj extends Obj {
     private String semNote;
     private int semOrder; // not null
 
-    private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8); // list of cacheClassIds
+    private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8);
     private boolean isDirty; // not null
 
     private TitledPane component;
@@ -18,28 +18,29 @@ public class SemObj extends Obj {
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public SemObj(int semOrderIn, TitledPane componentIn) {
+        setComponent(componentIn);
+
         setSemId(-1); // irrelavent
-        setSemName("SEM");
+        setSemName("Sem" + semOrderIn);
         setSemNote(null);
         setSemOrder(semOrderIn);
 
+        Start.getCurrentUser().updateSemLst(this, true);
         isDirty = true;
-
-        setComponent(componentIn);
-        Start.getCurrentUser().updateSemLst(this, true, false);
     }
 
     // Constructor for existing data
-    public SemObj(int semIdIn, String semNameIn, String semNoteIn, int semOrderIn, TitledPane componentIn) {
+    public SemObj(int semIdIn, String semNameIn, String semNoteIn, int semOrderIn, 
+                    TitledPane componentIn) {
+        setComponent(componentIn);
+
         setSemId(semIdIn);
         setSemName(semNameIn);
         setSemNote(semNoteIn);
         setSemOrder(semOrderIn);
 
+        Start.getCurrentUser().updateSemLst(this, true);
         isDirty = false;
-
-        setComponent(componentIn);
-        Start.getCurrentUser().updateSemLst(this, true, true);
     }
 
     // ------------------------------------------------------------- Set, get, and update functions
@@ -52,6 +53,8 @@ public class SemObj extends Obj {
     // SemName
     private void setSemName(String semNameIn) {
         semName = semNameIn;
+
+        component.setText(semName);
     }
     public void updateSemName(String semNameIn) {
         setSemName(semNameIn);
@@ -80,15 +83,11 @@ public class SemObj extends Obj {
     public int getSemOrder() {return semOrder;}
 
     // ClassLst - no set
-    public void updateClassLst(ClassObj classIn, boolean add, boolean init) {
+    public void updateClassLst(ClassObj classIn, boolean add) {
         if (add) {
             classLst.add(classIn);
         } else {
             classLst.remove(classIn);
-        }
-
-        if (!init) {
-            isDirty = true;
         }
     }
     public ArrayList<ClassObj> getClassLst() {return classLst;}
