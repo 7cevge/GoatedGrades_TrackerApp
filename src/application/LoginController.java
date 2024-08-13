@@ -2,11 +2,10 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
 public class LoginController extends SceneController {
 	@FXML
@@ -19,10 +18,7 @@ public class LoginController extends SceneController {
 	Button loginBtn, registerBtn, backBtn;
 
 	@FXML
-	Text noticeText;
-
-	@FXML
-	ImageView noticeImg;
+	Label noticeText;
 
 	public void login(MouseEvent e) {
 		Estat loginStatus = Queries.login(usernameIn.getText(), userpwIn.getText());
@@ -83,7 +79,6 @@ public class LoginController extends SceneController {
 
 	public void loginNotice(boolean on, String msg) {
 		noticeText.setVisible(on);
-		noticeImg.setVisible(on);
 		noticeText.setText(msg);
 	}
 

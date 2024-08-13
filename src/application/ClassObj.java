@@ -3,8 +3,10 @@ package application;
 import java.util.ArrayList;
 
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 
 public class ClassObj extends Obj {
+    // From database
     private int classId; // not null
     private String className; // not null
     private String classCode;
@@ -17,11 +19,18 @@ public class ClassObj extends Obj {
     private int classOrder; // not null
     private int semId; // not null
 
+    // Temporary
     private SemObj parent; // not null
     private ArrayList<PartObj> partLst = new ArrayList<PartObj>(8);
     private boolean isDirty; // not null
 
     private TitledPane component;
+
+    private AnchorPane classBar = new AnchorPane();
+    private double percentGrade;
+    private double pointGrade;
+    private char estGrade;
+
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
@@ -79,6 +88,8 @@ public class ClassObj extends Obj {
     // ClassName
     private void setClassName(String classNameIn) {
         className = classNameIn;
+
+        component.setText(className);
     }
     public void updateClassName(String classNameIn) {
         setClassName(classNameIn);
@@ -160,6 +171,8 @@ public class ClassObj extends Obj {
     // ClassNote
     private void setClassNote(String classNoteIn) {
         classNote = classNoteIn;
+
+        //component
     }
     public void updateClassNote(String classNoteIn) {
         setClassNote(classNoteIn);

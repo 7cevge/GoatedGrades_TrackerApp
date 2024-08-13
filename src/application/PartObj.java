@@ -18,6 +18,11 @@ public class PartObj extends Obj {
 
     private HBox component;
 
+    private double percentGrade;
+    private double percentGradeTotal;
+    private double pointGrade;
+    private double pointGradeTotal;
+
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public PartObj(int partOrderIn, ClassObj parentIn, HBox componentIn) {

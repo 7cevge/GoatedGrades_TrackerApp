@@ -87,36 +87,6 @@ public class GradesController extends SceneController {
 				}
 			}
 		}
-
-		// test
-		boolean test = false;
-		if (test) {
-			for (int i = 0; i < 4; i++) {
-				switch (i) {
-					case 0:
-						System.out.println("Sems:");
-						break;
-					case 1:
-						System.out.println("Classes:");
-						break;
-					case 2:
-						System.out.println("Parts:");
-						break;
-					case 3:
-						System.out.println("Sems:");
-						break;
-					default:
-						break;
-				}
-				ArrayList<String[]> tableData = allData.get(i);
-				for (String[] rowData : tableData) {
-					for (String data : rowData) {
-						System.out.print(data + " ");
-					}
-					System.out.println("");
-				}
-			}
-		}
 	}
 
 	public static void save() {
@@ -198,23 +168,23 @@ public class GradesController extends SceneController {
 		boolean[] isStringLst = {false, true, true, false, false};
 		replaceAllNull(rowDataIn, isStringLst);
 
-		SemObj newSemObj = new SemObj(Integer.parseInt(rowDataIn[0]), rowDataIn[1], rowDataIn[2], 
+		Obj newSemObj = new SemObj(Integer.parseInt(rowDataIn[0]), rowDataIn[1], rowDataIn[2], 
 					Integer.parseInt(rowDataIn[3]), newSemComp);
 		addToCompObj((Node)newSemComp, newSemObj);
 		addToFkObj("sem" + rowDataIn[0], newSemObj);
 
-		semLst.getChildren().add(semLst.getChildren().size() -1, newSemObj.getComponent());
+		semLst.getChildren().add(semLst.getChildren().size() -1, ((SemObj)newSemObj).getComponent());
 	}
 	private TitledPane newSemComp() {
 		Button addClassBtn = new Button("+");
 		addClassBtn.setOnMouseClicked(e -> addClass(e));
 
 		VBox classLst = new VBox();
-		classLst.setPadding(new Insets(2, 2, 2, 2));
+		classLst.setPadding(new Insets(2, 2, 2, 24));
 		classLst.getChildren().add(addClassBtn);
 
 		TitledPane newSemComp = new TitledPane("", classLst);
-		newSemComp.prefWidthProperty().bind(rightBg.widthProperty().subtract(30)); // ? load err
+		newSemComp.prefWidthProperty().bind(rightBg.widthProperty().subtract(30));
 		newSemComp.setPrefHeight(Region.USE_COMPUTED_SIZE);
 		newSemComp.setAnimated(false);
 
@@ -230,7 +200,7 @@ public class GradesController extends SceneController {
 
 		return (ClassObj)newClassObj;
 	}
-	private ClassObj loadClass(String[] rowDataIn, SemObj parentIn) {
+	private void loadClass(String[] rowDataIn, SemObj parentIn) {
 		TitledPane newClassComp = newClassComp();
 
 		boolean[] isStringLst = {false, true, true, false, false, false, false, true, true, false, 
@@ -245,7 +215,9 @@ public class GradesController extends SceneController {
 		addToCompObj((Node)newClassComp, newClassObj);
 		addToFkObj("class" + rowDataIn[0], newClassObj);
 
-		return (ClassObj)newClassObj;
+		Node compLst = getCompLst(newClassObj, Estat.Class);
+		VBox classLst = (VBox) compLst;
+		classLst.getChildren().add(classLst.getChildren().size() -1, ((ClassObj)newClassObj).getComponent());
 	}
 	private TitledPane newClassComp() {
 		Button addPartBtn = new Button("+");
@@ -275,7 +247,7 @@ public class GradesController extends SceneController {
 
 		return (PartObj)newPartObj;
 	}
-	private PartObj loadPart(String[] rowDataIn, ClassObj parentIn) {
+	private void loadPart(String[] rowDataIn, ClassObj parentIn) {
 		HBox newPartComp = newPartComp();
 
 		boolean[] isStringLst = {false, true, false, true, false, false};
@@ -288,7 +260,9 @@ public class GradesController extends SceneController {
 		addToCompObj((Node)newPartComp, newPartObj);
 		addToFkObj("part" + rowDataIn[0], newPartObj);
 
-		return (PartObj)newPartObj;
+		Node compLst = getCompLst(newPartObj, Estat.Part);
+		VBox partLst = (VBox) compLst;
+		partLst.getChildren().add(partLst.getChildren().size() -2, ((PartObj)newPartObj).getComponent());
 	}
 	private HBox newPartComp() {
 		AnchorPane partStat = newPartStat();
@@ -312,7 +286,7 @@ public class GradesController extends SceneController {
 
 		return (GradeObj)newGradeObj;
 	}
-	private GradeObj loadGrade(String[] rowDataIn, PartObj parentIn) {
+	private void loadGrade(String[] rowDataIn, PartObj parentIn) {
 		AnchorPane newGradeComp = newGradeComp();
 
 		boolean[] isStringLst = {false, false, false, false, false, true, false, false, false, 
@@ -329,16 +303,18 @@ public class GradesController extends SceneController {
 		addToCompObj((Node)newGradeComp, newGradeObj);
 		addToFkObj("grade" + rowDataIn[0], newGradeObj);
 
-		return (GradeObj)newGradeObj;
+		Node compLst = getCompLst(newGradeObj, Estat.Grade);
+		HBox gradeLst = (HBox) compLst;
+		gradeLst.getChildren().add(gradeLst.getChildren().size() -1, ((GradeObj)newGradeObj).getComponent());
 	}
 	private AnchorPane newGradeComp() {
 		TextField got = newMiniTextField(35, 15, Pos.CENTER_RIGHT);
-		got.setPromptText("100");
+		got.setPromptText("000");
 		TextField outOf = newMiniTextField(35, 15, Pos.CENTER_RIGHT);
-		outOf.setPromptText("100");
+		outOf.setPromptText("000");
 
 		Label gradePercent = new Label("00.00%");
-		gradePercent.getStyleClass().add("gradePercent");
+		gradePercent.getStyleClass().add("tempText");
 		gradePercent.setPrefWidth(40);
 		gradePercent.setTextAlignment(TextAlignment.RIGHT);
 
@@ -359,7 +335,7 @@ public class GradesController extends SceneController {
 		return newGradeComp;
 	}
 
-	// ------------------------------------------------------------------------------ Null replacer
+	// -------------------------------------------------------------------------------- Load helper
 	private void replaceAllNull(String[] rowDataIn, boolean[] isStringLst) {
 		for (int i = 0; i < rowDataIn.length; i++) {
 			rowDataIn[i] = replaceNull(rowDataIn[i], isStringLst[i]);
@@ -378,17 +354,40 @@ public class GradesController extends SceneController {
 		}
 	}
 
+	private Node getCompLst(Obj objIn, Estat table) {
+		switch (table) {
+			case Class:
+				SemObj parentSemObj = ((ClassObj)objIn).getParent();
+				TitledPane parentSemComp = parentSemObj.getComponent();
+				return parentSemComp.getContent();
+			case Part:
+				ClassObj parentClassObj = ((PartObj)objIn).getParent();
+				TitledPane parentClassComp = parentClassObj.getComponent();
+				return parentClassComp.getContent();
+			case Grade:
+				PartObj parentPartObj = ((GradeObj)objIn).getParent();
+				HBox parentPartComp = parentPartObj.getComponent();
+				return ((ScrollPane)parentPartComp.getChildren().get(1)).getContent();
+			default:
+				System.err.println("2nd arg error");
+				return null;
+		}
+	}
+
 	// ----------------------------------------------------------------- Component helper functions
 	private HBox newClassStat() {
 		// In threshold
-		Label thresholdLabel = new Label("A >		%\nB >		%\nC >		%");
+		String thresholdPt1 = String.format("A > %8s %%\n", "");
+		String thresholdPt2 = String.format("B > %8s %%\n", "");
+		String thresholdPt3 = String.format("C > %8s %%\n", "");
+		Label thresholdLabel = new Label(thresholdPt1 + thresholdPt2 + thresholdPt3);
 
-		TextField thresholdA = newMiniTextField(40, 15, Pos.CENTER_RIGHT);
-		TextField thresholdB = newMiniTextField(40, 15, Pos.CENTER_RIGHT);
-		TextField thresholdC = newMiniTextField(40, 15, Pos.CENTER_RIGHT);
+		TextField thresholdA = newMiniTextField(38, 15, Pos.CENTER_RIGHT);
+		TextField thresholdB = newMiniTextField(38, 15, Pos.CENTER_RIGHT);
+		TextField thresholdC = newMiniTextField(38, 15, Pos.CENTER_RIGHT);
 
 		VBox thresholdABC = new VBox();
-		thresholdABC.setLayoutX(10);
+		thresholdABC.setLayoutX(12);
 		thresholdABC.getChildren().addAll(thresholdA, thresholdB, thresholdC);
 
 		// In actualGrade
@@ -399,15 +398,20 @@ public class GradesController extends SceneController {
 		actualGrade.setMinSize(25, 20);
 		actualGrade.setLayoutX(12);
 		actualGrade.setLayoutY(12);
+		actualGrade.getStyleClass().add("tempText");
 		actualGrade.getItems().addAll('A', 'B', 'C', 'D', 'F', '-');
 		actualGrade.getSelectionModel().selectedItemProperty().addListener(e -> {
             actualGrade.lookup(".arrow").setVisible(false);
         });
 
 		// In classStat 
-		Label classCalc = new Label("          Total\nPoint:    000.0%\nPercent: 000.0%");
-		classCalc.setPrefSize(72, 45);
-		classCalc.setMinSize(72, 45);
+		String classStatPt1 = String.format("%9s Total\n", "");
+		String classStatPt2 = String.format("Point: %3s 000.0%%\n", "");
+		String classStatPt3 = "Percent: 000.0%";
+		Label classCalc = new Label(classStatPt1 + classStatPt2 + classStatPt3);
+		classCalc.setPrefSize(75, 45);
+		classCalc.setMinSize(75, 45);
+		//classCalc.setAlignment(Pos.TOP_RIGHT);
 
 		AnchorPane thresholdSect = new AnchorPane();
 		thresholdSect.setPrefHeight(35);
@@ -419,7 +423,8 @@ public class GradesController extends SceneController {
 		actualGradeSect.setPrefWidth(45);
 		actualGradeSect.getChildren().addAll(actualGradeLabel, actualGrade);
 
-		TextArea classNote = new TextArea("NOTES");
+		TextArea classNote = new TextArea();
+		classNote.setPromptText("Notes:");
 		classNote.setWrapText(true);
 
 		// ClassStat
@@ -438,25 +443,21 @@ public class GradesController extends SceneController {
 		miniText.setPrefHeight(height);
 		miniText.setMinHeight(height);
 		miniText.setAlignment(alignment);
+		miniText.getStyleClass().add("tempText");
 		return miniText;
 	}
 
 	private AnchorPane newPartStat() {
-		TextField partName = new TextField("Exam");
-		partName.setPrefHeight(15);
-		partName.setMinHeight(15);
-		partName.setPrefWidth(95);
-		partName.setAlignment(Pos.CENTER);
+		TextField partName = newMiniTextField(95, 15, Pos.CENTER);
+		partName.setPromptText("Part name");
 
-		TextField partPercent = new TextField("25.5");
-		partPercent.setPrefHeight(15);
-		partPercent.setMinHeight(15);
-		partPercent.setPrefWidth(32);
-		partPercent.setAlignment(Pos.CENTER_RIGHT);
+		TextField partPercent = newMiniTextField(32, 15, Pos.CENTER_RIGHT);
+		partPercent.setPromptText("00.0");
 
-		Label partCalc = new Label(
-			"					    %\nPoint:     000.0% | 000.0%\nPercent: 000.0% | 000.0%"
-		);
+		String pt1 = String.format("%43s %%\n", "");
+		String pt2 = String.format("Point: %3s 000.0%% | 000.0%%\n", "");
+		String pt3 = "Percent: 000.0% | 000.0%";
+		Label partCalc = new Label(pt1 + pt2 + pt3);
 
 		AnchorPane partStat = new AnchorPane();
 		partStat.setPrefWidth(100);

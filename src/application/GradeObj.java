@@ -21,6 +21,8 @@ public class GradeObj extends Obj {
 
     private AnchorPane component;
 
+    private double percent;
+
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
     public GradeObj(int gradeOrderin, PartObj parentIn, AnchorPane componentIn) {

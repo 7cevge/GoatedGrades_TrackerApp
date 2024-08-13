@@ -2,18 +2,28 @@ package application;
 
 import java.util.ArrayList;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
+import javafx.scene.layout.AnchorPane;
 
 public class SemObj extends Obj {
+    // From database
     private int semId; // not null
     private String semName; // not null
     private String semNote;
     private int semOrder; // not null
 
+    // Temporary
     private ArrayList<ClassObj> classLst = new ArrayList<ClassObj>(8);
     private boolean isDirty; // not null
 
     private TitledPane component;
+    
+    private AnchorPane semBar = new AnchorPane();
+    private int classCount = 0;
+    private int creditCount = 0;
+    private double semGPA = 0;
 
     // ------------------------------------------------------------------------------- Constructors
     // Default constructor for new data
@@ -53,8 +63,7 @@ public class SemObj extends Obj {
     // SemName
     private void setSemName(String semNameIn) {
         semName = semNameIn;
-
-        component.setText(semName);
+        setSemBar();
     }
     public void updateSemName(String semNameIn) {
         setSemName(semNameIn);
@@ -100,4 +109,26 @@ public class SemObj extends Obj {
         component = componentIn;
     }
     public TitledPane getComponent() {return component;}
+
+    // ---------------------------------------------------------------------------- Calc components
+    private void setSemBar() {
+        String pt1 = String.format("%s", semName);
+        String pt2 = String.format("%5s %d classes", "", classCount);
+        String pt3 = String.format("%5s %d credits", "", creditCount);
+        String pt4 = String.format("%5s GPA: %.2f", "", semGPA);
+
+        Label barName = new Label(pt1);
+        barName.getStyleClass().add("tempText");
+        Label barCalc = new Label(pt2 + pt3 + pt4);
+        barCalc.setAlignment(Pos.CENTER_RIGHT);
+        barCalc.getStyleClass().add("tempText");
+
+        AnchorPane.setRightAnchor(barCalc, 0.0);
+        
+        semBar.getChildren().addAll(barName, barCalc);
+        semBar.setPrefSize(60, 15);
+        semBar.prefWidthProperty().bind(component.widthProperty().subtract(36));
+
+        component.setGraphic(semBar);
+    }
 }

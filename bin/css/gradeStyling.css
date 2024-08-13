@@ -1,5 +1,4 @@
-
-/* Left buttons */
+/* -------------------------------------------------------------------------------- Left buttons */
 .leftBtn {
 	-fx-background-color: transparent;
 	-fx-background-size: 20;
@@ -57,9 +56,12 @@
 	background-image: url(../../graphics/settingDark.png);
 }
 
-/* Stat card */
-#statCard {
-    -fx-image: url(../../graphics/statCard.png);
+/* ----------------------------------------------------------------------------------- Left Side */
+#statisticCard {
+    -fx-background-image: url(../../graphics/statCard.png);
+	-fx-background-size: cover;
+	background-image: url(../../graphics/statCard.png);
+	background-size: cover;
 }
 #pfp {
     -fx-image: url(../../graphics/pfp.jpg);
@@ -71,7 +73,15 @@
 	fill: #000000;
 }
 
-/*  */
+#notice {
+	-fx-background-image: url(../../graphics/gradeNotice.png);
+	-fx-background-size: cover;
+	-fx-label-padding: 10;
+	background-image: url(../../graphics/gradeNotice.png);
+	background-size: cover;
+}
+
+/* ---------------------------------------------------------------------------------- Right Side */
 .inClass {
 	-fx-font-size: 10px;
 	-fx-letter-spacing: 2px;
@@ -81,17 +91,7 @@
 	fill: #000000;
 }
 
-.inClass .text-field {
-	-fx-background-color: rgba(0, 224, 224, 0.5);
-	background-color: rgba(224, 224, 224, 0.5);
-}
-.inClass .choice-box {
-	-fx-background-color: rgba(224, 224, 224, 0.5);
-	background-color: rgba(224, 224, 224, 0.5);
-}
-
-.gradePercent {
-	-fx-background-color: rgba(224, 224, 224, 0.5);
-	-fx-alignment: center-right;
-	background-color: rgba(224, 224, 224, 0.5);
+.tempText {
+	-fx-background-color: rgba(0, 224, 224, 0.25);
+	background-color: rgba(224, 224, 224, 0.25);
 }

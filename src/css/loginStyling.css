@@ -6,8 +6,12 @@
     background-position: center;
     background-size: stretch;
 }
-#noticeImg {
-    -fx-image: url(../../graphics/loginNotice.png);
+#notice {
+    -fx-background-image: url(../../graphics/loginNotice.png);
+    -fx-background-size: cover;
+	-fx-label-padding: 10 10 10 35;
+    background-image: url(../../graphics/loginNotice.png);
+    background-size: cover;
 }
 
 .noticeOn {
