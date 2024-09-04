@@ -17,7 +17,7 @@ public class WindowController {
 	// Named this way to make later functions with switch case easier to use
 	@FXML
 	private Rectangle rhT1, rhB1, rhR1, rhL1, moveHandleStopper,
-						rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
+				rhTR1, rhTR2, rhTL1, rhTL2, rhBR1, rhBR2, rhBL1, rhBL2;
 
 	private static final String LOGINSCENE = "/LoginScene.fxml";
 	private static final String DELETESCENE = "/DeleteScene.fxml";

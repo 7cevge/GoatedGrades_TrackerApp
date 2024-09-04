@@ -32,7 +32,7 @@ public class ClassObj extends Obj {
     private char estGrade;
 
 
-    // ------------------------------------------------------------------------------- Constructors
+    // ------------------------------------------------------------------------------ Constructors
     // Default constructor for new data
     public ClassObj(int classOrderIn, SemObj parentIn, TitledPane componentIn) {
         setComponent(componentIn);
@@ -78,7 +78,7 @@ public class ClassObj extends Obj {
         isDirty = false;
     }
 
-    // ------------------------------------------------------------- Set, get, and update functions
+    // ------------------------------------------------------------ Set, get, and update functions
     // ClassId - no update
     private void setClassId(int classIdIn) {
         classId = classIdIn;

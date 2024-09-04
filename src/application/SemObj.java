@@ -25,7 +25,7 @@ public class SemObj extends Obj {
     private int creditCount = 0;
     private double semGPA = 0;
 
-    // ------------------------------------------------------------------------------- Constructors
+    // ------------------------------------------------------------------------------ Constructors
     // Default constructor for new data
     public SemObj(int semOrderIn, TitledPane componentIn) {
         setComponent(componentIn);
@@ -53,7 +53,7 @@ public class SemObj extends Obj {
         isDirty = false;
     }
 
-    // ------------------------------------------------------------- Set, get, and update functions
+    // ------------------------------------------------------------ Set, get, and update functions
     // SemId - no update
     private void setSemId(int semIdIn) {
         semId = semIdIn;
@@ -110,7 +110,7 @@ public class SemObj extends Obj {
     }
     public TitledPane getComponent() {return component;}
 
-    // ---------------------------------------------------------------------------- Calc components
+    // --------------------------------------------------------------------------- Calc components
     private void setSemBar() {
         String pt1 = String.format("%s", semName);
         String pt2 = String.format("%5s %d classes", "", classCount);

@@ -12,7 +12,7 @@ public class UserObj extends Obj {
     private ArrayList<SemObj> semLst = new ArrayList<SemObj>(8);
     private boolean isDirty; // not null
 
-    // -------------------------------------------------------------------------------- Constructor
+    // ------------------------------------------------------------------------------- Constructor
     public UserObj() {
         setUserId(-1);
         setUsername("default");
@@ -23,7 +23,8 @@ public class UserObj extends Obj {
         isDirty = false;
     }
 
-    public UserObj(int userIdIn, String usernameIn, String userpwIn, String userNoteIn, String userPfpIn) {
+    public UserObj(int userIdIn, String usernameIn, String userpwIn, String userNoteIn, 
+                String userPfpIn) {
         setUserId(userIdIn);
         setUsername(usernameIn);
         setUserpw(userpwIn);
@@ -33,7 +34,7 @@ public class UserObj extends Obj {
         isDirty = false;
     }
 
-    // ------------------------------------------------------------- Set, get, and update functions
+    // ------------------------------------------------------------ Set, get, and update functions
     // Userid - no update
     private void setUserId(int userIdIn) {
         userId = userIdIn;

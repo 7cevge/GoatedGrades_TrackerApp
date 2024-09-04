@@ -23,7 +23,7 @@ public class PartObj extends Obj {
     private double pointGrade;
     private double pointGradeTotal;
 
-    // ------------------------------------------------------------------------------- Constructors
+    // ------------------------------------------------------------------------------ Constructors
     // Default constructor for new data
     public PartObj(int partOrderIn, ClassObj parentIn, HBox componentIn) {
         setComponent(componentIn);
@@ -42,7 +42,7 @@ public class PartObj extends Obj {
 
     // Constructor for existing data
     public PartObj(int partIdIn, String partNameIn, double partPercentIn, String partNoteIn, 
-                int partOrderIn, int classIdIn, ClassObj parentIn, HBox componentIn) {
+                    int partOrderIn, int classIdIn, ClassObj parentIn, HBox componentIn) {
         setComponent(componentIn);
 
         setPartId(partIdIn);
@@ -57,7 +57,7 @@ public class PartObj extends Obj {
         isDirty = false;
     }
 
-    // ------------------------------------------------------------- Set, get, and update functions
+    // ------------------------------------------------------------ Set, get, and update functions
     // PartId - no update
     private void setPartId(int partIdIn) {
         partId = partIdIn;

@@ -21,9 +21,7 @@ public class GradeObj extends Obj {
 
     private AnchorPane component;
 
-    private double percent;
-
-    // ------------------------------------------------------------------------------- Constructors
+    // ------------------------------------------------------------------------------ Constructors
     // Default constructor for new data
     public GradeObj(int gradeOrderin, PartObj parentIn, AnchorPane componentIn) {
         setComponent(componentIn);
@@ -67,7 +65,7 @@ public class GradeObj extends Obj {
         isDirty = false;
     }
 
-    // ------------------------------------------------------------- Set, get, and update functions
+    // ------------------------------------------------------------ Set, get, and update functions
     // GradeId - no update
     private void setGradeId(int gradeIdIn) {
         gradeId = gradeIdIn;
