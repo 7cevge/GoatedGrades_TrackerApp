@@ -316,6 +316,20 @@ public class GradesController extends SceneController {
 		TextField outOf = newMiniTextField(35, 15, Pos.CENTER_RIGHT);
 		outOf.setPromptText("000");
 
+		got.setOnKeyTyped(e -> {
+			String character = e.getCharacter();
+			// Skip if (not a number OR has another . after the first .)
+			if (character.equals("e")) {
+				e.consume();
+			}
+			if (!character.matches("[0-9.]") || (character.equals(".") && got.getText().contains("."))) {
+				e.consume();
+			}
+		});
+
+		//numericFilter(got);
+		numericFilter(outOf);
+
 		Label gradePercent = new Label("--.--%");
 		gradePercent.getStyleClass().add("tempText");
 		gradePercent.setPrefWidth(40);
@@ -356,6 +370,16 @@ public class GradesController extends SceneController {
 			return String.format("%.2f%%",
 						(Double.parseDouble(gotIn)/Double.parseDouble(outOfIn)) * 100);
 		}
+	}
+
+	private void numericFilter(TextField textfieldIn) {
+		textfieldIn.setOnKeyTyped(e -> {
+			String character = e.getCharacter();
+			// Skip if (not a number OR has another . after the first .)
+			if (!character.matches("[0-9.]") || (character.equals(".") && textfieldIn.getText().contains("."))) {
+				e.consume();
+			}
+		});
 	}
 
 	private void replaceAllNull(String[] rowDataIn, boolean[] isStringLst) {
